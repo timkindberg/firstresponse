@@ -1,8 +1,12 @@
+'use client';
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getContent } from "@/lib/content";
-import LayoutClient from "./layout-client";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,12 +38,17 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+  const isAdminRoute = pathname?.startsWith('/admin');
+
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} antialiased`}>
-        <LayoutClient>
+        {!isAdminRoute && <Navigation />}
+        <main className="min-h-screen">
           {children}
-        </LayoutClient>
+        </main>
+        {!isAdminRoute && <Footer />}
       </body>
     </html>
   );

@@ -2,20 +2,21 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getContent } from "@/lib/content";
-import LayoutClient from "./layout-client";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const content = getContent();
 
 export const metadata: Metadata = {
-  title: content.seo.title,
-  description: content.seo.description,
-  keywords: content.seo.keywords,
+  title: content.settings.seo.title,
+  description: content.settings.seo.description,
+  keywords: content.settings.seo.keywords,
   authors: [{ name: content.company.name }],
   openGraph: {
-    title: content.seo.title,
-    description: content.seo.description,
+    title: content.settings.seo.title,
+    description: content.settings.seo.description,
     type: "website",
     locale: "en_US",
   },
@@ -37,9 +38,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} antialiased`}>
-        <LayoutClient>
+        <Navigation />
+        <main className="min-h-screen">
           {children}
-        </LayoutClient>
+        </main>
+        <Footer />
       </body>
     </html>
   );

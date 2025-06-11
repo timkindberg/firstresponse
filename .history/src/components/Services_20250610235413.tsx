@@ -1,21 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { TreeDeciduous, Scissors, Phone, Settings, Check, Leaf, Truck } from 'lucide-react';
-import { getServices, getCompanyInfo } from '@/lib/content';
+import { TreeDeciduous, Scissors, Phone, Settings, Check } from 'lucide-react';
+import { getServices } from '@/lib/content';
 
 const Services = () => {
   const services = getServices();
-  const company = getCompanyInfo();
 
   const getIcon = (iconName: string) => {
     const iconMap = {
-      'tree': TreeDeciduous,
+      'tree-deciduous': TreeDeciduous,
       'scissors': Scissors,
       'phone': Phone,
-      'cog': Settings,
-      'leaf': Leaf,
-      'truck': Truck,
+      'gear': Settings,
     };
     return iconMap[iconName as keyof typeof iconMap] || TreeDeciduous;
   };
@@ -112,11 +109,11 @@ const Services = () => {
 
                   {/* Content */}
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    {service.name}
+                    {service.title}
                   </h3>
                   
                   <p className="text-gray-600 mb-6 leading-relaxed">
-                    {service.shortDescription}
+                    {service.description}
                   </p>
 
                   {/* Features */}
@@ -172,13 +169,13 @@ const Services = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href={`tel:${company.phone}`}
+                href="tel:(555) 123-4567"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center justify-center space-x-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
               >
                 <Phone className="h-5 w-5" />
-                <span>Emergency: {company.phone}</span>
+                <span>Emergency: (555) 123-4567</span>
               </motion.a>
               
               <motion.a

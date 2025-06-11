@@ -2,27 +2,57 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Filter, Eye, Grid, TreeDeciduous, Scissors, Phone, Settings } from 'lucide-react';
+import { Filter, Eye } from 'lucide-react';
 import { getGalleryData } from '@/lib/content';
 
 const Gallery = () => {
   const galleryData = getGalleryData();
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFilter, setActiveFilter] = useState('All');
 
-  const getIcon = (iconName: string) => {
-    const iconMap = {
-      'grid': Grid,
-      'tree': TreeDeciduous,
-      'scissors': Scissors,
-      'phone': Phone,
-      'cog': Settings,
-    };
-    return iconMap[iconName as keyof typeof iconMap] || Grid;
-  };
+  // Sample gallery images - in real implementation, these would come from the CMS
+  const sampleImages = [
+    {
+      id: '1',
+      src: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      alt: 'Tree removal service',
+      category: 'Tree Removal'
+    },
+    {
+      id: '2',
+      src: 'https://images.unsplash.com/photo-1592150621744-aca64f48394a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      alt: 'Tree pruning work',
+      category: 'Pruning'
+    },
+    {
+      id: '3',
+      src: 'https://images.unsplash.com/photo-1612182062546-0ba1a7f9f7f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      alt: 'Emergency tree service',
+      category: 'Emergency Response'
+    },
+    {
+      id: '4',
+      src: 'https://images.unsplash.com/photo-1574263867128-6e4b999c8b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      alt: 'Stump grinding service',
+      category: 'Stump Grinding'
+    },
+    {
+      id: '5',
+      src: 'https://images.unsplash.com/photo-1508004680771-708b02aabdc0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      alt: 'Professional tree care',
+      category: 'Tree Removal'
+    },
+    {
+      id: '6',
+      src: 'https://images.unsplash.com/photo-1592839404241-7aecb0c45c2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      alt: 'Tree trimming expertise',
+      category: 'Pruning'
+    }
+  ];
 
-  const filteredImages = activeFilter === 'all' 
-    ? galleryData.images 
-    : galleryData.images.filter(img => img.category === activeFilter);
+  const categories = ['All', ...galleryData.categories];
+  const filteredImages = activeFilter === 'All' 
+    ? sampleImages 
+    : sampleImages.filter(img => img.category === activeFilter);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -60,7 +90,7 @@ const Gallery = () => {
             transition={{ delay: 0.2 }}
             className="inline-block px-4 py-2 bg-emerald-100 text-emerald-600 rounded-full text-sm font-medium mb-4"
           >
-            Our Work
+            {galleryData.title}
           </motion.span>
           
           <motion.h2
@@ -90,28 +120,24 @@ const Gallery = () => {
           viewport={{ once: true }}
           className="flex flex-wrap justify-center gap-4 mb-12"
         >
-          {galleryData.categories.map((category) => {
-            const IconComponent = getIcon(category.icon);
-            
-            return (
-              <motion.button
-                key={category.id}
-                onClick={() => setActiveFilter(category.id)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  activeFilter === category.id
-                    ? 'bg-emerald-600 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                <div className="flex items-center space-x-2">
-                  <IconComponent className="h-4 w-4" />
-                  <span>{category.name}</span>
-                </div>
-              </motion.button>
-            );
-          })}
+          {categories.map((category) => (
+            <motion.button
+              key={category}
+              onClick={() => setActiveFilter(category)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                activeFilter === category
+                  ? 'bg-emerald-600 text-white shadow-lg'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              <div className="flex items-center space-x-2">
+                <Filter className="h-4 w-4" />
+                <span>{category}</span>
+              </div>
+            </motion.button>
+          ))}
         </motion.div>
 
         {/* Gallery Grid */}
@@ -131,7 +157,7 @@ const Gallery = () => {
             >
               <div className="aspect-w-4 aspect-h-3 relative">
                 <img
-                  src={image.url}
+                  src={image.src}
                   alt={image.alt}
                   className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
@@ -150,14 +176,14 @@ const Gallery = () => {
                 {/* Category Badge */}
                 <div className="absolute top-4 left-4">
                   <span className="bg-emerald-600/90 text-white text-xs font-medium px-3 py-1 rounded-full">
-                    {galleryData.categories.find(cat => cat.id === image.category)?.name || image.category}
+                    {image.category}
                   </span>
                 </div>
               </div>
               
               <div className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-1">{image.title}</h3>
-                <p className="text-sm text-gray-600">{image.description}</p>
+                <h3 className="font-semibold text-gray-900 mb-1">{image.alt}</h3>
+                <p className="text-sm text-gray-600">{image.category}</p>
               </div>
             </motion.div>
           ))}

@@ -235,8 +235,8 @@ const AdminPage = () => {
                     </label>
                     <input
                       type="text"
-                      value={content.hero.ctaButton}
-                      onChange={(e) => updateContent('hero', 'ctaButton', e.target.value)}
+                      value={content.hero.cta}
+                      onChange={(e) => updateContent('hero', 'cta', e.target.value)}
                       disabled={!isEditing}
                       className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
                     />
@@ -256,14 +256,14 @@ const AdminPage = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Service Name
+                              Service Title
                             </label>
                             <input
                               type="text"
-                              value={service.name}
+                              value={service.title}
                               onChange={(e) => {
                                 const newServices = [...content.services];
-                                newServices[index].name = e.target.value;
+                                newServices[index].title = e.target.value;
                                 setContent(prev => ({ ...prev, services: newServices }));
                               }}
                               disabled={!isEditing}
@@ -273,37 +273,20 @@ const AdminPage = () => {
                           
                           <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Short Description
+                              Description
                             </label>
                             <textarea
                               rows={2}
-                              value={service.shortDescription}
+                              value={service.description}
                               onChange={(e) => {
                                 const newServices = [...content.services];
-                                newServices[index].shortDescription = e.target.value;
+                                newServices[index].description = e.target.value;
                                 setContent(prev => ({ ...prev, services: newServices }));
                               }}
                               disabled={!isEditing}
                               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
                             />
                           </div>
-                        </div>
-                        
-                        <div className="mt-4">
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Full Description
-                          </label>
-                          <textarea
-                            rows={3}
-                            value={service.fullDescription}
-                            onChange={(e) => {
-                              const newServices = [...content.services];
-                              newServices[index].fullDescription = e.target.value;
-                              setContent(prev => ({ ...prev, services: newServices }));
-                            }}
-                            disabled={!isEditing}
-                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
-                          />
                         </div>
                       </div>
                     ))}
@@ -331,12 +314,12 @@ const AdminPage = () => {
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Subtitle
+                      Description
                     </label>
                     <textarea
                       rows={3}
-                      value={content.contact.subtitle}
-                      onChange={(e) => updateContent('contact', 'subtitle', e.target.value)}
+                      value={content.contact.description}
+                      onChange={(e) => updateContent('contact', 'description', e.target.value)}
                       disabled={!isEditing}
                       className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
                     />

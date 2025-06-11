@@ -2,70 +2,47 @@ import contentData from '@/data/content.json';
 
 export interface Company {
   name: string;
+  tagline: string;
+  description: string;
   phone: string;
   email: string;
   address: string;
-  tagline: string;
-  description: string;
-  facebook: string;
-}
-
-export interface HeroFeature {
-  icon: string;
-  value: string;
-  label: string;
+  logo: string;
 }
 
 export interface Hero {
   title: string;
   subtitle: string;
-  ctaButton: string;
+  cta: string;
   backgroundImage: string;
-  features: HeroFeature[];
 }
 
 export interface Service {
   id: string;
-  name: string;
-  shortDescription: string;
-  fullDescription: string;
-  icon: string;
-  image: string;
-  features: string[];
-}
-
-export interface About {
   title: string;
   description: string;
+  icon: string;
   features: string[];
 }
 
 export interface Testimonial {
+  id: number;
   name: string;
-  location: string;
-  rating: number;
   text: string;
-}
-
-export interface GalleryCategory {
-  id: string;
-  name: string;
-  icon: string;
+  rating: number;
 }
 
 export interface GalleryImage {
-  id: number;
-  url: string;
+  id: string;
+  src: string;
   alt: string;
   category: string;
-  title: string;
-  description: string;
 }
 
 export interface Gallery {
   title: string;
   description: string;
-  categories: GalleryCategory[];
+  categories: string[];
   images: GalleryImage[];
 }
 
@@ -74,50 +51,39 @@ export interface FormField {
   label: string;
   type: string;
   required: boolean;
-  placeholder?: string;
   options?: string[];
-}
-
-export interface ContactCard {
-  icon: string;
-  title: string;
-  subtitle: string;
-  content: string;
-  link?: string;
 }
 
 export interface Contact {
   title: string;
-  subtitle: string;
-  form: {
-    fields: FormField[];
-    submitButton: string;
-  };
-  contactCards: ContactCard[];
-}
-
-export interface Theme {
-  primaryColor: string;
-  secondaryColor: string;
-  accentColor: string;
-}
-
-export interface SEO {
-  title: string;
   description: string;
-  keywords: string;
+  formFields: FormField[];
 }
 
 export interface ContentData {
   company: Company;
   hero: Hero;
   services: Service[];
-  about: About;
+  about: {
+    title: string;
+    content: string;
+    features: string[];
+  };
   testimonials: Testimonial[];
   gallery: Gallery;
   contact: Contact;
-  theme: Theme;
-  seo: SEO;
+  settings: {
+    theme: {
+      primaryColor: string;
+      secondaryColor: string;
+      accentColor: string;
+    };
+    seo: {
+      title: string;
+      description: string;
+      keywords: string;
+    };
+  };
 }
 
 export function getContent(): ContentData {
