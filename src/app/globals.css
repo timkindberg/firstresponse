@@ -5,10 +5,16 @@
 @tailwind utilities;
 
 :root {
-  --primary: #059669;
-  --secondary: #0d9488;
-  --accent: #f59e0b;
-  --gradient: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+  --primary: #dc2626; /* Firefighter red */
+  --secondary: #1f2937; /* Dark gray/black */
+  --accent: #fbbf24; /* Emergency yellow/gold */
+  --gradient: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  --firefighter-red: #dc2626;
+  --firefighter-dark-red: #b91c1c;
+  --firefighter-black: #111827;
+  --firefighter-gray: #374151;
+  --emergency-yellow: #fbbf24;
+  --emergency-orange: #f97316;
 }
 
 * {
@@ -106,13 +112,13 @@ body {
 
 /* Button styles */
 .btn-primary {
-  @apply bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg;
+  @apply bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg;
 }
 
 .btn-secondary {
-  @apply bg-white hover:bg-gray-50 text-emerald-600 font-semibold py-3 px-8 rounded-lg border-2 border-emerald-600 transition-all duration-300 transform hover:scale-105;
+  @apply bg-white hover:bg-gray-50 text-red-600 font-semibold py-3 px-8 rounded-lg border-2 border-red-600 transition-all duration-300 transform hover:scale-105;
 }
 
 .btn-outline {
-  @apply bg-transparent hover:bg-emerald-600 text-emerald-600 hover:text-white font-semibold py-3 px-8 rounded-lg border-2 border-emerald-600 transition-all duration-300;
+  @apply bg-transparent hover:bg-red-600 text-red-600 hover:text-white font-semibold py-3 px-8 rounded-lg border-2 border-red-600 transition-all duration-300;
 }

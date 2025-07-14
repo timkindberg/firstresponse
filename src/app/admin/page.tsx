@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Save, Edit, Eye, TreePine } from 'lucide-react';
+import { useState } from 'react';
+import { Save, Edit, Eye } from 'lucide-react';
 import { getContent } from '@/lib/content';
+import Image from 'next/image';
 
 const AdminPage = () => {
   const [content, setContent] = useState(getContent());
@@ -11,7 +11,7 @@ const AdminPage = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   const sections = [
-    { id: 'company', name: 'Company Info', icon: TreePine },
+    { id: 'company', name: 'Company Info', icon: Save },
     { id: 'hero', name: 'Hero Section', icon: Eye },
     { id: 'services', name: 'Services', icon: Edit },
     { id: 'contact', name: 'Contact', icon: Save },
@@ -24,7 +24,7 @@ const AdminPage = () => {
     setIsEditing(false);
   };
 
-  const updateContent = (section: string, field: string, value: any) => {
+  const updateContent = (section: string, field: string, value: string) => {
     setContent(prev => ({
       ...prev,
       [section]: {
@@ -40,8 +40,15 @@ const AdminPage = () => {
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <TreePine className="h-8 w-8 text-emerald-600" />
+            <div className="flex items-center space-x-3">
+              <div className="relative w-8 h-8">
+                <Image
+                  src="/logo.png"
+                  alt="First Response Tree Service Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
               <h1 className="text-xl font-bold text-gray-900">Content Manager</h1>
             </div>
             
@@ -51,7 +58,7 @@ const AdminPage = () => {
                 className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
                   isEditing 
                     ? 'bg-gray-200 text-gray-700' 
-                    : 'bg-emerald-600 text-white hover:bg-emerald-700'
+                    : 'bg-red-600 text-white hover:bg-red-700'
                 }`}
               >
                 {isEditing ? 'Cancel' : 'Edit Content'}
@@ -66,12 +73,12 @@ const AdminPage = () => {
                 </button>
               )}
               
-              <a
-                href="/"
+              <button
+                onClick={() => window.location.href = '/'}
                 className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300"
               >
                 View Site
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -90,7 +97,7 @@ const AdminPage = () => {
                     onClick={() => setActiveSection(section.id)}
                     className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
                       activeSection === section.id
-                        ? 'bg-emerald-100 text-emerald-700 border border-emerald-200'
+                        ? 'bg-red-100 text-red-700 border border-red-200'
                         : 'text-gray-600 hover:bg-gray-100'
                     }`}
                   >
@@ -104,18 +111,11 @@ const AdminPage = () => {
 
           {/* Content Area */}
           <div className="lg:col-span-3">
-            <motion.div
-              key={activeSection}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white rounded-xl shadow-sm border p-6"
-            >
-              {/* Company Info */}
+            <div className="bg-white rounded-lg shadow-sm border p-6">
+              {/* Company Info Section */}
               {activeSection === 'company' && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-gray-900">Company Information</h2>
-                  
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Company Information</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -126,7 +126,7 @@ const AdminPage = () => {
                         value={content.company.name}
                         onChange={(e) => updateContent('company', 'name', e.target.value)}
                         disabled={!isEditing}
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 disabled:bg-gray-50"
                       />
                     </div>
                     
@@ -139,20 +139,20 @@ const AdminPage = () => {
                         value={content.company.phone}
                         onChange={(e) => updateContent('company', 'phone', e.target.value)}
                         disabled={!isEditing}
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 disabled:bg-gray-50"
                       />
                     </div>
                     
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Email
+                        Email Address
                       </label>
                       <input
                         type="email"
                         value={content.company.email}
                         onChange={(e) => updateContent('company', 'email', e.target.value)}
                         disabled={!isEditing}
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 disabled:bg-gray-50"
                       />
                     </div>
                     
@@ -165,94 +165,96 @@ const AdminPage = () => {
                         value={content.company.address}
                         onChange={(e) => updateContent('company', 'address', e.target.value)}
                         disabled={!isEditing}
-                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 disabled:bg-gray-50"
                       />
                     </div>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Tagline
-                    </label>
-                    <input
-                      type="text"
-                      value={content.company.tagline}
-                      onChange={(e) => updateContent('company', 'tagline', e.target.value)}
-                      disabled={!isEditing}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Description
-                    </label>
-                    <textarea
-                      rows={3}
-                      value={content.company.description}
-                      onChange={(e) => updateContent('company', 'description', e.target.value)}
-                      disabled={!isEditing}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
-                    />
+                    
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Tagline
+                      </label>
+                      <input
+                        type="text"
+                        value={content.company.tagline}
+                        onChange={(e) => updateContent('company', 'tagline', e.target.value)}
+                        disabled={!isEditing}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 disabled:bg-gray-50"
+                      />
+                    </div>
+                    
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Description
+                      </label>
+                      <textarea
+                        value={content.company.description}
+                        onChange={(e) => updateContent('company', 'description', e.target.value)}
+                        disabled={!isEditing}
+                        rows={4}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 disabled:bg-gray-50"
+                      />
+                    </div>
                   </div>
                 </div>
               )}
 
               {/* Hero Section */}
               {activeSection === 'hero' && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-gray-900">Hero Section</h2>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Main Title
-                    </label>
-                    <input
-                      type="text"
-                      value={content.hero.title}
-                      onChange={(e) => updateContent('hero', 'title', e.target.value)}
-                      disabled={!isEditing}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Subtitle
-                    </label>
-                    <textarea
-                      rows={2}
-                      value={content.hero.subtitle}
-                      onChange={(e) => updateContent('hero', 'subtitle', e.target.value)}
-                      disabled={!isEditing}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Call-to-Action Button Text
-                    </label>
-                    <input
-                      type="text"
-                      value={content.hero.ctaButton}
-                      onChange={(e) => updateContent('hero', 'ctaButton', e.target.value)}
-                      disabled={!isEditing}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
-                    />
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Hero Section</h2>
+                  <div className="space-y-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Main Title
+                      </label>
+                      <input
+                        type="text"
+                        value={content.hero.title}
+                        onChange={(e) => updateContent('hero', 'title', e.target.value)}
+                        disabled={!isEditing}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 disabled:bg-gray-50"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Subtitle
+                      </label>
+                      <textarea
+                        value={content.hero.subtitle}
+                        onChange={(e) => updateContent('hero', 'subtitle', e.target.value)}
+                        disabled={!isEditing}
+                        rows={3}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 disabled:bg-gray-50"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Call to Action Button Text
+                      </label>
+                      <input
+                        type="text"
+                        value={content.hero.ctaButton}
+                        onChange={(e) => updateContent('hero', 'ctaButton', e.target.value)}
+                        disabled={!isEditing}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 disabled:bg-gray-50"
+                      />
+                    </div>
                   </div>
                 </div>
               )}
 
-              {/* Services */}
+              {/* Services Section */}
               {activeSection === 'services' && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-gray-900">Services</h2>
-                  <p className="text-gray-600">Manage your service offerings and descriptions.</p>
-                  
-                  <div className="grid gap-6">
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Services</h2>
+                  <div className="space-y-6">
                     {content.services.map((service, index) => (
                       <div key={service.id} className="border border-gray-200 rounded-lg p-4">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                          {service.name}
+                        </h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -262,12 +264,12 @@ const AdminPage = () => {
                               type="text"
                               value={service.name}
                               onChange={(e) => {
-                                const newServices = [...content.services];
-                                newServices[index].name = e.target.value;
-                                setContent(prev => ({ ...prev, services: newServices }));
+                                const updatedServices = [...content.services];
+                                updatedServices[index] = { ...service, name: e.target.value };
+                                setContent(prev => ({ ...prev, services: updatedServices }));
                               }}
                               disabled={!isEditing}
-                              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 disabled:bg-gray-50"
                             />
                           </div>
                           
@@ -276,34 +278,17 @@ const AdminPage = () => {
                               Short Description
                             </label>
                             <textarea
-                              rows={2}
                               value={service.shortDescription}
                               onChange={(e) => {
-                                const newServices = [...content.services];
-                                newServices[index].shortDescription = e.target.value;
-                                setContent(prev => ({ ...prev, services: newServices }));
+                                const updatedServices = [...content.services];
+                                updatedServices[index] = { ...service, shortDescription: e.target.value };
+                                setContent(prev => ({ ...prev, services: updatedServices }));
                               }}
                               disabled={!isEditing}
-                              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
+                              rows={3}
+                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 disabled:bg-gray-50"
                             />
                           </div>
-                        </div>
-                        
-                        <div className="mt-4">
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Full Description
-                          </label>
-                          <textarea
-                            rows={3}
-                            value={service.fullDescription}
-                            onChange={(e) => {
-                              const newServices = [...content.services];
-                              newServices[index].fullDescription = e.target.value;
-                              setContent(prev => ({ ...prev, services: newServices }));
-                            }}
-                            disabled={!isEditing}
-                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
-                          />
                         </div>
                       </div>
                     ))}
@@ -311,39 +296,40 @@ const AdminPage = () => {
                 </div>
               )}
 
-              {/* Contact */}
+              {/* Contact Section */}
               {activeSection === 'contact' && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-gray-900">Contact Section</h2>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Section Title
-                    </label>
-                    <input
-                      type="text"
-                      value={content.contact.title}
-                      onChange={(e) => updateContent('contact', 'title', e.target.value)}
-                      disabled={!isEditing}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Subtitle
-                    </label>
-                    <textarea
-                      rows={3}
-                      value={content.contact.subtitle}
-                      onChange={(e) => updateContent('contact', 'subtitle', e.target.value)}
-                      disabled={!isEditing}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-emerald-500 disabled:bg-gray-50"
-                    />
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Contact Title
+                      </label>
+                      <input
+                        type="text"
+                        value={content.contact.title}
+                        onChange={(e) => updateContent('contact', 'title', e.target.value)}
+                        disabled={!isEditing}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 disabled:bg-gray-50"
+                      />
+                    </div>
+                    
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Contact Description
+                      </label>
+                                              <textarea
+                          value={content.contact.subtitle}
+                          onChange={(e) => updateContent('contact', 'subtitle', e.target.value)}
+                        disabled={!isEditing}
+                        rows={4}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 disabled:bg-gray-50"
+                      />
+                    </div>
                   </div>
                 </div>
               )}
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

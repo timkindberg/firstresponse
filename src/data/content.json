@@ -151,7 +151,7 @@
   ],
   "gallery": {
     "title": "See Our Professional Work",
-    "description": "View examples of our professional tree services throughout the greater Cincinnati area",
+    "subtitle": "View examples of our professional tree services throughout the greater Cincinnati area",
     "categories": [
       {
         "id": "all",
@@ -174,59 +174,53 @@
         "icon": "phone"
       },
       {
-        "id": "stump-grinding", 
+        "id": "stump-grinding",
         "name": "Stump Grinding",
         "icon": "cog"
       }
     ],
     "images": [
       {
-        "id": 1,
-        "url": "https://images.unsplash.com/photo-1544016768-982d1b7830c5?w=600&h=400&fit=crop&crop=center",
-        "alt": "Professional tree removal service",
-        "category": "tree-removal",
-        "title": "Large Oak Tree Removal",
-        "description": "Safe removal of 80-foot oak tree near residential property"
+        "id": "1",
+        "url": "/images/gallery/tree-removal-1.jpg",
+        "title": "Large Tree Removal",
+        "description": "Professional tree removal service near residential property",
+        "category": "tree-removal"
       },
       {
-        "id": 2,
-        "url": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop&crop=center", 
-        "alt": "Tree pruning and trimming work",
-        "category": "pruning",
+        "id": "2",
+        "url": "/images/gallery/tree-pruning-1.jpg",
         "title": "Crown Thinning & Pruning",
-        "description": "Professional pruning to improve tree health and safety"
+        "description": "Expert pruning to improve tree health and safety",
+        "category": "pruning"
       },
       {
-        "id": 3,
-        "url": "https://images.unsplash.com/photo-1574263867128-a3d5c1b1dedc?w=600&h=400&fit=crop&crop=center",
-        "alt": "Emergency tree service after storm",
-        "category": "emergency", 
-        "title": "Storm Damage Response",
-        "description": "24/7 emergency response for storm-damaged trees"
+        "id": "3",
+        "url": "/images/gallery/tree-removal-2.jpg",
+        "title": "Professional Tree Removal",
+        "description": "Safe removal of large trees with professional equipment",
+        "category": "tree-removal"
       },
       {
-        "id": 4,
-        "url": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop&crop=center",
-        "alt": "Stump grinding service",
-        "category": "stump-grinding",
-        "title": "Complete Stump Removal", 
-        "description": "Professional stump grinding and area restoration"
+        "id": "4",
+        "url": "/images/gallery/emergency-service-1.jpg",
+        "title": "Emergency Tree Response",
+        "description": "24/7 emergency response for storm-damaged trees",
+        "category": "emergency"
       },
       {
-        "id": 5,
-        "url": "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=600&h=400&fit=crop&crop=center",
-        "alt": "Tree care equipment in action",
-        "category": "tree-removal",
-        "title": "Professional Equipment",
-        "description": "State-of-the-art equipment for safe tree removal"
+        "id": "5",
+        "url": "/images/gallery/stump-grinding-1.jpg",
+        "title": "Complete Stump Removal",
+        "description": "Professional stump grinding and area restoration",
+        "category": "stump-grinding"
       },
       {
-        "id": 6,
-        "url": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=600&h=400&fit=crop&crop=center",
-        "alt": "Healthy pruned trees",
-        "category": "pruning",
-        "title": "Precision Tree Trimming",
-        "description": "Expert trimming for optimal tree health and appearance"
+        "id": "6",
+        "url": "/images/gallery/land-clearing-1.jpg",
+        "title": "Land & Vegetation Clearing",
+        "description": "Clearing overgrowth and unwanted vegetation",
+        "category": "tree-removal"
       }
     ]
   },
@@ -312,9 +306,9 @@
     ]
   },
   "theme": {
-    "primaryColor": "#059669",
-    "secondaryColor": "#0d9488", 
-    "accentColor": "#f59e0b"
+    "primaryColor": "#dc2626",
+    "secondaryColor": "#1f2937", 
+    "accentColor": "#fbbf24"
   },
   "seo": {
     "title": "First Response Tree Service - Professional Tree Care in Cincinnati, OH",
