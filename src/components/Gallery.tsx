@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Eye, Grid, TreeDeciduous, Scissors, Phone, Settings, Flame } from 'lucide-react';
 import { getGalleryData } from '@/lib/content';
+import { getImageUrl } from '@/lib/utils';
 
 const Gallery = () => {
   const galleryData = getGalleryData();
@@ -148,7 +149,7 @@ const Gallery = () => {
             >
               <div className="relative">
                 <img
-                  src={image.url}
+                  src={getImageUrl(image.url)}
                   alt={image.title}
                   className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                 />

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { TreeDeciduous, Scissors, Phone, Settings, Check, Leaf, Truck, ArrowRight, Flame } from 'lucide-react';
 import { getServices, getCompanyInfo } from '@/lib/content';
+import { getImageUrl } from '@/lib/utils';
 
 const Services = () => {
   const services = getServices();
@@ -109,7 +110,7 @@ const Services = () => {
                 <div className="relative h-56 lg:h-64 overflow-hidden rounded-t-3xl">
                   <div 
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110"
-                    style={{ backgroundImage: `url('${service.image}')` }}
+                    style={{ backgroundImage: `url('${getImageUrl(service.image)}')` }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
                   
