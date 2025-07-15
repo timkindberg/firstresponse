@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Shield } from 'lucide-react';
 import { getCompanyInfo } from '@/lib/content';
+import { getImageUrl } from '@/lib/utils';
 import Image from 'next/image';
 
 const Footer = () => {
@@ -37,12 +38,12 @@ const Footer = () => {
           <motion.div variants={itemVariants} className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-4 -ml-10">
               <div className="flex items-start relative w-full max-w-96 h-[250px]">
-                <Image
-                  src="/First Response Logo.svg"
-                  alt="First Response Tree Service Logo"
-                  fill
-                  className="object-contain"
-                />
+                              <Image
+                src={getImageUrl("/First Response Logo.svg")}
+                alt="First Response Tree Service Logo"
+                fill
+                className="object-contain"
+              />
               </div>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">

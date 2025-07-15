@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Phone, Flame, Shield } from 'lucide-react';
 import { getCompanyInfo } from '@/lib/content';
+import { getImageUrl } from '@/lib/utils';
 import Image from 'next/image';
 
 const Navigation = () => {
@@ -87,7 +88,7 @@ const Navigation = () => {
               className={`w-full h-full ${isScrolled ? 'block' : 'hidden'} lg:block`}
             >
               <Image
-                src="/First Response Min Logo.svg"
+                src={getImageUrl("/First Response Min Logo.svg")}
                 alt="First Response Tree Service Logo"
                 fill
                 priority

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Save, Edit, Eye } from 'lucide-react';
 import { getContent } from '@/lib/content';
+import { getImageUrl } from '@/lib/utils';
 import Image from 'next/image';
 
 const AdminPage = () => {
@@ -43,7 +44,7 @@ const AdminPage = () => {
             <div className="flex items-center space-x-3">
               <div className="relative w-8 h-8">
                 <Image
-                  src="/logo.png"
+                  src={getImageUrl("/logo.png")}
                   alt="First Response Tree Service Logo"
                   fill
                   className="object-contain"

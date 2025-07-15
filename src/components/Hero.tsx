@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Phone, Shield, Clock, Award } from 'lucide-react';
 import { getContent } from '@/lib/content';
+import { getImageUrl } from '@/lib/utils';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
@@ -112,7 +113,7 @@ const Hero = () => {
                   }}
                 ></motion.div>
                 <Image
-                  src="/First Response Logo.svg"
+                  src={getImageUrl("/First Response Logo.svg")}
                   alt="First Response Tree Service Logo"
                   fill
                   className="object-contain relative z-10 drop-shadow-2xl"
