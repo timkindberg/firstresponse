@@ -54,17 +54,16 @@ export interface GalleryCategory {
 }
 
 export interface GalleryImage {
-  id: number;
+  id: string;
   url: string;
-  alt: string;
-  category: string;
   title: string;
   description: string;
+  category: string;
 }
 
 export interface Gallery {
   title: string;
-  description: string;
+  subtitle: string;
   categories: GalleryCategory[];
   images: GalleryImage[];
 }

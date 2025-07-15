@@ -86,7 +86,7 @@ const Gallery = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
-            {galleryData.description}
+            {galleryData.subtitle}
           </motion.p>
         </motion.div>
 
@@ -149,7 +149,7 @@ const Gallery = () => {
               <div className="relative">
                 <img
                   src={image.url}
-                  alt={image.alt}
+                  alt={image.title}
                   className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 
