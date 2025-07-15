@@ -29,6 +29,19 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Linear Background Gradient (top to bottom) */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-red-950">
+        {/* Very Faint Tree Background */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('${getImageUrl('/tree-line-2.jpg')}')`,
+            backgroundPosition: 'center 200px', // Shift image downward by 60px
+            mask: 'linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.8) 100%)',
+            WebkitMask: 'linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.8) 100%)',
+            filter: 'saturate(.5)',
+            mixBlendMode: 'luminosity',
+          }}
+        ></div>
+        
         {/* Texture Overlay */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%20xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23dc2626%22%20fill-opacity%3D%220.03%22%3E%3Cpath%20d%3D%22M40%2040L20%2020h40L40%2040zM40%2040L20%2060h40L40%2040z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
