@@ -96,7 +96,7 @@ const Gallery = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          className="flex-wrap justify-center gap-4 mb-12 hidden md:flex"
         >
           {galleryData.categories.map((category) => {
             const IconComponent = getIcon(category.icon);
@@ -193,29 +193,6 @@ const Gallery = () => {
           ))}
         </motion.div>
 
-        {/* Load More Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="btn-fire group"
-          >
-            <span>View All Projects</span>
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              className="opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <Flame className="h-5 w-5" />
-            </motion.div>
-          </motion.button>
-        </motion.div>
       </div>
     </section>
   );

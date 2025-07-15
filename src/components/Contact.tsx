@@ -184,17 +184,15 @@ const Contact = () => {
                   type="submit"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="btn-fire w-full group"
+                  className="btn-fire w-full flex items-center justify-center space-x-3 group"
                 >
-                  <Send className="h-5 w-5" />
-                  <span>Send Message</span>
                   <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity"
+                    whileHover={{ x: 2 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <Flame className="h-5 w-5" />
+                    <Send className="h-5 w-5" />
                   </motion.div>
+                  <span>Send Message</span>
                 </motion.button>
               </form>
             </div>
@@ -238,100 +236,91 @@ const Contact = () => {
 
             {/* Contact Cards */}
             <div className="space-y-6">
-              <motion.div
+              <motion.a
+                href={`tel:${company.phone}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="card-premium group cursor-default"
+                className="card-premium group cursor-pointer p-6 block"
               >
-                <div className="flex items-start space-x-4">
-                  <motion.div 
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.5 }}
+                <div className="flex items-start space-x-5">
+                  <div 
                     className="w-14 h-14 bg-gradient-to-r from-red-600 to-red-700 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:shadow-red-500/25"
                   >
                     <Phone className="h-7 w-7 text-white" />
-                  </motion.div>
+                  </div>
                   <div className="flex-1">
                     <h3 className="font-bold text-xl mb-2 text-white group-hover:text-red-400 transition-colors">Call Us Now</h3>
                     <p className="text-gray-300 mb-3">24/7 Emergency Service Available</p>
-                    <a
-                      href={`tel:${company.phone}`}
-                      className="text-red-400 hover:text-red-300 font-semibold text-lg transition-colors duration-300"
-                    >
+                    <p className="text-red-400 hover:text-red-300 font-semibold text-lg transition-colors duration-300">
                       {company.phone}
-                    </a>
+                    </p>
                   </div>
                 </div>
-              </motion.div>
+              </motion.a>
 
-              <motion.div
+              <motion.a
+                href={`mailto:${company.email}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="card-premium group cursor-default"
+                className="card-premium group cursor-pointer p-6 block"
               >
-                <div className="flex items-start space-x-4">
-                  <motion.div 
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.5 }}
+                <div className="flex items-start space-x-5">
+                  <div 
                     className="w-14 h-14 bg-gradient-to-r from-red-600 to-red-700 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:shadow-red-500/25"
                   >
                     <Mail className="h-7 w-7 text-white" />
-                  </motion.div>
+                  </div>
                   <div className="flex-1">
                     <h3 className="font-bold text-xl mb-2 text-white group-hover:text-red-400 transition-colors">Email Us</h3>
                     <p className="text-gray-300 mb-3">Get a quote or ask questions</p>
-                    <a
-                      href={`mailto:${company.email}`}
-                      className="text-red-400 hover:text-red-300 font-semibold transition-colors duration-300 break-all"
-                    >
+                    <p className="text-red-400 hover:text-red-300 font-semibold transition-colors duration-300 break-all">
                       {company.email}
-                    </a>
+                    </p>
                   </div>
                 </div>
-              </motion.div>
+              </motion.a>
 
-              <motion.div
+              <motion.a
+                href={`https://maps.app.goo.gl/4hqEeAyprsrd2YBJ6`}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="card-premium group cursor-default"
+                className="card-premium group cursor-pointer p-6 block"
               >
-                <div className="flex items-start space-x-4">
-                  <motion.div 
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.5 }}
+                <div className="flex items-start space-x-5">
+                  <div 
                     className="w-14 h-14 bg-gradient-to-r from-red-600 to-red-700 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:shadow-red-500/25"
                   >
                     <MapPin className="h-7 w-7 text-white" />
-                  </motion.div>
+                  </div>
                   <div className="flex-1">
                     <h3 className="font-bold text-xl mb-2 text-white group-hover:text-red-400 transition-colors">Visit Us</h3>
                     <p className="text-gray-300 mb-3">Service Area & Office</p>
                     <p className="text-red-400 leading-relaxed">{company.address}</p>
                   </div>
                 </div>
-              </motion.div>
+              </motion.a>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="card-premium group cursor-default"
+                className="card-premium group cursor-default p-6"
               >
-                <div className="flex items-start space-x-4">
-                  <motion.div 
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.5 }}
+                <div className="flex items-start space-x-5">
+                  <div 
                     className="w-14 h-14 bg-gradient-to-r from-red-600 to-red-700 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:shadow-red-500/25"
                   >
                     <Clock className="h-7 w-7 text-white" />
-                  </motion.div>
+                  </div>
                   <div className="flex-1">
                     <h3 className="font-bold text-xl mb-2 text-white group-hover:text-red-400 transition-colors">Business Hours</h3>
                     <div className="text-gray-300 space-y-2 leading-relaxed">

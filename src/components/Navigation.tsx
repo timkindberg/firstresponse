@@ -13,20 +13,58 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      // Use a higher scroll threshold (400) for sm/md screens, else 50
+      const width = window.innerWidth;
+      const isSmallOrMedium = width < 1024; // Tailwind md: 768, lg: 1024
+      setIsScrolled(window.scrollY > (isSmallOrMedium ? 350 : 50));
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock/unlock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup function to restore scroll on component unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const navigation = [
     { name: 'Home', href: '#home' },
     { name: 'Services', href: '#services' },
-    { name: 'About', href: '#about' },
+    { name: 'About', href: '#services' }, // Temporarily redirect to services until About section is added
     { name: 'Gallery', href: '#gallery' },
     { name: 'Contact', href: '#contact' },
   ];
+
+  // Handle smooth scrolling to sections
+  const handleSectionScroll = (href: string) => {
+    setIsOpen(false);
+    
+    // Small delay to allow menu to close first
+    setTimeout(() => {
+      const targetId = href.replace('#', '');
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        const navHeight = 80; // Account for fixed navigation height
+        const targetPosition = targetElement.offsetTop - navHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 300);
+  };
 
   return (
     <motion.nav
@@ -41,23 +79,29 @@ const Navigation = () => {
     >
       <div className="max-container container-padding">
         <div className="flex justify-between items-center h-20 lg:h-24">
-          <div className="flex items-center space-x-4 justify-start w-60 h-28 relative mt-4">
-            <Image
-              src="/First Response Min Logo.svg"
-              alt="First Response Tree Service Logo"
-              fill
-              priority
-              className="object-contain relative z-10 drop-shadow-2xl"
-              style={{ objectFit: 'contain' }}
-            />
+          <div className="flex w-[145px] h-full relative">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isScrolled ? 1 : 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className={`w-full h-full ${isScrolled ? 'block' : 'hidden'} lg:block`}
+            >
+              <Image
+                src="/First Response Min Logo.svg"
+                alt="First Response Tree Service Logo"
+                fill
+                priority
+                className="object-contain relative z-10 drop-shadow-2xl"
+              />
+            </motion.div>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navigation.map((item, index) => (
-              <motion.a
+              <motion.button
                 key={item.name}
-                href={item.href}
+                onClick={() => handleSectionScroll(item.href)}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -69,7 +113,7 @@ const Navigation = () => {
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-red-600 transition-all duration-300 group-hover:w-full"></span>
-              </motion.a>
+              </motion.button>
             ))}
             
             {/* Emergency Call Button */}
@@ -136,21 +180,20 @@ const Navigation = () => {
               {/* Mobile Navigation Links */}
               <div className="space-y-4">
                 {navigation.map((item, index) => (
-                  <motion.a
+                  <motion.button
                     key={item.name}
-                    href={item.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : -20 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="block text-white hover:text-red-400 font-medium text-lg transition-all duration-300 py-2 px-4 rounded-xl hover:bg-red-500/10 group"
-                    onClick={() => setIsOpen(false)}
+                    className="block text-white hover:text-red-400 font-medium text-lg transition-all duration-300 py-2 px-4 rounded-xl hover:bg-red-500/10 group w-full text-left"
+                    onClick={() => handleSectionScroll(item.href)}
                     whileHover={{ x: 10 }}
                   >
                     <div className="flex items-center space-x-3">
                       <div className="w-2 h-2 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <span>{item.name}</span>
                     </div>
-                  </motion.a>
+                  </motion.button>
                 ))}
               </div>
 
@@ -170,31 +213,19 @@ const Navigation = () => {
                   <span>Emergency: {company.phone}</span>
                 </motion.a>
 
-                <motion.a
-                  href="#contact"
+                <motion.button
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: isOpen ? 1 : 0, scale: isOpen ? 1 : 0.9 }}
                   transition={{ duration: 0.4, delay: 0.4 }}
                   className="btn-ghost flex items-center justify-center space-x-3 w-full text-lg font-semibold"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => handleSectionScroll('#contact')}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <span>Get Free Estimate</span>
-                </motion.a>
+                </motion.button>
               </div>
 
-              {/* Mobile Firefighter Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 20 }}
-                transition={{ duration: 0.4, delay: 0.5 }}
-                className="flex items-center justify-center space-x-3 glass-fire px-4 py-3 rounded-xl"
-              >
-                <Flame className="w-5 h-5 text-red-400" />
-                <span className="text-white font-medium">Firefighter Owned & Operated</span>
-                <Shield className="w-5 h-5 text-yellow-400" />
-              </motion.div>
             </div>
           </div>
         </motion.div>

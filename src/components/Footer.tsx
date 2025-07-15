@@ -35,16 +35,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <motion.div variants={itemVariants} className="lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="relative w-10 h-10">
+            <div className="flex items-center space-x-3 mb-4 -ml-10">
+              <div className="flex items-start relative w-full max-w-96 h-[250px]">
                 <Image
-                  src="/logo.png"
+                  src="/First Response Logo.svg"
                   alt="First Response Tree Service Logo"
                   fill
                   className="object-contain"
                 />
               </div>
-              <span className="font-bold text-xl">{company.name}</span>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
               {company.description}
@@ -80,10 +79,10 @@ const Footer = () => {
                 <Mail className="h-4 w-4" />
                 <span>{company.email}</span>
               </a>
-              <div className="flex items-start space-x-2 text-gray-300">
+              <a href="https://maps.app.goo.gl/4hqEeAyprsrd2YBJ6" className="flex items-start space-x-2 text-gray-300 hover:text-red-500 transition-colors duration-300">
                 <MapPin className="h-4 w-4 mt-1 flex-shrink-0" />
                 <span>{company.address}</span>
-              </div>
+              </a>
             </div>
           </motion.div>
 
@@ -140,7 +139,7 @@ const Footer = () => {
               href="tel:911" 
               className="text-yellow-500 hover:text-yellow-400 font-medium text-sm transition-colors duration-300"
             >
-              Emergency: 911
+              For Life-Threatening Emergencies: 911
             </a>
           </div>
         </motion.div>

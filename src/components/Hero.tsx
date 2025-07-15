@@ -6,6 +6,7 @@ import { getContent } from '@/lib/content';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+
 const Hero = () => {
   const content = getContent();
   const { company } = content;
@@ -68,7 +69,7 @@ const Hero = () => {
         />
       ))}
 
-      <div className="relative z-10 max-container container-padding text-center">
+      <div className="relative z-10 max-container container-padding text-center pb-32">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -80,10 +81,10 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.5, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.2, type: "spring", stiffness: 80 }}
-            className="flex justify-center mt-8 mb-6"
+            className="flex justify-center mt-8 mb-6 w-full"
           >
-            <div className="relative">
-              <div className="relative w-96 h-96 md:w-[420px] md:h-[420px] lg:w-[480px] lg:h-[480px] xl:w-[520px] xl:h-[520px]">
+            <div className="flex justify-center relative w-full">
+              <div className="relative w-full min-h-[240px] mt-12 md:w-[480px] md:h-[280px] xl:w-[520px] xl:h-[305px] lg:mt-24">
                 {/* Slower, More Subtle Glowing Background */}
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-yellow-500/20 rounded-full blur-3xl"

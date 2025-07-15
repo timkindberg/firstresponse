@@ -206,8 +206,12 @@ const Services = () => {
                 whileTap={{ scale: 0.95 }}
                 className="btn-emergency flex items-center justify-center space-x-3 text-xl font-bold px-10 py-5"
               >
-                <Phone className="w-6 h-6" />
-                <span>Emergency: {company.phone}</span>
+                <Phone className="w-6 h-6 hidden md:block" />
+                <span>
+                  Emergency:
+                  <br className="block sm:hidden" />
+                  {company.phone}
+                </span>
               </motion.a>
               
               <motion.a
@@ -217,7 +221,7 @@ const Services = () => {
                 className="bg-white/10 hover:bg-white/20 text-white font-semibold px-10 py-5 rounded-2xl transition-all duration-300 flex items-center justify-center space-x-3 border border-white/20 hover:border-white/40 backdrop-blur-sm"
               >
                 <span>Get Free Estimate</span>
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 hidden md:block" />
               </motion.a>
             </div>
           </div>
