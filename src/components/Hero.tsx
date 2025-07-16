@@ -2,15 +2,14 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight, Phone, Shield, Clock, Award } from 'lucide-react';
-import { getContent } from '@/lib/content';
 import { getImageUrl } from '@/lib/utils';
+import { COMPANY_INFO } from '@/lib/constants';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 
 const Hero = () => {
-  const content = getContent();
-  const { company } = content;
+  const company = COMPANY_INFO;
   const [particles, setParticles] = useState<Array<{left: string, top: string, delay: number, duration: number, size: number}>>([]);
 
   useEffect(() => {

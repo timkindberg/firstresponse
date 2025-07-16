@@ -3,11 +3,17 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send, Flame, Shield } from 'lucide-react';
-import { getContactInfo, getCompanyInfo } from '@/lib/content';
+import { COMPANY_INFO, SERVICES } from '@/lib/constants';
+
 
 const Contact = () => {
-  const contactInfo = getContactInfo();
-  const company = getCompanyInfo();
+  const company = COMPANY_INFO;
+
+  const contactInfo = {
+    title: 'Get Your Free Estimate',
+    subtitle:
+      'Contact us today for professional tree services. We provide free estimates and emergency response throughout greater Cincinnati.',
+  };
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -156,10 +162,9 @@ const Contact = () => {
                       className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-red-500/50 focus:bg-white/10 transition-all duration-300"
                     >
                       <option value="">Select a service</option>
-                      <option value="tree-removal">Tree Removal</option>
-                      <option value="tree-pruning">Tree Pruning</option>
-                      <option value="emergency-service">Emergency Service</option>
-                      <option value="stump-grinding">Stump Grinding</option>
+                      {SERVICES.slice(0, 4).map((s) => (
+                        <option key={s.id} value={s.id}>{s.name}</option>
+                      ))}
                       <option value="other">Other</option>
                     </select>
                   </div>

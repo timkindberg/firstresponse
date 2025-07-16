@@ -3,14 +3,14 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Phone, Flame, Shield } from 'lucide-react';
-import { getCompanyInfo } from '@/lib/content';
 import { getImageUrl } from '@/lib/utils';
+import { COMPANY_INFO } from '@/lib/constants';
 import Image from 'next/image';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const company = getCompanyInfo();
+  const company = COMPANY_INFO;
 
   useEffect(() => {
     const handleScroll = () => {
