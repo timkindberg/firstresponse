@@ -2,24 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { TreeDeciduous, Scissors, Phone, Settings, Check, Leaf, Truck, ArrowRight, Flame } from 'lucide-react';
-import { getServices, getCompanyInfo } from '@/lib/content';
 import { getImageUrl } from '@/lib/utils';
+import { COMPANY_INFO, SERVICES } from '@/lib/constants';
 
 const Services = () => {
-  const services = getServices();
-  const company = getCompanyInfo();
-
-  const getIcon = (iconName: string) => {
-    const iconMap = {
-      'tree': TreeDeciduous,
-      'scissors': Scissors,
-      'phone': Phone,
-      'cog': Settings,
-      'leaf': Leaf,
-      'truck': Truck,
-    };
-    return iconMap[iconName as keyof typeof iconMap] || TreeDeciduous;
-  };
+  const company = COMPANY_INFO;
+  const services = SERVICES;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -33,12 +21,86 @@ const Services = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 60 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
+      transition: { duration: 0.8, ease: 'easeOut' },
     },
   };
+
+  const getIcon = (iconName: string) => {
+    const iconMap = {
+      tree: TreeDeciduous,
+      scissors: Scissors,
+      phone: Phone,
+      cog: Settings,
+      leaf: Leaf,
+      truck: Truck,
+    } as const;
+    return iconMap[iconName as keyof typeof iconMap] || TreeDeciduous;
+  };
+
+  const ServiceCard = ({ service }: { service: (typeof services)[number] }) => {
+    const IconComponent = getIcon(service.icon);
+
+    return (
+      <motion.div
+        variants={itemVariants}
+        whileHover={{ y: -12, scale: 1.03 }}
+        className="card-premium group cursor-pointer relative overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 via-transparent to-yellow-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div className="relative h-56 lg:h-64 overflow-hidden rounded-t-3xl">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110"
+            style={{ backgroundImage: `url('${getImageUrl(service.image)}')` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+          <div className="absolute top-6 left-6 w-16 h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
+            <IconComponent className="h-8 w-8 text-white" />
+          </div>
+          {service.id === 'emergency-service' && (
+            <div className="absolute top-6 right-6 bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-bold animate-pulse">
+              24/7
+            </div>
+          )}
+        </div>
+
+        <div className="p-8 relative z-10">
+          <h3 className="text-2xl font-bold text-white mb-4 font-display group-hover:text-red-400 transition-colors duration-300">
+            {service.name}
+          </h3>
+          <p className="text-gray-300 mb-6 leading-relaxed text-lg">{service.shortDescription}</p>
+          <ul className="space-y-3 mb-8">
+            {service.features.slice(0, 4).map((feature, featureIndex) => (
+              <motion.li
+                key={featureIndex}
+                className="flex items-center space-x-3"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 * featureIndex }}
+              >
+                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Check className="h-4 w-4 text-white" />
+                </div>
+                <span className="text-gray-300 font-medium">{feature}</span>
+              </motion.li>
+            ))}
+          </ul>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full btn-fire flex items-center justify-center space-x-3 group-hover:shadow-fire-lg"
+          >
+            <span>Learn More</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+          </motion.button>
+        </div>
+        <div className="absolute inset-0 rounded-3xl border border-red-500/0 group-hover:border-red-500/30 transition-all duration-500 pointer-events-none"></div>
+      </motion.div>
+    );
+  };
+
 
   return (
     <section id="services" className="section-padding bg-gradient-to-br from-gray-900 via-black to-red-950 relative overflow-hidden">
@@ -93,84 +155,9 @@ const Services = () => {
 
         {/* Premium Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-20">
-          {services.map((service) => {
-            const IconComponent = getIcon(service.icon);
-            
-            return (
-              <motion.div
-                key={service.id}
-                variants={itemVariants}
-                whileHover={{ y: -12, scale: 1.03 }}
-                className="card-premium group cursor-pointer relative overflow-hidden"
-              >
-                {/* Premium Background Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 via-transparent to-yellow-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                {/* Service Image with Overlay */}
-                <div className="relative h-56 lg:h-64 overflow-hidden rounded-t-3xl">
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110"
-                    style={{ backgroundImage: `url('${getImageUrl(service.image)}')` }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-                  
-                  {/* Floating Icon */}
-                  <div className="absolute top-6 left-6 w-16 h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="h-8 w-8 text-white" />
-                  </div>
-
-                  {/* Emergency Badge for Emergency Service */}
-                  {service.id === 'emergency-service' && (
-                    <div className="absolute top-6 right-6 bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-bold animate-pulse">
-                      24/7
-                    </div>
-                  )}
-                </div>
-
-                {/* Premium Card Content */}
-                <div className="p-8 relative z-10">
-                  <h3 className="text-2xl font-bold text-white mb-4 font-display group-hover:text-red-400 transition-colors duration-300">
-                    {service.name}
-                  </h3>
-                  
-                  <p className="text-gray-300 mb-6 leading-relaxed text-lg">
-                    {service.shortDescription}
-                  </p>
-                  
-                  {/* Enhanced Features List */}
-                  <ul className="space-y-3 mb-8">
-                    {service.features.slice(0, 4).map((feature, featureIndex) => (
-                      <motion.li 
-                        key={featureIndex} 
-                        className="flex items-center space-x-3"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.1 * featureIndex }}
-                      >
-                        <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                          <Check className="h-4 w-4 text-white" />
-                        </div>
-                        <span className="text-gray-300 font-medium">{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-
-                  {/* Premium CTA Button */}
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full btn-fire flex items-center justify-center space-x-3 group-hover:shadow-fire-lg"
-                  >
-                    <span>Learn More</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </motion.button>
-                </div>
-
-                {/* Hover Glow Effect */}
-                <div className="absolute inset-0 rounded-3xl border border-red-500/0 group-hover:border-red-500/30 transition-all duration-500 pointer-events-none"></div>
-              </motion.div>
-            );
-          })}
+          {services.map((service) => (
+            <ServiceCard key={service.id} service={service} />
+          ))}
         </div>
 
         {/* Enhanced Emergency CTA */}

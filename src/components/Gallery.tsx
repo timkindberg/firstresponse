@@ -3,11 +3,65 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Eye, Grid, TreeDeciduous, Scissors, Phone, Settings, Flame } from 'lucide-react';
-import { getGalleryData } from '@/lib/content';
 import { getImageUrl } from '@/lib/utils';
 
 const Gallery = () => {
-  const galleryData = getGalleryData();
+  const galleryData = {
+    title: 'See Our Professional Work',
+    subtitle:
+      'View examples of our professional tree services throughout the greater Cincinnati area',
+    categories: [
+      { id: 'all', name: 'All', icon: 'grid' },
+      { id: 'tree-removal', name: 'Tree Removal', icon: 'tree' },
+      { id: 'pruning', name: 'Pruning', icon: 'scissors' },
+      { id: 'emergency', name: 'Emergency Response', icon: 'phone' },
+      { id: 'stump-grinding', name: 'Stump Grinding', icon: 'cog' },
+    ],
+    images: [
+      {
+        id: '1',
+        url: '/images/gallery/tree-removal-1.jpg',
+        title: 'Large Tree Removal',
+        description: 'Professional tree removal service near residential property',
+        category: 'tree-removal',
+      },
+      {
+        id: '2',
+        url: '/images/gallery/tree-pruning-1.jpg',
+        title: 'Crown Thinning & Pruning',
+        description: 'Expert pruning to improve tree health and safety',
+        category: 'pruning',
+      },
+      {
+        id: '3',
+        url: '/images/gallery/tree-removal-2.jpg',
+        title: 'Professional Tree Removal',
+        description: 'Safe removal of large trees with professional equipment',
+        category: 'tree-removal',
+      },
+      {
+        id: '4',
+        url: '/images/gallery/emergency-service-1.jpg',
+        title: 'Emergency Tree Response',
+        description: '24/7 emergency response for storm-damaged trees',
+        category: 'emergency',
+      },
+      {
+        id: '5',
+        url: '/images/gallery/stump-grinding-1.jpg',
+        title: 'Complete Stump Removal',
+        description: 'Professional stump grinding and area restoration',
+        category: 'stump-grinding',
+      },
+      {
+        id: '6',
+        url: '/images/gallery/land-clearing-1.jpg',
+        title: 'Land & Vegetation Clearing',
+        description: 'Clearing overgrowth and unwanted vegetation',
+        category: 'tree-removal',
+      },
+    ],
+  };
   const [activeFilter, setActiveFilter] = useState('all');
 
   const getIcon = (iconName: string) => {
