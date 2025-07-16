@@ -140,9 +140,11 @@ This creates a static export in the `out/` folder that can be deployed anywhere.
 - Free SSL certificate included
 
 #### 2. **Vercel**
-- Connect your GitHub repository  
+- Connect your GitHub repository
 - Automatic deployments on every commit
 - Excellent performance
+- Preview deployments for every pull request via **GitHub Actions**. Add the
+  `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID` secrets to enable this.
 
 #### 3. **Traditional Web Hosting**
 - Upload the `out/` folder contents to your web host
