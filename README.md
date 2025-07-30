@@ -17,11 +17,8 @@ A modern, professional website for tree service businesses built with Next.js, T
 - Touch-friendly navigation and interactions
 - Fast loading and smooth performance
 
-### 🛠️ **Content Management System**
-- **Easy-to-use admin interface** at `/admin`
-- Edit company information, services, and content
-- No coding required for content updates
-- Changes save to local storage (can be extended to use a database)
+### 🛠️ **Content Management**
+All content is defined directly in the React components for simplicity.
 
 ### 🚀 **Performance**
 - **Static site generation** for lightning-fast loading
@@ -68,24 +65,14 @@ A modern, professional website for tree service businesses built with Next.js, T
 
 5. **View the website**
    - Main site: http://localhost:3000
-   - Admin panel: http://localhost:3000/admin
 
 ## 📝 Content Management
 
-### Using the Admin Panel
-
-1. **Access the admin panel** at `/admin`
-2. **Click "Edit Content"** to enable editing mode
-3. **Navigate between sections** using the sidebar:
-   - **Company Info**: Business name, phone, email, address
-   - **Hero Section**: Main title, subtitle, call-to-action
-   - **Services**: Service titles and descriptions
-   - **Contact**: Contact section content
-
-4. **Make your changes** in the form fields
-5. **Click "Save Changes"** to save (currently saves to browser storage)
-
-### Content Sections You Can Edit:
+Most text is defined inline in the React components. Shared details like the company information and service list live in `src/lib/constants.ts`. Key sections include:
+1. **Company Info**: Business name, phone, email, address
+2. **Hero Section**: Main title, subtitle, call-to-action
+3. **Services**: Service titles and descriptions
+4. **Contact**: Contact section content
 
 #### Company Information
 - Company name and tagline
@@ -122,7 +109,7 @@ The website uses a professional green color scheme perfect for tree services. To
    }
    ```
 
-2. **Update company logo** in `src/data/content.json`
+2. **Update company logo** in `public` and reference it in the components
 
 ### Images
 Replace placeholder images with your actual photos:
@@ -180,7 +167,6 @@ This creates a static export in the `out/` folder that can be deployed anywhere.
 ```
 src/
 ├── app/                 # Next.js app router
-│   ├── admin/          # Admin panel
 │   ├── globals.css     # Global styles
 │   ├── layout.tsx      # Root layout
 │   └── page.tsx        # Homepage
@@ -191,10 +177,8 @@ src/
 │   ├── Gallery.tsx     # Image gallery
 │   ├── Contact.tsx     # Contact form
 │   └── Footer.tsx      # Footer
-├── data/               # Content data
-│   └── content.json    # All website content
 └── lib/                # Utility functions
-    └── content.ts      # Content management utilities
+    └── utils.ts        # Helper utilities
 ```
 
 ## 🎯 SEO Features
@@ -220,11 +204,10 @@ Need help customizing or deploying your website? The code is well-documented and
 ### Common Tasks
 
 #### Updating Content
-1. Use the admin panel at `/admin`
-2. Or edit `src/data/content.json` directly
+1. Edit the React components directly and modify the text or data arrays
 
 #### Adding New Services
-1. Edit the services array in `src/data/content.json`
+1. Edit the `services` array in `src/components/Services.tsx`
 2. Add service details and features
 
 #### Changing Colors

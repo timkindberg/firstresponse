@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Shield } from 'lucide-react';
-import { getCompanyInfo } from '@/lib/content';
 import { getImageUrl } from '@/lib/utils';
+import { COMPANY_INFO } from '@/lib/constants';
 import Image from 'next/image';
 
 const Footer = () => {
-  const company = getCompanyInfo();
+  const company = COMPANY_INFO;
 
   const containerVariants = {
     hidden: { opacity: 0 },
