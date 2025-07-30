@@ -30,7 +30,7 @@ A modern, professional website for tree service businesses built with Next.js, T
 - **Perfect Lighthouse scores**
 
 ### 📧 **Business Features**
-- **Contact form** with validation
+- **Contact form** with validation (powered by Formspree)
 - **Service showcase** with detailed descriptions
 - **Image gallery** with filtering
 - **Call-to-action buttons** throughout the site
@@ -54,12 +54,19 @@ A modern, professional website for tree service businesses built with Next.js, T
    npm install
    ```
 
-3. **Start development server**
+3. **Configure Formspree**
+   - Sign up at [Formspree](https://formspree.io) and create a new form.
+   - Copy your form endpoint and create a `.env.local` file:
+     ```bash
+     echo "NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/yourFormID" > .env.local
+     ```
+
+4. **Start development server**
    ```bash
    npm run dev
    ```
 
-4. **View the website**
+5. **View the website**
    - Main site: http://localhost:3000
    - Admin panel: http://localhost:3000/admin
 

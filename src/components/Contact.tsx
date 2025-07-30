@@ -16,11 +16,36 @@ const Contact = () => {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your inquiry! We\'ll be in touch soon.');
+    if (!FORM_ENDPOINT) {
+      console.error('Formspree endpoint not configured');
+      return;
+    }
+
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus('error');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -91,6 +116,16 @@ const Contact = () => {
             className="relative"
           >
             <div className="glass-fire rounded-3xl p-8 border border-red-500/20">
+              {status === 'success' && (
+                <p className="mb-4 text-green-400 font-medium">
+                  Thank you for your inquiry! We&apos;ll be in touch soon.
+                </p>
+              )}
+              {status === 'error' && (
+                <p className="mb-4 text-red-400 font-medium">
+                  Something went wrong. Please try again later.
+                </p>
+              )}
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
