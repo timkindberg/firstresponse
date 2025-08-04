@@ -80,6 +80,7 @@ const Contact = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.5 }}
             className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-red-600/20 to-red-800/20 backdrop-blur-sm border border-red-500/20 rounded-full text-red-400 text-sm font-medium mb-6"
           >
@@ -90,6 +91,7 @@ const Contact = () => {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
           >
@@ -99,6 +101,7 @@ const Contact = () => {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.6 }}
             className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
@@ -245,6 +248,7 @@ const Contact = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: 0.1 }}
               className="relative mb-8"
             >
@@ -275,6 +279,7 @@ const Contact = () => {
                 href={`tel:${company.phone}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="card-premium group cursor-pointer p-6 block"
@@ -299,6 +304,7 @@ const Contact = () => {
                 href={`mailto:${company.email}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="card-premium group cursor-pointer p-6 block"
@@ -325,6 +331,7 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="card-premium group cursor-pointer p-6 block"
@@ -346,6 +353,7 @@ const Contact = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="card-premium group cursor-default p-6"

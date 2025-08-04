@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { TreeDeciduous, Scissors, Phone, Settings, Check, Leaf, Truck, ArrowRight, Flame } from 'lucide-react';
+import { TreeDeciduous, Phone, Settings, Check, Leaf, Truck, ArrowRight, Flame, Axe, Trees, CloudLightning, MemoryStick } from 'lucide-react';
 import { getServices, getCompanyInfo } from '@/lib/content';
 import { getImageUrl } from '@/lib/utils';
 
@@ -11,12 +11,10 @@ const Services = () => {
 
   const getIcon = (iconName: string) => {
     const iconMap = {
-      'tree': TreeDeciduous,
-      'scissors': Scissors,
-      'phone': Phone,
-      'cog': Settings,
+      'tree': Axe,
+      'scissors': Trees,
+      'phone': CloudLightning,
       'leaf': Leaf,
-      'truck': Truck,
     };
     return iconMap[iconName as keyof typeof iconMap] || TreeDeciduous;
   };
@@ -92,7 +90,7 @@ const Services = () => {
         </motion.div>
 
         {/* Premium Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           {services.map((service) => {
             const IconComponent = getIcon(service.icon);
             
@@ -145,6 +143,7 @@ const Services = () => {
                         className="flex items-center space-x-3"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
                         transition={{ delay: 0.1 * featureIndex }}
                       >
                         <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
@@ -186,6 +185,7 @@ const Services = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
               className="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse"
             >
               <Phone className="w-10 h-10 text-black" />

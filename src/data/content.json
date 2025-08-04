@@ -40,24 +40,24 @@
       "icon": "tree",
       "image": "/images/services/tree-removal.jpg",
       "features": [
-        "Emergency removal",
-        "Complete cleanup",
-        "Stump grinding available",
-        "Insurance coordination"
+        "Full tree removal",
+        "Specializing in complex or difficult access tree removal",
+        "Prioritizing protection of lawn and property",
+        "Complete removal and stump grinding"
       ]
     },
     {
       "id": "tree-pruning",
       "name": "Tree Pruning & Trimming",
-      "shortDescription": "Professional pruning to maintain tree health and enhance your landscape.",
+      "shortDescription": "Periodic professional pruning keeps trees happy and healthy, as well as keeping your property safe.",
       "fullDescription": "Many homeowners don't consider the health of their trees until it is too late. Regular pruning, shaping, and dead-wooding are all great ways to keep your trees happy, healthy, and looking great. Falling limbs can also pose a serious risk to both adults and children who may be in or around the area under the tree canopy.",
       "icon": "scissors",
       "image": "/images/services/tree-pruning.jpg",
       "features": [
-        "Crown thinning",
-        "Deadwood removal",
-        "Shape enhancement",
-        "Safety pruning"
+        "Crown thinning, shaping, and pruning",
+        "Deadwood removal and safety pruning",
+        "Tree safety assessments",
+        "Canopy raising"
       ]
     },
     {
@@ -75,20 +75,6 @@
       ]
     },
     {
-      "id": "stump-grinding",
-      "name": "Stump Grinding",
-      "shortDescription": "Complete stump removal to restore your landscape's beauty.",
-      "fullDescription": "Stump grinding removes unsightly stumps and allows you to create more, useful, yard space. First Response Tree Service also offers additional services including removal of grindings, and placement of new topsoil, seed, and straw.",
-      "icon": "cog",
-      "image": "/images/services/stump-grinding.jpg",
-      "features": [
-        "Below-grade grinding",
-        "Chip removal",
-        "Topsoil placement",
-        "Area restoration"
-      ]
-    },
-    {
       "id": "land-clearing",
       "name": "Land & Vegetation Clearing",
       "shortDescription": "Clearing overgrowth and unwanted vegetation to enhance your property.",
@@ -100,20 +86,6 @@
         "Site preparation",
         "Vegetation clearing",
         "Property enhancement"
-      ]
-    },
-    {
-      "id": "lawn-debris",
-      "name": "Lawn Debris Removal",
-      "shortDescription": "Professional debris removal to save you time and effort.",
-      "fullDescription": "Have a pile of yard waste? Or a rotting stack of firewood? Let First Response Tree Service utilize our equipment to save you time and back breaking labor.",
-      "icon": "truck",
-      "image": "/images/services/debris-removal.jpg",
-      "features": [
-        "Yard waste removal",
-        "Firewood clearing",
-        "Equipment provided",
-        "Quick cleanup"
       ]
     }
   ],
