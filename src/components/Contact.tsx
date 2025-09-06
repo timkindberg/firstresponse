@@ -1,59 +1,15 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Send, Flame, Shield } from 'lucide-react';
+import { Phone, Mail, Clock, Send, Flame, Shield } from 'lucide-react';
 import { getContactInfo, getCompanyInfo } from '@/lib/content';
+import { useForm, ValidationError } from '@formspree/react';
 
 const Contact = () => {
   const contactInfo = getContactInfo();
   const company = getCompanyInfo();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: ''
-  });
 
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!FORM_ENDPOINT) {
-      console.error('Formspree endpoint not configured');
-      return;
-    }
-
-    try {
-      const response = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (response.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-      } else {
-        setStatus('error');
-      }
-    } catch (err) {
-      console.error(err);
-      setStatus('error');
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const [state, handleSubmit] = useForm("mwpnwgay");
 
   return (
     <section id="contact" className="relative bg-gradient-to-br from-gray-900 via-black to-red-950 text-white section-padding overflow-hidden">
@@ -119,17 +75,15 @@ const Contact = () => {
             className="relative"
           >
             <div className="glass-fire rounded-3xl p-8 border border-red-500/20">
-              {status === 'success' && (
-                <p className="mb-4 text-green-400 font-medium">
-                  Thank you for your inquiry! We&apos;ll be in touch soon.
-                </p>
-              )}
-              {status === 'error' && (
-                <p className="mb-4 text-red-400 font-medium">
-                  Something went wrong. Please try again later.
-                </p>
-              )}
-              <form onSubmit={handleSubmit} className="space-y-6">
+            {state.succeeded ? (
+              <p>We will get back to you soon!</p>
+            ) : (
+              <form 
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
+                <input type="hidden" name="_subject" value="New Contact Form Submission" />
+                <input type="hidden" name="_next" value="/#contact" />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-3">
@@ -140,8 +94,6 @@ const Contact = () => {
                       id="name"
                       name="name"
                       required
-                      value={formData.name}
-                      onChange={handleChange}
                       className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-red-500/50 focus:bg-white/10 transition-all duration-300"
                       placeholder="Your full name"
                     />
@@ -156,10 +108,13 @@ const Contact = () => {
                       id="email"
                       name="email"
                       required
-                      value={formData.email}
-                      onChange={handleChange}
                       className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-red-500/50 focus:bg-white/10 transition-all duration-300"
                       placeholder="your@email.com"
+                    />
+                    <ValidationError 
+                      prefix="Email" 
+                      field="email"
+                      errors={state.errors}
                     />
                   </div>
                 </div>
@@ -174,8 +129,6 @@ const Contact = () => {
                       id="phone"
                       name="phone"
                       required
-                      value={formData.phone}
-                      onChange={handleChange}
                       className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-red-500/50 focus:bg-white/10 transition-all duration-300"
                       placeholder="(555) 123-4567"
                     />
@@ -189,8 +142,6 @@ const Contact = () => {
                       id="service"
                       name="service"
                       required
-                      value={formData.service}
-                      onChange={handleChange}
                       className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-red-500/50 focus:bg-white/10 transition-all duration-300"
                     >
                       <option value="">Select a service</option>
@@ -211,15 +162,19 @@ const Contact = () => {
                     id="message"
                     name="message"
                     rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
                     className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-red-500/50 focus:bg-white/10 transition-all duration-300 resize-none"
                     placeholder="Tell us about your project, timeline, and any specific requirements..."
+                  />
+                  <ValidationError 
+                    prefix="Message" 
+                    field="message"
+                    errors={state.errors}
                   />
                 </div>
 
                 <motion.button
                   type="submit"
+                  disabled={state.submitting}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   className="btn-fire w-full flex items-center justify-center space-x-3 group"
@@ -231,8 +186,9 @@ const Contact = () => {
                     <Send className="h-5 w-5" />
                   </motion.div>
                   <span>Send Message</span>
-                </motion.button>
-              </form>
+                  </motion.button>
+                </form>
+              )}
             </div>
           </motion.div>
 
