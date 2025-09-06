@@ -194,7 +194,7 @@ const Navigation = () => {
                   whileTap={{ scale: 0.98 }}
                 >
                   <Phone size={20} />
-                  <span>Emergency: {company.phone}</span>
+                  <span>Call Us Now: {company.phone}</span>
                 </motion.a>
 
                 <motion.button
