@@ -139,10 +139,6 @@ export function getServices(): Service[] {
   return contentData.services as Service[];
 }
 
-export function getTestimonials(): Testimonial[] {
-  return contentData.testimonials as Testimonial[];
-}
-
 export function getGalleryData(): Gallery {
   return contentData.gallery as Gallery;
 }
