@@ -244,34 +244,6 @@ const Contact = () => {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            {/* Emergency Call Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="relative mb-8"
-            >
-              <motion.a
-                href={`tel:${company.phone}`}
-                whileHover={{ scale: 1.02, y: -3 }}
-                whileTap={{ scale: 0.98 }}
-                className="block w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold py-6 px-8 rounded-2xl transition-all duration-300 shadow-2xl shadow-red-500/25 hover:shadow-red-500/40 border border-red-500/20"
-              >
-                <div className="flex items-center justify-center space-x-3">
-                  <motion.div
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <Phone className="h-8 w-8" />
-                  </motion.div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold">Emergency Call</div>
-                    <div className="text-xl opacity-90">{company.phone}</div>
-                  </div>
-                </div>
-              </motion.a>
-            </motion.div>
 
             {/* Contact Cards */}
             <div className="space-y-6">
@@ -292,7 +264,7 @@ const Contact = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-bold text-xl mb-2 text-white group-hover:text-red-400 transition-colors">Call Us Now</h3>
-                    <p className="text-gray-300 mb-3">24/7 Emergency Service Available</p>
+                    <p className="text-gray-300 mb-3">Emergency Service Available</p>
                     <p className="text-red-400 hover:text-red-300 font-semibold text-lg transition-colors duration-300">
                       {company.phone}
                     </p>
@@ -325,30 +297,6 @@ const Contact = () => {
                 </div>
               </motion.a>
 
-              <motion.a
-                href={`https://maps.app.goo.gl/4hqEeAyprsrd2YBJ6`}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="card-premium group cursor-pointer p-6 block"
-              >
-                <div className="flex items-start space-x-5">
-                  <div 
-                    className="w-14 h-14 bg-gradient-to-r from-red-600 to-red-700 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:shadow-red-500/25"
-                  >
-                    <MapPin className="h-7 w-7 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-xl mb-2 text-white group-hover:text-red-400 transition-colors">Visit Us</h3>
-                    <p className="text-gray-300 mb-3">Service Area & Office</p>
-                    <p className="text-red-400 leading-relaxed">{company.address}</p>
-                  </div>
-                </div>
-              </motion.a>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -376,7 +324,7 @@ const Contact = () => {
                         className="text-red-400 font-bold mt-3 flex items-center space-x-2"
                       >
                         <Flame className="h-4 w-4" />
-                        <span>24/7 Emergency Response</span>
+                        <span>Emergency Response</span>
                       </motion.p>
                     </div>
                   </div>

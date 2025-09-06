@@ -41,7 +41,6 @@ const Navigation = () => {
   const navigation = [
     { name: 'Home', href: '#home' },
     { name: 'Services', href: '#services' },
-    { name: 'About', href: '#services' }, // Temporarily redirect to services until About section is added
     { name: 'Gallery', href: '#gallery' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -80,25 +79,9 @@ const Navigation = () => {
     >
       <div className="max-container container-padding">
         <div className="flex justify-between items-center h-20 lg:h-24">
-          <div className="flex w-[145px] h-full relative">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isScrolled ? 1 : 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className={`w-full h-full ${isScrolled ? 'block' : 'hidden'} lg:block`}
-            >
-              <Image
-                src={getImageUrl("/First Response Min Logo.svg")}
-                alt="First Response Tree Service Logo"
-                fill
-                priority
-                className="object-contain relative z-10 drop-shadow-2xl"
-              />
-            </motion.div>
-          </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex w-full items-center space-x-8">
             {navigation.map((item, index) => (
               <motion.button
                 key={item.name}
@@ -116,8 +99,10 @@ const Navigation = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-red-600 transition-all duration-300 group-hover:w-full"></span>
               </motion.button>
             ))}
-            
-            {/* Emergency Call Button */}
+
+            <div className="flex flex-grow h-full relative"></div>
+
+            {/* Call Button */}
             <motion.a
               href={`tel:${company.phone}`}
               initial={{ opacity: 0, scale: 0.8 }}
@@ -128,7 +113,7 @@ const Navigation = () => {
               className="btn-emergency flex items-center space-x-2 text-sm xl:text-base font-bold"
             >
               <Phone size={18} />
-              <span>Emergency Call</span>
+              <span>Call Us Now</span>
             </motion.a>
 
             {/* Firefighter Badge */}

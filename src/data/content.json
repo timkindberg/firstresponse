@@ -12,24 +12,7 @@
     "title": "Professional Tree Services",
     "subtitle": "Serving all of greater Cincinnati with expert tree care by local firefighters",
     "ctaButton": "Get Free Estimate",
-    "backgroundImage": "/images/hero-bg.jpg",
-    "features": [
-      {
-        "icon": "shield-check",
-        "value": "15+",
-        "label": "Years Experience"
-      },
-      {
-        "icon": "clock",
-        "value": "24/7",
-        "label": "Emergency Service"
-      },
-      {
-        "icon": "star",
-        "value": "★★★★★",
-        "label": "Fully Insured"
-      }
-    ]
+    "backgroundImage": "/images/hero-bg.jpg"
   },
   "services": [
     {
@@ -39,11 +22,12 @@
       "fullDescription": "Complete tree removal is often necessary due to several factors that can include overall tree health, encroachment in unwanted areas, and potential safety concerns for the property owner.",
       "icon": "tree",
       "image": "/images/services/tree-removal.jpg",
+      "imageStyles": { "backgroundPosition": "0px -188px" },
       "features": [
         "Full tree removal",
         "Specializing in complex or difficult access tree removal",
         "Prioritizing protection of lawn and property",
-        "Complete removal and stump grinding"
+        "Safety first approach"
       ]
     },
     {
@@ -62,11 +46,12 @@
     },
     {
       "id": "emergency-service",
-      "name": "24/7 Emergency Service",
+      "name": "Emergency Service",
       "shortDescription": "Quick response for storm damage and emergency tree situations.",
       "fullDescription": "Mother nature seems to find a way to disrupt our busy lives at the most inopportune times. Strong winds, heavy rains, and ice can wreak havoc on weak trees. Let First Response Tree Service come to the rescue day or night. We can work directly with your insurance company if needed to ensure your property is back to normal as quick as possible.",
       "icon": "phone",
       "image": "/images/services/emergency-service.jpg",
+      "imageStyles": { "backgroundPosition": "0px -330px" },
       "features": [
         "Storm cleanup",
         "Fallen tree removal",
@@ -76,49 +61,17 @@
     },
     {
       "id": "land-clearing",
-      "name": "Land & Vegetation Clearing",
-      "shortDescription": "Clearing overgrowth and unwanted vegetation to enhance your property.",
+      "name": "Stump Grinding & Land Clearing",
+      "shortDescription": "Property clearing and stump grinding to enhance your property.",
       "fullDescription": "Clearing overgrowth and unwanted vegetation is an excellent way to increase your green space and enhance the aesthetics of your property. Whether you're planning to build a structure or just want to beautify your space, land clearing is an excellent option to accomplish either one.",
       "icon": "leaf",
-      "image": "/images/services/land-clearing.jpg",
+      "image": "/images/services/stump-grinding.jpg",
       "features": [
         "Overgrowth removal",
         "Site preparation",
         "Vegetation clearing",
-        "Property enhancement"
+        "Complete removal and stump grinding"
       ]
-    }
-  ],
-  "about": {
-    "title": "Expert Tree Care by Local Firefighters",
-    "description": "We are owned and operated by local firefighters that take pride in performing a job well done while taking every measure to ensure minimal impact to your property. When working at your home or business we take the necessary precautions to ensure we are performing the work in the safest, most efficient manner possible.",
-    "features": [
-      "Free Estimates",
-      "24/7 Availability", 
-      "Fully Insured",
-      "Local Firefighter Owned",
-      "Professional Equipment",
-      "Safety First Approach"
-    ]
-  },
-  "testimonials": [
-    {
-      "name": "Sarah Johnson",
-      "location": "Cincinnati, OH",
-      "rating": 5,
-      "text": "Outstanding service from local firefighters who really know their stuff. Professional, safe, and cleaned up perfectly!"
-    },
-    {
-      "name": "Mike Thompson", 
-      "location": "Hamilton, OH",
-      "rating": 5,
-      "text": "Called for emergency tree removal after the storm. They were there within 2 hours and handled everything professionally."
-    },
-    {
-      "name": "Jennifer Davis",
-      "location": "West Chester, OH", 
-      "rating": 5,
-      "text": "Great communication, fair pricing, and excellent work. Will definitely use them again for tree maintenance."
     }
   ],
   "gallery": {
@@ -177,7 +130,7 @@
         "id": "4",
         "url": "/images/gallery/emergency-service-1.jpg",
         "title": "Emergency Tree Response",
-        "description": "24/7 emergency response for storm-damaged trees",
+        "description": "Emergency response for storm-damaged trees",
         "category": "emergency"
       },
       {
@@ -247,35 +200,7 @@
         }
       ],
       "submitButton": "Send Message"
-    },
-    "contactCards": [
-      {
-        "icon": "phone",
-        "title": "Call Us Now",
-        "subtitle": "24/7 Emergency Service Available",
-        "content": "(513) 293-7930",
-        "link": "tel:(513) 293-7930"
-      },
-      {
-        "icon": "mail",
-        "title": "Email Us",
-        "subtitle": "Get a quote or ask questions",
-        "content": "firsttothetrees@gmail.com",
-        "link": "mailto:firsttothetrees@gmail.com"
-      },
-      {
-        "icon": "map-pin",
-        "title": "Visit Us",
-        "subtitle": "Service Area & Office",
-        "content": "4251 Deer Cross Ln., Hamilton, OH 45013"
-      },
-      {
-        "icon": "clock",
-        "title": "Business Hours",
-        "subtitle": "Monday - Friday: 7:00 AM - 6:00 PM\nSaturday: 8:00 AM - 4:00 PM\nSunday: Emergency Only\n24/7 Emergency Response",
-        "content": ""
-      }
-    ]
+    }
   },
   "theme": {
     "primaryColor": "#dc2626",

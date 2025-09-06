@@ -1,12 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ArrowRight, Phone, Shield, Clock, Award } from 'lucide-react';
 import { getContent } from '@/lib/content';
 import { getImageUrl } from '@/lib/utils';
-import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Award, Keyboard, Phone, Shield, Smartphone, SmartphoneCharging, SmartphoneIcon, SmartphoneNfc, Text } from 'lucide-react';
 import Image from 'next/image';
-
+import { useEffect, useState } from 'react';
 
 const Hero = () => {
   const content = getContent();
@@ -53,35 +52,6 @@ const Hero = () => {
         }}></div>
       </div>
 
-      {/* Slower Floating Particles */}
-      {particles.map((particle, index) => (
-        <motion.div
-          key={index}
-          className="absolute rounded-full"
-          style={{
-            left: particle.left,
-            top: particle.top,
-            width: `${particle.size}px`,
-            height: `${particle.size}px`,
-            background: index % 3 === 0 
-              ? 'rgba(220, 38, 38, 0.3)' 
-              : index % 3 === 1 
-                ? 'rgba(251, 191, 36, 0.25)' 
-                : 'rgba(255, 255, 255, 0.15)',
-          }}
-          animate={{
-            y: [-20, 20, -20],
-            opacity: [0.1, 0.6, 0.1],
-            scale: [0.9, 1.1, 0.9],
-          }}
-          transition={{
-            duration: particle.duration,
-            repeat: Infinity,
-            delay: particle.delay,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
 
       <div className="relative z-10 max-container container-padding text-center pb-32">
         <motion.div
@@ -98,35 +68,9 @@ const Hero = () => {
             className="flex justify-center mt-8 mb-6 w-full"
           >
             <div className="flex justify-center relative w-full">
-              <div className="relative w-full min-h-[240px] mt-12 md:w-[480px] md:h-[280px] xl:w-[520px] xl:h-[305px] lg:mt-24">
-                {/* Slower, More Subtle Glowing Background */}
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-yellow-500/20 rounded-full blur-3xl"
-                  animate={{ 
-                    opacity: [0.3, 0.6, 0.3],
-                    scale: [0.95, 1.05, 0.95]
-                  }}
-                  transition={{ 
-                    duration: 6, // Much slower
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                ></motion.div>
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-br from-red-500/15 to-orange-500/15 rounded-full blur-2xl"
-                  animate={{ 
-                    opacity: [0.2, 0.5, 0.2],
-                    scale: [1.05, 0.95, 1.05]
-                  }}
-                  transition={{ 
-                    duration: 8, // Even slower
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1
-                  }}
-                ></motion.div>
+              <div className="relative w-full min-h-[240px] mt-12 md:w-[720px] md:h-[280px] xl:w-[790px] xl:h-[305px] lg:mt-24 rounded-2xl overflow-hidden">
                 <Image
-                  src={getImageUrl("/First Response Logo.svg")}
+                  src={getImageUrl("/logo4.png")}
                   alt="First Response Tree Service Logo"
                   fill
                   className="object-contain relative z-10 drop-shadow-2xl"
@@ -180,7 +124,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 1.4 }}
             className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light"
           >
-            Serving all of greater Cincinnati with expert emergency response and professional care
+            Serving all of greater Cincinnati with expert tree care and professional service
           </motion.p>
 
           {/* Compact Tagline */}
@@ -200,6 +144,27 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 1.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6"
           >
+
+            <motion.a
+              href={`tel:${company.phone}`}
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+              className="group btn-fire flex items-center space-x-3 text-lg font-bold"
+            >
+              <Phone className="w-6 h-6" />
+              <span>Call Us Now</span>
+            </motion.a>
+
+<motion.a
+  href={`sms:${company.phone}?body=Hello, I need a quote for tree services.`}
+  whileHover={{ scale: 1.05, y: -3 }}
+  whileTap={{ scale: 0.95 }}
+  className="group btn-emergency flex items-center space-x-3 text-lg font-bold"
+>
+  <Keyboard className="w-6 h-6" />
+  <span>Text Us Now</span>
+</motion.a>
+
             <motion.a
               href="#contact"
               whileHover={{ scale: 1.05, y: -3 }}
@@ -209,16 +174,6 @@ const Hero = () => {
               <span>Get Free Estimate</span>
               <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
             </motion.a>
-            
-            <motion.a
-              href={`tel:${company.phone}`}
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-              className="group btn-emergency flex items-center space-x-3 text-lg font-bold"
-            >
-              <Phone className="w-6 h-6" />
-              <span>Emergency Call</span>
-            </motion.a>
           </motion.div>
 
           {/* Compact Stats/Features Grid */}
@@ -226,11 +181,10 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 2 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 max-w-4xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-12 max-w-4xl mx-auto"
           >
             {[
-              { icon: Award, value: "15+", label: "Years Experience", color: "text-yellow-400" },
-              { icon: Clock, value: "24/7", label: "Emergency Service", color: "text-red-400" },
+              { icon: Award, value: "25+", label: "Years Experience", color: "text-yellow-400" },
               { icon: Shield, value: "★★★★★", label: "Fully Insured", color: "text-green-400" }
             ].map((feature, index) => {
               const IconComponent = feature.icon;
@@ -260,29 +214,6 @@ const Hero = () => {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Subtle Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center space-y-2"
-        >
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center relative">
-            <motion.div
-              animate={{ y: [0, 16, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="w-0.5 h-3 bg-white/50 rounded-full mt-2"
-            />
-          </div>
-          <span className="text-white/50 text-xs font-medium tracking-wider">SCROLL</span>
-        </motion.div>
-      </motion.div>
     </section>
   );
 };

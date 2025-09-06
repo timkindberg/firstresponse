@@ -36,16 +36,6 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <motion.div variants={itemVariants} className="lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-4 -ml-10">
-              <div className="flex items-start relative w-full max-w-96 h-[250px]">
-                              <Image
-                src={getImageUrl("/First Response Logo.svg")}
-                alt="First Response Tree Service Logo"
-                fill
-                className="object-contain"
-              />
-              </div>
-            </div>
             <p className="text-gray-300 mb-6 max-w-md">
               {company.description}
             </p>
@@ -57,7 +47,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2 text-red-500">
                 <Clock className="h-5 w-5" />
-                <span className="text-sm">24/7 Emergency Service</span>
+                <span className="text-sm">Emergency Service</span>
               </div>
             </div>
           </motion.div>

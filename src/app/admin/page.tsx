@@ -44,7 +44,7 @@ const AdminPage = () => {
             <div className="flex items-center space-x-3">
               <div className="relative w-8 h-8">
                 <Image
-                  src={getImageUrl("/logo.png")}
+                  src={getImageUrl("/logo4.png")}
                   alt="First Response Tree Service Logo"
                   fill
                   className="object-contain"

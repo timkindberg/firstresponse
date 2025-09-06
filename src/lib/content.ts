@@ -31,6 +31,14 @@ export interface Service {
   fullDescription: string;
   icon: string;
   image: string;
+  imageStyles: { backgroundPosition: string };
+  video: {
+    src: string;
+    poster: string;
+    autoplay: boolean;
+    muted: boolean;
+    loop: boolean;
+  };
   features: string[];
 }
 

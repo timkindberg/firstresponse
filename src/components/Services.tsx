@@ -1,23 +1,13 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { TreeDeciduous, Phone, Settings, Check, Leaf, Truck, ArrowRight, Flame, Axe, Trees, CloudLightning, MemoryStick } from 'lucide-react';
-import { getServices, getCompanyInfo } from '@/lib/content';
+import { getCompanyInfo, getServices } from '@/lib/content';
 import { getImageUrl } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import { ArrowRight, Check, Flame, Phone } from 'lucide-react';
 
 const Services = () => {
   const services = getServices();
   const company = getCompanyInfo();
-
-  const getIcon = (iconName: string) => {
-    const iconMap = {
-      'tree': Axe,
-      'scissors': Trees,
-      'phone': CloudLightning,
-      'leaf': Leaf,
-    };
-    return iconMap[iconName as keyof typeof iconMap] || TreeDeciduous;
-  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -92,8 +82,6 @@ const Services = () => {
         {/* Premium Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           {services.map((service) => {
-            const IconComponent = getIcon(service.icon);
-            
             return (
               <motion.div
                 key={service.id}
@@ -104,25 +92,32 @@ const Services = () => {
                 {/* Premium Background Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 via-transparent to-yellow-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                {/* Service Image with Overlay */}
-                <div className="relative h-56 lg:h-64 overflow-hidden rounded-t-3xl">
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110"
-                    style={{ backgroundImage: `url('${getImageUrl(service.image)}')` }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-                  
-                  {/* Floating Icon */}
-                  <div className="absolute top-6 left-6 w-16 h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="h-8 w-8 text-white" />
-                  </div>
-
-                  {/* Emergency Badge for Emergency Service */}
-                  {service.id === 'emergency-service' && (
-                    <div className="absolute top-6 right-6 bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-bold animate-pulse">
-                      24/7
-                    </div>
+                {/* Service Image/Video with Overlay */}
+                <div className="relative h-72 lg:h-96 overflow-hidden rounded-t-3xl">
+                  {service.video ? (
+                    <video
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      autoPlay={service.video.autoplay}
+                      muted={service.video.muted}
+                      loop={service.video.loop}
+                      playsInline
+                      poster={getImageUrl(service.image)}
+                    >
+                      <source src={getImageUrl(service.video.src)} type="video/mp4" />
+                      {/* Fallback to image if video fails to load */}
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                        style={{ backgroundImage: `url('${getImageUrl(service.image)}')`, ...service.imageStyles }}
+                      />
+                    </video>
+                  ) : (
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110"
+                      style={{ backgroundImage: `url('${getImageUrl(service.image)}')`, ...service.imageStyles }}
+                    />
                   )}
+                  {/* Dark overlay for better text readability */}
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
                 </div>
 
                 {/* Premium Card Content */}
@@ -196,7 +191,7 @@ const Services = () => {
             </h3>
             
             <p className="text-xl md:text-2xl text-red-100 mb-10 max-w-3xl mx-auto">
-                             Available 24/7 for storm damage, fallen trees, and urgent tree removal needs. 
+                             Swift response for storm damage, fallen trees, and urgent tree removal needs. 
                Fast response guaranteed by Cincinnati&rsquo;s finest.
             </p>
             
@@ -211,7 +206,7 @@ const Services = () => {
                 <span>
                   Emergency:
                   <br className="block sm:hidden" />
-                  {company.phone}
+                  {' '}{company.phone}
                 </span>
               </motion.a>
               
