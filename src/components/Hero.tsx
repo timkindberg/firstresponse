@@ -3,26 +3,12 @@
 import { getContent } from '@/lib/content';
 import { getImageUrl } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import { ArrowRight, Award, Keyboard, Phone, Shield, Smartphone, SmartphoneCharging, SmartphoneIcon, SmartphoneNfc, Text } from 'lucide-react';
+import { ArrowRight, Award, Keyboard, Phone, Shield } from 'lucide-react';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 
 const Hero = () => {
   const content = getContent();
   const { company } = content;
-  const [particles, setParticles] = useState<Array<{left: string, top: string, delay: number, duration: number, size: number}>>([]);
-
-  useEffect(() => {
-    // Generate enhanced particles on client side only
-    const newParticles = [...Array(20)].map(() => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      delay: Math.random() * 3,
-      duration: Math.random() * 4 + 4, // Slower particles
-      size: Math.random() * 3 + 2,
-    }));
-    setParticles(newParticles);
-  }, []);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">

@@ -1,11 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Menu, X, Phone, Flame, Shield } from 'lucide-react';
 import { getCompanyInfo } from '@/lib/content';
-import { getImageUrl } from '@/lib/utils';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { Flame, Menu, Phone, Shield, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);

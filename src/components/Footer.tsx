@@ -1,10 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Shield } from 'lucide-react';
 import { getCompanyInfo } from '@/lib/content';
-import { getImageUrl } from '@/lib/utils';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { Clock, Mail, MapPin, Phone, Shield } from 'lucide-react';
 
 const Footer = () => {
   const company = getCompanyInfo();
