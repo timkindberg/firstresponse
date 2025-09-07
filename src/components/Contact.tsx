@@ -147,8 +147,10 @@ const Contact = () => {
                       <option value="">Select a service</option>
                       <option value="tree-removal">Tree Removal</option>
                       <option value="tree-pruning">Tree Pruning</option>
-                      <option value="emergency-service">Emergency Service</option>
                       <option value="stump-grinding">Stump Grinding</option>
+                      <option value="land-clearing">Land Clearing</option>
+                      <option value="debris-removal">Debris Removal</option>
+                      <option value="emergency-service">Emergency Service</option>
                       <option value="other">Other</option>
                     </select>
                   </div>

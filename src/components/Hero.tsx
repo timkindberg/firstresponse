@@ -18,7 +18,7 @@ const Hero = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('${getImageUrl('/tree-line-2.jpg')}')`,
+            backgroundImage: `url('${getImageUrl('/tree-line.jpg')}')`,
             backgroundPosition: 'center 200px', // Shift image downward by 60px
             mask: 'linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.8) 100%)',
             WebkitMask: 'linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.8) 100%)',
@@ -39,7 +39,7 @@ const Hero = () => {
       </div>
 
 
-      <div className="relative z-10 max-container container-padding text-center pb-32">
+      <div className="relative z-10 max-container container-padding text-center pb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -51,15 +51,16 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.5, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.2, type: "spring", stiffness: 80 }}
-            className="flex justify-center mt-8 mb-6 w-full"
+            className="flex justify-center mt-16 sm:mt-24md:mt-8 mb-0 md:mb-6 w-full"
           >
-            <div className="flex justify-center relative w-full">
-              <div className="relative w-full min-h-[240px] mt-12 md:w-[720px] md:h-[280px] xl:w-[790px] xl:h-[305px] lg:mt-24 rounded-2xl overflow-hidden">
+            <div className="flex justify-center w-full">
+              <div className="relative mt-12 lg:mt-24 w-full md:w-[720px] xl:w-[790px] rounded-2xl overflow-hidden">
                 <Image
-                  src={getImageUrl("/logo4.png")}
+                  src={getImageUrl("/logo.png")}
                   alt="First Response Tree Service Logo"
-                  fill
-                  className="object-contain relative z-10 drop-shadow-2xl"
+                  width={790}
+                  height={305}
+                  className="w-full h-auto object-contain drop-shadow-2xl"
                   priority
                 />
               </div>
@@ -73,8 +74,8 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="space-y-3"
           >
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight">
-              <div className="flex flex-row gap-3 items-center justify-center">
+            <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight">
+              <div className="flex flex-row flex-wrap items-center justify-center gap-x-3 mb-2">
                 <motion.span 
                   className=""
                   initial={{ opacity: 0, x: -30 }}
@@ -103,32 +104,34 @@ const Hero = () => {
             </h1>
           </motion.div>
 
-          {/* Compact Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.4 }}
-            className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light"
-          >
-            Serving all of greater Cincinnati with expert tree care and professional service
-          </motion.p>
+          <div className="space-y-2">
+            {/* Compact Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.4 }}
+              className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light"
+            >
+              Serving all of greater Cincinnati with expert tree care and professional service
+            </motion.p>
 
-          {/* Compact Tagline */}
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.6 }}
-            className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto italic font-light"
-          >
-            &ldquo;{company.tagline}&rdquo;
-          </motion.p>
+            {/* Compact Tagline */}
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.6 }}
+              className="text-lg md:text-lg text-gray-400 max-w-2xl mx-auto italic font-light"
+            >
+              &ldquo;{company.tagline}&rdquo;
+            </motion.p> 
+          </div>
 
           {/* CTA Buttons - Higher Priority */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6"
+            className="flex flex-col sm:flex-row gap-4 justify-center pt-6 items-stretch lg:items-center"
           >
 
             <motion.a
@@ -141,15 +144,15 @@ const Hero = () => {
               <span>Call Us Now</span>
             </motion.a>
 
-<motion.a
-  href={`sms:${company.phone}?body=Hello, I need a quote for tree services.`}
-  whileHover={{ scale: 1.05, y: -3 }}
-  whileTap={{ scale: 0.95 }}
-  className="group btn-emergency flex items-center space-x-3 text-lg font-bold"
->
-  <Keyboard className="w-6 h-6" />
-  <span>Text Us Now</span>
-</motion.a>
+            <motion.a
+              href={`sms:${company.phone}?body=Hello, I need a quote for tree services.`}
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+              className="order-[-1] sm:order-none group btn-emergency flex items-center space-x-3 text-lg font-bold"
+            >
+              <Keyboard className="w-6 h-6" />
+              <span>Text Us Now</span>
+            </motion.a>
 
             <motion.a
               href="#contact"
@@ -187,10 +190,10 @@ const Hero = () => {
                     <div className={`w-12 h-12 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                       <IconComponent className={`w-6 h-6 ${feature.color}`} />
                     </div>
-                    <div className="text-2xl md:text-3xl font-bold text-white font-display">
+                    <div className="text-3xl md:text-3xl font-bold text-white font-display">
                       {feature.value}
                     </div>
-                    <div className="text-gray-300 font-medium text-sm">
+                    <div className="text-gray-300 font-medium text-lg">
                       {feature.label}
                     </div>
                   </div>

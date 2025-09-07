@@ -95,23 +95,35 @@ const Services = () => {
                 {/* Service Image/Video with Overlay */}
                 <div className="relative h-72 lg:h-96 overflow-hidden rounded-t-3xl">
                   {service.video ? (
-                    <video
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      autoPlay={service.video.autoplay}
-                      muted={service.video.muted}
-                      loop={service.video.loop}
-                      playsInline
-                      poster={getImageUrl(service.image)}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8 }}
+                      className="absolute inset-0 w-full h-full"
                     >
-                      <source src={getImageUrl(service.video.src)} type="video/mp4" />
-                      {/* Fallback to image if video fails to load */}
-                      <div 
-                        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                        style={{ backgroundImage: `url('${getImageUrl(service.image)}')`, ...service.imageStyles }}
-                      />
-                    </video>
+                      <video
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        autoPlay={service.video.autoplay}
+                        muted={service.video.muted}
+                        loop={service.video.loop}
+                        playsInline
+                        poster={getImageUrl(service.image)}
+                      >
+                        <source src={getImageUrl(service.video.src)} type="video/mp4" />
+                        {/* Fallback to image if video fails to load */}
+                        <div 
+                          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                          style={{ backgroundImage: `url('${getImageUrl(service.image)}')`, ...service.imageStyles }}
+                        />
+                      </video>
+                    </motion.div>
                   ) : (
-                    <div 
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8 }}
                       className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110"
                       style={{ backgroundImage: `url('${getImageUrl(service.image)}')`, ...service.imageStyles }}
                     />
@@ -131,7 +143,7 @@ const Services = () => {
                   </p>
                   
                   {/* Enhanced Features List */}
-                  <ul className="space-y-3 mb-8">
+                  <ul className="space-y-3">
                     {service.features.slice(0, 4).map((feature, featureIndex) => (
                       <motion.li 
                         key={featureIndex} 
@@ -149,15 +161,6 @@ const Services = () => {
                     ))}
                   </ul>
 
-                  {/* Premium CTA Button */}
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full btn-fire flex items-center justify-center space-x-3 group-hover:shadow-fire-lg"
-                  >
-                    <span>Learn More</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </motion.button>
                 </div>
 
                 {/* Hover Glow Effect */}

@@ -107,42 +107,42 @@
     "images": [
       {
         "id": "1",
-        "url": "/images/gallery/tree-removal-1.jpg",
+        "url": "/images/gallery/old-tree-removal-1.jpg",
         "title": "Large Tree Removal",
         "description": "Professional tree removal service near residential property",
         "category": "tree-removal"
       },
       {
         "id": "2",
-        "url": "/images/gallery/tree-pruning-1.jpg",
+        "url": "/images/gallery/old-cut-trunk.jpg",
         "title": "Crown Thinning & Pruning",
         "description": "Expert pruning to improve tree health and safety",
         "category": "pruning"
       },
       {
         "id": "3",
-        "url": "/images/gallery/tree-removal-2.jpg",
+        "url": "/images/gallery/old-tree-removal-2.jpg",
         "title": "Professional Tree Removal",
         "description": "Safe removal of large trees with professional equipment",
         "category": "tree-removal"
       },
       {
         "id": "4",
-        "url": "/images/gallery/emergency-service-1.jpg",
+        "url": "/images/gallery/old-tough-access.jpg",
         "title": "Emergency Tree Response",
         "description": "Emergency response for storm-damaged trees",
         "category": "emergency"
       },
       {
         "id": "5",
-        "url": "/images/gallery/stump-grinding-1.jpg",
+        "url": "/images/gallery/old-wood-chipping.jpg",
         "title": "Complete Stump Removal",
         "description": "Professional stump grinding and area restoration",
         "category": "stump-grinding"
       },
       {
         "id": "6",
-        "url": "/images/gallery/land-clearing-1.jpg",
+        "url": "/images/gallery/old-trunk-moving.jpg",
         "title": "Land & Vegetation Clearing",
         "description": "Clearing overgrowth and unwanted vegetation",
         "category": "tree-removal"
