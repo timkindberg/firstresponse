@@ -11,10 +11,11 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'end start']
+    offset: ['start 0.9', 'end 0.1']
   });
   
-  const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  // Create parallax effect using transform with scale to prevent gaps
+  const y = useTransform(scrollYProgress, [0, 1], [0, -215]);
 
   const itemVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -32,55 +33,62 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      whileHover={{ y: -12, scale: 1.03 }}
+      whileHover={{ scale: 1.03 }}
       className="card-premium group cursor-pointer relative overflow-hidden"
     >
       {/* Premium Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 via-transparent to-yellow-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
       {/* Service Image/Video with Parallax Effect */}
-      <div className="relative h-72 lg:h-96 overflow-hidden rounded-t-3xl">
-        {service.video ? (
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="absolute inset-0 w-full h-full"
-          >
-            <motion.video
-              style={{ y }}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              autoPlay={service.video.autoplay}
-              muted={service.video.muted}
-              loop={service.video.loop}
-              playsInline
-              poster={getImageUrl(service.image)}
+      <div className="h-[24rem] overflow-hidden">
+        <div className="relative h-[34rem] overflow-hidden rounded-t-3xl">
+          {service.video ? (
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="absolute inset-0 w-full h-full"
             >
-              <source src={getImageUrl(service.video.src)} type="video/mp4" />
-              {/* Fallback to image if video fails to load */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url('${getImageUrl(service.image)}')`, ...service.imageStyles }}
-              />
-            </motion.video>
-          </motion.div>
-        ) : (
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110"
-            style={{ 
-              backgroundImage: `url('${getImageUrl(service.image)}')`, 
-              ...service.imageStyles,
-              y
-            }}
-          />
-        )}
-        {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+              <motion.video
+                className="w-full h-full object-cover"
+                whileHover={{ scale: 1.1 }}
+                autoPlay={service.video.autoplay}
+                muted={service.video.muted}
+                loop={service.video.loop}
+                playsInline
+                poster={getImageUrl(service.image)}
+              >
+                <source src={getImageUrl(service.video.src)} type="video/mp4" />
+                {/* Fallback to image if video fails to load */}
+                <motion.div 
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                  style={{ 
+                    backgroundImage: `url('${getImageUrl(service.image)}')`, 
+                    ...service.imageStyles,
+                    y,
+                  }}
+                />
+              </motion.video>
+            </motion.div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ 
+                backgroundImage: `url('${getImageUrl(service.image)}')`, 
+                ...service.imageStyles,
+                y,
+              }}
+              whileHover={{ scale: 1.1 }}
+            />
+          )}
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+        </div>
       </div>
 
       {/* Premium Card Content */}
