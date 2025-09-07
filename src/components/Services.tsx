@@ -1,13 +1,13 @@
 'use client';
 
-import { getCompanyInfo, getServices } from '@/lib/content';
+import { getCompanyInfo, getServices, Service } from '@/lib/content';
 import { getImageUrl } from '@/lib/utils';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Flame, Phone } from 'lucide-react';
 import { useRef } from 'react';
 
 // Service Card Component with Parallax Effect
-const ServiceCard = ({ service, index }: { service: any; index: number }) => {
+const ServiceCard = ({ service, index }: { service: Service; index: number }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,

@@ -115,10 +115,6 @@ const Gallery = () => {
                     <Eye className="h-8 w-8 text-white" />
                   </motion.div>
                 </div>
-
-
-                {/* Glowing Border Effect */}
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-red-500/20 via-transparent to-red-600/20 blur-sm"></div>
               </div>
               
               <div className="p-6">
