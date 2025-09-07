@@ -96,7 +96,7 @@ const Gallery = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {galleryData.images.map((image, index) => (
+          {galleryData.images.map((image) => (
             <motion.div
               key={image.id}
               variants={itemVariants}

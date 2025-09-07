@@ -77,14 +77,6 @@ const ImageViewer = ({ images, isOpen, onClose, initialIndex = 0 }: ImageViewerP
     }
   };
 
-  // Mouse wheel navigation
-  const handleWheel = (e: React.WheelEvent) => {
-    if (e.deltaY > 0) {
-      goToNext();
-    } else {
-      goToPrevious();
-    }
-  };
 
   // Keyboard navigation
   useEffect(() => {
@@ -174,7 +166,6 @@ const ImageViewer = ({ images, isOpen, onClose, initialIndex = 0 }: ImageViewerP
         {/* Image Container */}
         <div 
           className="flex items-center justify-center h-full px-4 py-20"
-          onWheel={handleWheel}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -215,42 +206,6 @@ const ImageViewer = ({ images, isOpen, onClose, initialIndex = 0 }: ImageViewerP
           </div>
         )}
 
-        {/* Thumbnail Navigation */}
-        {images.length > 1 && (
-          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10">
-            <div className="flex space-x-2 p-2 bg-black/50 rounded-lg backdrop-blur-sm max-w-[90vw] overflow-x-auto">
-              {images.map((image, index) => (
-                <button
-                  key={image.id}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setCurrentIndex(index);
-                    setIsZoomed(false);
-                    setRotation(0);
-                  }}
-                  className={`relative w-12 h-12 rounded overflow-hidden transition-all ${
-                    index === currentIndex 
-                      ? 'ring-2 ring-red-500 scale-110' 
-                      : 'opacity-60 hover:opacity-100'
-                  }`}
-                >
-                  <img
-                    src={getImageUrl(image.url)}
-                    alt={image.title}
-                    className="w-full h-full object-cover"
-                    draggable={false}
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Mobile Instructions */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white/60 text-xs">
-          <p className="hidden sm:block">Use arrow keys or click arrows to navigate • Esc to close</p>
-          <p className="sm:hidden">Swipe to navigate • Tap X to close</p>
-        </div>
       </motion.div>
     </AnimatePresence>
   );
