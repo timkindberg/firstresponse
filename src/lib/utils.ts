@@ -1,7 +1,6 @@
 // Helper function to handle basePath for images in GitHub Pages deployment
 export const getImageUrl = (url: string): string => {
-  // Check for GitHub Pages deployment using the custom environment variable
-  const isGitHubPages = process.env.NEXT_PUBLIC_GITHUB_PAGES === 'true';
-  const basePath = isGitHubPages ? '/firstresponse' : '';
-  return `${basePath}${url}`;
+  // For custom domain deployment, no basePath is needed
+  // The basePath is only needed when using the default github.io subdomain
+  return url;
 }; 
