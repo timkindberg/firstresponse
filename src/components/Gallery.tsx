@@ -4,9 +4,11 @@ import { motion } from 'framer-motion';
 import { Eye, Flame } from 'lucide-react';
 import { getGalleryData } from '@/lib/content';
 import { getImageUrl } from '@/lib/utils';
+import { useImageViewer } from '@/contexts/ImageViewerContext';
 
 const Gallery = () => {
   const galleryData = getGalleryData();
+  const { allImages, openImageViewer } = useImageViewer();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -25,6 +27,14 @@ const Gallery = () => {
       scale: 1,
       transition: { duration: 0.5 }
     },
+  };
+
+  const handleImageClick = (galleryImageId: string) => {
+    // Find the index of this gallery image in the combined allImages array
+    const globalIndex = allImages.findIndex(img => img.id === `gallery-${galleryImageId}`);
+    if (globalIndex !== -1) {
+      openImageViewer(globalIndex);
+    }
   };
 
   return (
@@ -86,13 +96,14 @@ const Gallery = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {galleryData.images.map((image) => (
+          {galleryData.images.map((image, index) => (
             <motion.div
               key={image.id}
               variants={itemVariants}
               layout
               whileHover={{ y: -8, scale: 1.02 }}
-              className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-red-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/10"
+              className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-red-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/10 cursor-pointer"
+              onClick={() => handleImageClick(image.id)}
             >
               <div className="relative">
                 <img

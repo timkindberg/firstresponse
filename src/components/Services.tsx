@@ -5,9 +5,10 @@ import { getImageUrl } from '@/lib/utils';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Flame, Phone } from 'lucide-react';
 import { useRef } from 'react';
+import { useImageViewer } from '@/contexts/ImageViewerContext';
 
 // Service Card Component with Parallax Effect
-const ServiceCard = ({ service, index }: { service: Service; index: number }) => {
+const ServiceCard = ({ service, index, onImageClick }: { service: Service; index: number; onImageClick: () => void }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -41,7 +42,10 @@ const ServiceCard = ({ service, index }: { service: Service; index: number }) =>
 
       {/* Service Image/Video with Parallax Effect */}
       <div className="h-[24rem] overflow-hidden">
-        <div className="relative h-[34rem] overflow-hidden rounded-t-3xl">
+        <div 
+          className="relative h-[34rem] overflow-hidden rounded-t-3xl cursor-pointer"
+          onClick={onImageClick}
+        >
           {service.video ? (
             <motion.div
               initial={{ opacity: 0 }}
@@ -136,6 +140,7 @@ const ServiceCard = ({ service, index }: { service: Service; index: number }) =>
 const Services = () => {
   const services = getServices();
   const company = getCompanyInfo();
+  const { allImages, openImageViewer } = useImageViewer();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -153,6 +158,14 @@ const Services = () => {
       opacity: 1, 
       y: 0,
       transition: { duration: 0.6 }
+    }
+  };
+
+  const handleImageClick = (serviceId: string) => {
+    // Find the index of this service image in the combined allImages array
+    const globalIndex = allImages.findIndex(img => img.id === `service-${serviceId}`);
+    if (globalIndex !== -1) {
+      openImageViewer(globalIndex);
     }
   };
 
@@ -215,7 +228,7 @@ const Services = () => {
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20"
         >
           {services.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} />
+            <ServiceCard key={service.id} service={service} index={index} onImageClick={() => handleImageClick(service.id)} />
           ))}
         </motion.div>
 

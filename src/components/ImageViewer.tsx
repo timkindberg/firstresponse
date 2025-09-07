@@ -1,0 +1,259 @@
+'use client';
+
+import { useState, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { getImageUrl } from '@/lib/utils';
+
+interface ImageData {
+  id: string;
+  url: string;
+  title: string;
+  description?: string;
+}
+
+interface ImageViewerProps {
+  images: ImageData[];
+  isOpen: boolean;
+  onClose: () => void;
+  initialIndex?: number;
+}
+
+const ImageViewer = ({ images, isOpen, onClose, initialIndex = 0 }: ImageViewerProps) => {
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  // Reset state when opening/closing
+  useEffect(() => {
+    if (isOpen) {
+      setCurrentIndex(initialIndex);
+    }
+  }, [isOpen, initialIndex]);
+
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
+  const goToPrevious = useCallback(() => {
+    setCurrentIndex(prev => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  const goToNext = useCallback(() => {
+    setCurrentIndex(prev => (prev + 1) % images.length);
+  }, [images.length]);
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      goToNext();
+    } else if (isRightSwipe) {
+      goToPrevious();
+    }
+  };
+
+  // Mouse wheel navigation
+  const handleWheel = (e: React.WheelEvent) => {
+    if (e.deltaY > 0) {
+      goToNext();
+    } else {
+      goToPrevious();
+    }
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      switch (e.key) {
+        case 'Escape':
+          onClose();
+          break;
+        case 'ArrowLeft':
+          goToPrevious();
+          break;
+        case 'ArrowRight':
+          goToNext();
+          break;
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, goToNext, goToPrevious, onClose]);
+
+  if (!isOpen || images.length === 0) return null;
+
+  const currentImage = images[currentIndex];
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm"
+        onClick={onClose}
+      >
+        {/* Header Controls */}
+        <div className="absolute top-0 left-0 right-0 z-10 p-4 bg-gradient-to-b from-black/50 to-transparent">
+          <div className="flex items-center justify-between">
+            <div className="text-white">
+              <h3 className="text-lg font-semibold">{currentImage.title}</h3>
+              <p className="text-sm text-gray-300">
+                {currentIndex + 1} of {images.length}
+              </p>
+            </div>
+            
+            <div className="flex items-center space-x-2">
+              {/* Control Buttons */}
+              <button
+                onClick={onClose}
+                className="p-2 text-white hover:bg-white/20 rounded-lg transition-colors"
+                title="Close (Esc)"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation Arrows */}
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                goToPrevious();
+              }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 text-white hover:bg-white/20 rounded-full transition-colors"
+              title="Previous (←)"
+            >
+              <ChevronLeft className="w-8 h-8" />
+            </button>
+            
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                goToNext();
+              }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 text-white hover:bg-white/20 rounded-full transition-colors"
+              title="Next (→)"
+            >
+              <ChevronRight className="w-8 h-8" />
+            </button>
+          </>
+        )}
+
+        {/* Image Container */}
+        <div 
+          className="flex items-center justify-center h-full px-4 py-20"
+          onWheel={handleWheel}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1
+            }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3 }}
+            className="relative w-full h-full flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={getImageUrl(currentImage.url)}
+              alt={currentImage.title}
+              className="max-w-full max-h-full w-auto h-auto object-contain rounded-lg shadow-2xl"
+              style={{ 
+                maxWidth: '100%', 
+                maxHeight: '100%',
+                width: 'auto',
+                height: 'auto'
+              }}
+              draggable={false}
+            />
+          </motion.div>
+        </div>
+
+        {/* Footer Info */}
+        {currentImage.description && (
+          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent pointer-events-none">
+            <p className="text-white text-center text-sm max-w-2xl mx-auto">
+              {currentImage.description}
+            </p>
+          </div>
+        )}
+
+        {/* Thumbnail Navigation */}
+        {images.length > 1 && (
+          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10">
+            <div className="flex space-x-2 p-2 bg-black/50 rounded-lg backdrop-blur-sm max-w-[90vw] overflow-x-auto">
+              {images.map((image, index) => (
+                <button
+                  key={image.id}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentIndex(index);
+                    setIsZoomed(false);
+                    setRotation(0);
+                  }}
+                  className={`relative w-12 h-12 rounded overflow-hidden transition-all ${
+                    index === currentIndex 
+                      ? 'ring-2 ring-red-500 scale-110' 
+                      : 'opacity-60 hover:opacity-100'
+                  }`}
+                >
+                  <img
+                    src={getImageUrl(image.url)}
+                    alt={image.title}
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Mobile Instructions */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-white/60 text-xs">
+          <p className="hidden sm:block">Use arrow keys or click arrows to navigate • Esc to close</p>
+          <p className="sm:hidden">Swipe to navigate • Tap X to close</p>
+        </div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
+export default ImageViewer;

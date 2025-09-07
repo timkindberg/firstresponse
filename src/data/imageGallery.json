@@ -1,0 +1,115 @@
+{
+  "galleryImages": [
+    {
+      "id": "1",
+      "url": "/images/gallery/old-tree-removal-1.jpg",
+      "title": "Large Tree Removal",
+      "description": "Professional tree removal service near residential property",
+      "category": "tree-removal"
+    },
+    {
+      "id": "2", 
+      "url": "/images/gallery/old-cut-trunk.jpg",
+      "title": "Crown Thinning & Pruning",
+      "description": "Expert pruning to improve tree health and safety",
+      "category": "pruning"
+    },
+    {
+      "id": "3",
+      "url": "/images/gallery/old-tree-removal-2.jpg", 
+      "title": "Professional Tree Removal",
+      "description": "Safe removal of large trees with professional equipment",
+      "category": "tree-removal"
+    },
+    {
+      "id": "4",
+      "url": "/images/gallery/old-tough-access.jpg",
+      "title": "Emergency Tree Response", 
+      "description": "Emergency response for storm-damaged trees",
+      "category": "emergency"
+    },
+    {
+      "id": "5",
+      "url": "/images/gallery/old-wood-chipping.jpg",
+      "title": "Complete Stump Removal",
+      "description": "Professional stump grinding and area restoration", 
+      "category": "stump-grinding"
+    },
+    {
+      "id": "6",
+      "url": "/images/gallery/old-trunk-moving.jpg",
+      "title": "Land & Vegetation Clearing",
+      "description": "Clearing overgrowth and unwanted vegetation",
+      "category": "tree-removal"
+    }
+  ],
+  "serviceImages": [
+    {
+      "id": "tree-removal",
+      "url": "/images/services/tree-removal.jpg",
+      "title": "Complete Tree Removal",
+      "description": "Safe and efficient tree removal services for hazardous or unwanted trees."
+    },
+    {
+      "id": "tree-pruning", 
+      "url": "/images/services/tree-pruning.jpg",
+      "title": "Tree Pruning & Trimming",
+      "description": "Periodic professional pruning keeps trees happy and healthy, as well as keeping your property safe."
+    },
+    {
+      "id": "emergency-service",
+      "url": "/images/services/emergency-service.jpg", 
+      "title": "Emergency Service",
+      "description": "Quick response for storm damage and emergency tree situations."
+    },
+    {
+      "id": "stump-grinding",
+      "url": "/images/services/stump-grinding.jpg",
+      "title": "Stump Grinding & Land Clearing", 
+      "description": "Property clearing and stump grinding to enhance your property."
+    }
+  ],
+  "additionalImages": [
+    {
+      "id": "brush-cleanup",
+      "url": "/images/gallery/brush-cleanup.jpeg",
+      "title": "Brush Cleanup",
+      "description": "Professional brush and debris cleanup services"
+    },
+    {
+      "id": "crane-tree",
+      "url": "/images/gallery/crane-tree.jpeg", 
+      "title": "Crane Tree Removal",
+      "description": "Large tree removal using professional crane equipment"
+    },
+    {
+      "id": "holding-line",
+      "url": "/images/gallery/holding-line.jpeg",
+      "title": "Precision Tree Work", 
+      "description": "Expert tree care with safety lines and professional techniques"
+    },
+    {
+      "id": "jacket",
+      "url": "/images/gallery/jacket.jpeg",
+      "title": "Professional Team",
+      "description": "Our experienced team ready for any tree service job"
+    },
+    {
+      "id": "truck",
+      "url": "/images/gallery/truck.jpg",
+      "title": "Professional Equipment",
+      "description": "Our fully equipped service truck ready for any job"
+    },
+    {
+      "id": "trucks", 
+      "url": "/images/gallery/trucks.jpg",
+      "title": "Fleet of Service Vehicles",
+      "description": "Multiple service vehicles for efficient project completion"
+    }
+  ],
+  "enabled": {
+    "galleryImages": true,
+    "serviceImages": true,
+    "additionalImages": true
+  }
+}
