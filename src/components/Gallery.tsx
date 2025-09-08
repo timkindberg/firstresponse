@@ -214,7 +214,7 @@ const Gallery = () => {
               href={`sms:${company.phone}?body=Hello, I need a quote for tree services.`}
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
-              className="order-[-1] sm:order-none group btn-emergency flex items-center space-x-3 text-lg font-bold"
+              className="order-[-1] sm:order-none group btn-fire flex items-center space-x-3 text-lg font-bold"
             >
               <Keyboard className="w-6 h-6" />
               <span>Text Us Now</span>

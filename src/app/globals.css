@@ -193,12 +193,11 @@ p {
 }
 
 .btn-ghost {
-  background: transparent;
+  @apply bg-black/50 border border-red-500/50;
   color: var(--firefighter-red);
   font-weight: 600;
   padding: 16px 32px;
   border-radius: 16px;
-  border: 2px solid var(--firefighter-red);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }

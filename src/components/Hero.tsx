@@ -16,7 +16,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black">
         {/* Very Faint Tree Background */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="hidden md:block absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url('${getImageUrl('/tree-line.jpg')}')`,
             backgroundPosition: 'center 200px', // Shift image downward by 60px
@@ -26,11 +26,6 @@ const Hero = () => {
             mixBlendMode: 'luminosity',
           }}
         ></div>
-        
-        {/* Texture Overlay */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%20xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23dc2626%22%20fill-opacity%3D%220.03%22%3E%3Cpath%20d%3D%22M40%2040L20%2020h40L40%2040zM40%2040L20%2060h40L40%2040z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
-        </div>
         
         {/* Linear gradient glow from top extending below logo area */}
         <div className="absolute inset-0 bg-gradient-to-b from-red-900/15 via-red-800/10 to-transparent" style={{
@@ -134,7 +129,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center pt-6 items-stretch lg:items-center"
+            className="flex flex-col md:flex-row gap-4 justify-center pt-6 items-stretch lg:items-center"
           >
 
             <motion.a

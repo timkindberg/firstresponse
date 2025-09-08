@@ -220,7 +220,7 @@ const InstagramSection = () => {
             href="https://www.instagram.com/first_response_tree_service/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-2 px-6 py-3 border border-blue-500/30 hover:border-blue-500/60 text-blue-400 hover:text-blue-300 font-medium rounded-full transition-all duration-300 hover:bg-blue-500/10"
+            className="inline-flex items-center space-x-2 px-6 py-3 border border-blue-500/30 hover:border-blue-500/60 text-blue-400 hover:text-blue-300 font-medium rounded-full transition-all duration-300 bg-black/40 hover:bg-blue-500/10"
           >
             <Instagram className="h-5 w-5" />
             <span>Follow Our Instagram</span>
