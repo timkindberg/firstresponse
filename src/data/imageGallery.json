@@ -105,6 +105,24 @@
       "url": "/images/gallery/trucks.jpg",
       "title": "Fleet of Service Vehicles",
       "description": "Multiple service vehicles for efficient project completion"
+    },
+    {
+      "id": "debris-cleanup",
+      "url": "/images/gallery/debris-cleanup.jpg",
+      "title": "Debris Cleanup Service",
+      "description": "Thorough cleanup and removal of tree debris after removal operations"
+    },
+    {
+      "id": "tree-removal-crane",
+      "url": "/images/gallery/tree-removal-crane.jpg",
+      "title": "Crane-Assisted Tree Removal",
+      "description": "Professional tree removal using crane equipment for safe and efficient operations"
+    },
+    {
+      "id": "two-crane-tree-removal",
+      "url": "/images/gallery/two-crane-tree-removal.jpg",
+      "title": "Dual Crane Tree Removal",
+      "description": "Complex tree removal operation using multiple cranes for maximum safety and precision"
     }
   ],
   "enabled": {
