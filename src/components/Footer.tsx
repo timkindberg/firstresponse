@@ -23,7 +23,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-[#0a0c12] text-white">
       <motion.div
         variants={containerVariants}
         initial="hidden"

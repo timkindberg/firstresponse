@@ -12,16 +12,12 @@ const Contact = () => {
   const [state, handleSubmit] = useForm("mwpnwgay");
 
   return (
-    <section id="contact" className="relative bg-gradient-to-br from-gray-900 via-black to-red-950 text-white section-padding overflow-hidden">
+    <section id="contact" className="relative bg-[linear-gradient(to_bottom_right,theme(colors.black),theme(colors.red.950))] text-white section-padding overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(239,68,68,0.1),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(185,28,28,0.08),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[linear-gradient(135deg,transparent_25%,rgba(239,68,68,0.03)_50%,transparent_75%)]"></div>
-        {/* Floating particles */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-red-500/20 rounded-full animate-float"></div>
-        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-red-400/30 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-red-600/25 rounded-full animate-float" style={{ animationDelay: '4s' }}></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto container-padding">

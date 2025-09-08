@@ -126,7 +126,7 @@
     }
   ],
   "enabled": {
-    "galleryImages": true,
+    "galleryImages": false,
     "serviceImages": true,
     "additionalImages": true
   }

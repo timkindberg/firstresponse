@@ -170,7 +170,7 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="relative bg-gradient-to-br from-gray-900 via-black to-red-950 section-padding overflow-hidden">
+    <section id="services" className="relative bg-[linear-gradient(to_bottom_right,theme(colors.black),theme(colors.red.950))] section-padding overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(239,68,68,0.05),transparent_50%)]"></div>

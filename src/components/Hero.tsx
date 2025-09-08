@@ -13,7 +13,7 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Linear Background Gradient (top to bottom) */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-red-950">
+      <div className="absolute inset-0 bg-black">
         {/* Very Faint Tree Background */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -74,7 +74,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="space-y-3"
           >
-            <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight">
+            <h1 className="font-display text-4xl lg:text-5xl xl:text-7xl font-bold text-white leading-tight">
               <div className="flex flex-row flex-wrap items-center justify-center gap-x-3 mb-2">
                 <motion.span 
                   className=""
@@ -94,7 +94,7 @@ const Hero = () => {
                 </motion.span>
               </div>
               <motion.span 
-                className="block text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-300 font-normal"
+                className="block text-2xl md:text-3xl lg:text-4xl xl:text-6xl text-gray-300 font-normal"
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 1.2 }}
@@ -110,7 +110,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.4 }}
-              className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light"
+              className="text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light"
             >
               Serving all of greater Cincinnati with expert tree care and professional service
             </motion.p>
@@ -120,7 +120,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.6 }}
-              className="text-lg md:text-lg text-gray-400 max-w-2xl mx-auto italic font-light"
+              className="text-lg md:text-lg xl:text-2xl text-gray-400 max-w-2xl mx-auto italic font-light"
             >
               &ldquo;{company.tagline}&rdquo;
             </motion.p> 
