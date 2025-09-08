@@ -5,10 +5,14 @@ import { getImageUrl } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { ArrowRight, Award, Keyboard, Phone, Shield } from 'lucide-react';
 import Image from 'next/image';
+import { useMediaQuery } from 'usehooks-ts'
 
 const Hero = () => {
   const content = getContent();
   const { company } = content;
+
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -57,7 +61,11 @@ const Hero = () => {
                   height={305}
                   className="w-full h-auto object-contain drop-shadow-2xl"
                   style={{
-                    filter: 'drop-shadow(1px 1px 0px #FFFFFF88) drop-shadow(-1px -1px 0px #FFFFFF88) drop-shadow(1px -1px 0px #FFFFFF88) drop-shadow(-1px 1px 0px #FFFFFF88)'
+                    // @ts-expect-error --bc is a css variable
+                    '--bc': '#a2a2a2',
+                    filter: isMobile
+                      ? 'drop-shadow(var(--bc) 1px 1px 0px)'
+                      : 'drop-shadow(var(--bc) 1px 1px 0px) drop-shadow(var(--bc) -1px -1px 0px) drop-shadow(var(--bc) 1px -1px 0px) drop-shadow(var(--bc) -1px 1px 0px)'
                   }}
                   priority
                 />
