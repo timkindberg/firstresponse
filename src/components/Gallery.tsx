@@ -1,12 +1,43 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Camera, ExternalLink } from 'lucide-react';
 import { useImageViewer } from '@/contexts/ImageViewerContext';
-import { getImageUrl } from '@/lib/utils';
+import { getContent } from '@/lib/content';
+import { motion } from 'framer-motion';
+import { Camera, Keyboard } from 'lucide-react';
+
+function getGalleryImages(){
+  return [
+    {
+      url: '/images/gallery/tree-removal-crane.jpg',
+      title: 'Professional crane-assisted tree removal in action! Our team safely removes large trees using state-of-the-art equipment. #TreeRemoval #CraneWork #Professional',
+    },
+    {
+      url: '/images/gallery/two-crane-tree-removal.jpg',
+      title: 'Dual crane operation for complex tree removal. Safety and precision are our top priorities! #DualCrane #TreeService #SafetyFirst',
+    },
+    {
+      url: '/images/gallery/debris-cleanup.jpg',
+      title: 'Complete cleanup after tree removal. We leave your property spotless! #Cleanup #ProfessionalService #TreeRemoval',
+    },
+    {
+      url: '/images/gallery/brush-cleanup.jpeg',
+      title: 'Brush and debris cleanup services. Professional results every time! #BrushCleanup #LandClearing #Professional',
+    },
+    {
+      url: '/images/gallery/crane-tree.jpeg',
+      title: 'Large tree removal using professional crane equipment. Expert tree care services! #CraneWork #TreeRemoval #ExpertService',
+    },
+    {
+      url: '/images/gallery/holding-line.jpeg',
+      title: 'Precision tree work with safety lines. Our experienced team handles every job with care! #SafetyLines #PrecisionWork #TreeCare',
+    }
+  ];
+}
 
 const Gallery = () => {
   const { openImageViewer } = useImageViewer();
+  const content = getContent();
+  const { company } = content;
   
   // Add custom animation styles
   const animationStyles = `
@@ -19,45 +50,8 @@ const Gallery = () => {
     }
   `;
   
-  // Select 5-6 images for the fanned layout
-  const galleryImages = [
-    {
-      id: "gallery-1",
-      url: "/images/gallery/old-tree-removal-1.jpg",
-      title: "Large Tree Removal",
-      description: "Professional tree removal service"
-    },
-    {
-      id: "gallery-2", 
-      url: "/images/gallery/old-cut-trunk.jpg",
-      title: "Crown Thinning",
-      description: "Expert pruning service"
-    },
-    {
-      id: "gallery-3",
-      url: "/images/gallery/old-tree-removal-2.jpg", 
-      title: "Professional Removal",
-      description: "Safe tree removal"
-    },
-    {
-      id: "gallery-4",
-      url: "/images/gallery/old-tough-access.jpg",
-      title: "Tough Access",
-      description: "Challenging tree removal"
-    },
-    {
-      id: "gallery-5",
-      url: "/images/gallery/old-trunk-moving.jpg",
-      title: "Trunk Moving",
-      description: "Heavy trunk removal"
-    },
-    {
-      id: "gallery-6",
-      url: "/images/gallery/old-wood-chipping.jpg",
-      title: "Wood Chipping",
-      description: "Cleanup and chipping"
-    }
-  ];
+  // Use Instagram fallback posts for the gallery
+  const galleryImages = getGalleryImages();
 
   const handleImageClick = (index: number) => {
     openImageViewer(index);
@@ -116,45 +110,56 @@ const Gallery = () => {
           </motion.p>
         </motion.div>
 
-        {/* Fanned Card Layout */}
-        <div className="flex justify-center items-center min-h-[600px] py-8">
+        {/* Perspective Deck Layout - Desktop */}
+        <div className="hidden md:flex justify-start items-center min-h-[500px] lg:min-h-[600px] py-8 px-8">
           <div 
-            className="relative flex items-end justify-center group/deck transition-all duration-500 group-hover/deck:shadow-[0_0_50px_rgba(239,68,68,0.3)]"
-            style={{ width: '1000px', height: '500px' }}
+            className="relative flex items-center group/deck transition-all duration-500 group-hover/deck:shadow-[0_0_50px_rgba(239,68,68,0.3)]"
+            style={{ 
+              width: '100%', 
+              maxWidth: '1200px',
+              height: '580px',
+              perspective: '1000px'
+            }}
           >
             {galleryImages.map((image, index) => {
-              const rotation = (index - (galleryImages.length - 1) / 2) * 12; // Fan spread
-              const zIndex = galleryImages.length - index; // Stack order
-              const translateX = (index - (galleryImages.length - 1) / 2) * 90; // Increased horizontal spread
-              const centerIndex = (galleryImages.length - 1) / 2;
-              const distanceFromCenter = Math.abs(index - centerIndex);
-              const maxDistance = centerIndex;
-              const arcOffset = (maxDistance - distanceFromCenter) * 25; // More pronounced arc - center cards much higher
+              // Perspective calculations - cards get smaller and move back as they go right
+              const scale = index === 0 ? 1.5 : Math.max(0.3, 1.5 - (index * 0.2)); // First card 50% larger, then scale down
+              const translateZ = -index * 50; // Move back in Z-axis
+              const leftPercent = 22 + (index * 10); // Start 400px to the right, then move right
+              const overlayOpacity = Math.min(0.7, index * 0.15); // Dark overlay gets stronger for cards further back
+              const zIndex = galleryImages.length - index; // Higher index = lower z-index
               
               return (
                 <div
-                  key={image.id}
+                  key={image.url}
                   className="absolute cursor-pointer group transition-all duration-300"
                   style={{
-                    transform: `translateX(${translateX}px) translateY(${-arcOffset}px) rotate(${rotation}deg)`,
+                    transform: `translateZ(${translateZ}px) scale(${scale})`,
                     zIndex: zIndex,
-                    transformOrigin: 'bottom center',
-                    left: '50%',
-                    marginLeft: '-160px', // Half of new card width (320px / 2)
-                    bottom: '0px'
+                    left: `${leftPercent}%`,
+                    top: '50%',
+                    marginTop: '-200px' // Half of card height
                   }}
                   onClick={() => handleImageClick(index)}
                 >
                   <div 
                     className="relative w-80 h-96 rounded-2xl overflow-hidden shadow-2xl bg-white/5 backdrop-blur-sm border border-white/10 group-hover:border-red-500/30 transition-all duration-500 group-hover/deck:card-wave"
                     style={{
-                      animationDelay: `${index * 100}ms`
+                      animationDelay: `${index * 100}ms`,
+                      transformStyle: 'preserve-3d'
                     }}
                   >
                     <img
-                      src={getImageUrl(image.url)}
+                      src={image.url}
                       alt={image.title}
                       className="w-full h-full object-cover"
+                    />
+                    {/* Dark overlay that gets stronger for cards further back */}
+                    <div 
+                      className="absolute inset-0 bg-black transition-opacity duration-300"
+                      style={{
+                        opacity: overlayOpacity
+                      }}
                     />
                   </div>
                 </div>
@@ -163,32 +168,57 @@ const Gallery = () => {
           </div>
         </div>
 
+        {/* Mobile Grid Layout */}
+        <div className="md:hidden px-4 py-8">
+          <div className="grid grid-cols-2 gap-4 mx-auto">
+            {galleryImages.slice(0, 4).map((image, index) => (
+              <div
+                key={image.url}
+                className="relative aspect-square rounded-xl overflow-hidden shadow-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:border-red-500/30 transition-all duration-300 cursor-pointer group"
+                onClick={() => handleImageClick(index)}
+              >
+                <img
+                  src={image.url}
+                  alt={image.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
+              </div>
+            ))}
+          </div>
+          {galleryImages.length > 4 && (
+            <div className="text-center mt-8">
+              <button
+                onClick={() => handleImageClick(0)}
+                className="text-white text-base font-medium transition-colors duration-300"
+              >
+                View all →
+              </button>
+            </div>
+          )}
+        </div>
+
         {/* Call to Action */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-8"
         >
           <p className="text-gray-400 mb-6">
-            Want to see more of our work? Check out our full gallery or follow us on Instagram!
+            We can deliver a professional, quality result on your next project. If you like what you see, let&apos;s chat!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#contact"
-              className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25"
+          <motion.a
+              href={`sms:${company.phone}?body=Hello, I need a quote for tree services.`}
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+              className="order-[-1] sm:order-none group btn-emergency flex items-center space-x-3 text-lg font-bold"
             >
-              <span>Get Your Free Estimate</span>
-              <ExternalLink className="h-4 w-4" />
-            </a>
-            <a
-              href="#instagram"
-              className="inline-flex items-center space-x-2 px-6 py-3 border border-red-500/30 hover:border-red-500/60 text-red-400 hover:text-red-300 font-medium rounded-full transition-all duration-300 hover:bg-red-500/10"
-            >
-              <Camera className="h-5 w-5" />
-              <span>View Instagram Gallery</span>
-            </a>
+              <Keyboard className="w-6 h-6" />
+              <span>Text Us Now</span>
+            </motion.a>
           </div>
         </motion.div>
       </div>

@@ -50,7 +50,7 @@ export async function getInstagramUser(): Promise<InstagramUser | null> {
 export async function getInstagramPosts(limit: number = 6): Promise<InstagramPost[]> {
   if (!INSTAGRAM_USER_ID || !INSTAGRAM_ACCESS_TOKEN) {
     console.warn('Instagram API credentials not configured');
-    return getFallbackPosts();
+    throw new Error('Instagram API credentials not configured');
   }
 
   try {
@@ -66,62 +66,8 @@ export async function getInstagramPosts(limit: number = 6): Promise<InstagramPos
     return data.data || [];
   } catch (error) {
     console.error('Error fetching Instagram posts:', error);
-    return getFallbackPosts();
+    throw new Error('Error fetching Instagram posts');
   }
-}
-
-// Fallback posts when API is not configured or fails
-function getFallbackPosts(): InstagramPost[] {
-  return [
-    {
-      id: 'fallback-1',
-      media_type: 'IMAGE',
-      media_url: '/images/gallery/tree-removal-crane.jpg',
-      permalink: 'https://www.instagram.com/first_response_tree_service/',
-      caption: 'Professional crane-assisted tree removal in action! Our team safely removes large trees using state-of-the-art equipment. #TreeRemoval #CraneWork #Professional',
-      timestamp: new Date().toISOString(),
-    },
-    {
-      id: 'fallback-2',
-      media_type: 'IMAGE',
-      media_url: '/images/gallery/two-crane-tree-removal.jpg',
-      permalink: 'https://www.instagram.com/first_response_tree_service/',
-      caption: 'Dual crane operation for complex tree removal. Safety and precision are our top priorities! #DualCrane #TreeService #SafetyFirst',
-      timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(), // 3 days ago
-    },
-    {
-      id: 'fallback-3',
-      media_type: 'IMAGE',
-      media_url: '/images/gallery/debris-cleanup.jpg',
-      permalink: 'https://www.instagram.com/first_response_tree_service/',
-      caption: 'Complete cleanup after tree removal. We leave your property spotless! #Cleanup #ProfessionalService #TreeRemoval',
-      timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(), // 5 days ago
-    },
-    {
-      id: 'fallback-4',
-      media_type: 'IMAGE',
-      media_url: '/images/gallery/brush-cleanup.jpeg',
-      permalink: 'https://www.instagram.com/first_response_tree_service/',
-      caption: 'Brush and debris cleanup services. Professional results every time! #BrushCleanup #LandClearing #Professional',
-      timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(), // 7 days ago
-    },
-    {
-      id: 'fallback-5',
-      media_type: 'IMAGE',
-      media_url: '/images/gallery/crane-tree.jpeg',
-      permalink: 'https://www.instagram.com/first_response_tree_service/',
-      caption: 'Large tree removal using professional crane equipment. Expert tree care services! #CraneWork #TreeRemoval #ExpertService',
-      timestamp: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(), // 10 days ago
-    },
-    {
-      id: 'fallback-6',
-      media_type: 'IMAGE',
-      media_url: '/images/gallery/holding-line.jpeg',
-      permalink: 'https://www.instagram.com/first_response_tree_service/',
-      caption: 'Precision tree work with safety lines. Our experienced team handles every job with care! #SafetyLines #PrecisionWork #TreeCare',
-      timestamp: new Date(Date.now() - 12 * 24 * 60 * 60 * 1000).toISOString(), // 12 days ago
-    }
-  ];
 }
 
 // Format date for display

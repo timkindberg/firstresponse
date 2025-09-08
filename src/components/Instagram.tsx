@@ -9,7 +9,6 @@ const InstagramSection = () => {
   const [posts, setPosts] = useState<InstagramPost[]>([]);
   const [user, setUser] = useState<InstagramUser | null>(null);
   const [loading, setLoading] = useState(true);
-  const [, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchInstagramData = async () => {
@@ -22,7 +21,6 @@ const InstagramSection = () => {
         setPosts(postsData);
         setUser(userData);
       } catch (err) {
-        setError('Failed to load Instagram posts');
         console.error('Instagram fetch error:', err);
       } finally {
         setLoading(false);
@@ -121,7 +119,7 @@ const InstagramSection = () => {
         </motion.div>
 
         {/* Instagram Posts Grid */}
-        <motion.div
+        {posts.length > 0 && <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -205,7 +203,7 @@ const InstagramSection = () => {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </motion.div>}
 
         {/* Call to Action */}
         <motion.div
