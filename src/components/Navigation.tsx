@@ -41,7 +41,7 @@ const Navigation = () => {
     { name: 'Services', href: '#services' },
     { name: 'Gallery', href: '#gallery' },
     { name: 'Follow Us', href: '#instagram' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Free Estimate', href: '#contact' },
   ];
 
   // Handle smooth scrolling to sections
