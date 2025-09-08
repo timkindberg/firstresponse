@@ -56,11 +56,14 @@ const Hero = () => {
             <div className="flex justify-center w-full">
               <div className="relative mt-12 lg:mt-24 w-full md:w-[720px] xl:w-[790px] rounded-2xl overflow-hidden">
                 <Image
-                  src={getImageUrl("/logo.png")}
+                  src={getImageUrl("/logo-no-bg.png")}
                   alt="First Response Tree Service Logo"
                   width={790}
                   height={305}
                   className="w-full h-auto object-contain drop-shadow-2xl"
+                  style={{
+                    filter: 'drop-shadow(1px 1px 0px #FFFFFF88) drop-shadow(-1px -1px 0px #FFFFFF88) drop-shadow(1px -1px 0px #FFFFFF88) drop-shadow(-1px 1px 0px #FFFFFF88)'
+                  }}
                   priority
                 />
               </div>
