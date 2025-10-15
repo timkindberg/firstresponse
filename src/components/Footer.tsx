@@ -117,12 +117,18 @@ const Footer = () => {
             © 2025 {company.name}. All rights reserved.
           </p>
           
-          <div className="flex space-x-6">
+          <div className="flex flex-wrap gap-4 md:gap-6 justify-center md:justify-end">
             <a 
               href="#contact" 
               className="text-red-500 hover:text-red-400 font-medium text-sm transition-colors duration-300"
             >
               Get Estimate
+            </a>
+            <a 
+              href="/privacy_policy" 
+              className="text-gray-400 hover:text-gray-300 text-sm transition-colors duration-300"
+            >
+              Privacy Policy
             </a>
             <a 
               href="tel:911" 

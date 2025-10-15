@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getContent } from "@/lib/content";
-import LayoutClient from "./layout-client";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -48,9 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} antialiased`}>
-        <LayoutClient>
-          {children}
-        </LayoutClient>
+        {children}
       </body>
     </html>
   );

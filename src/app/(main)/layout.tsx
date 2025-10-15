@@ -28,7 +28,7 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function LayoutClient({
+export default function MainLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -38,4 +38,5 @@ export default function LayoutClient({
       <LayoutContent>{children}</LayoutContent>
     </ImageViewerProvider>
   );
-} 
+}
+

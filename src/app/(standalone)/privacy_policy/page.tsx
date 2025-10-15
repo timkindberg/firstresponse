@@ -1,14 +1,19 @@
 import React from "react";
 
+export const metadata = {
+  title: "Privacy Policy - First Response Tree Service",
+  description: "Privacy Policy for First Response Tree Service",
+};
+
 const PrivacyPolicyPage = () => (
-  <main className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-gray-900">
+  <main className="min-h-screen bg-white max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-gray-900">
     <h1 className="text-4xl font-bold mb-2">Privacy Policy</h1>
     <div className="text-sm text-gray-500 mb-8">Last updated: October 2025</div>
 
     <section className="mb-8">
       <h2 className="text-2xl font-semibold mb-2">1. Overview</h2>
       <p>
-        This website is operated by <span className="italic">First Response Tree Service</span> (“we,” “us,” or “our”).<br />
+        This website is operated by <span className="italic">First Response Tree Service</span> (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;).<br />
         We respect your privacy and are committed to protecting any personal information you provide to us.
       </p>
     </section>
@@ -32,7 +37,7 @@ const PrivacyPolicyPage = () => (
     <section className="mb-8">
       <h2 className="text-2xl font-semibold mb-2">4. Embedded Content</h2>
       <p>
-        Our site may display publicly available posts from social media platforms (e.g., Instagram) using Meta’s oEmbed feature.<br />
+        Our site may display publicly available posts from social media platforms (e.g., Instagram) using Meta&apos;s oEmbed feature.<br />
         When you view this embedded content, those services may collect information according to their own privacy policies.<br />
         We do not receive or store any data from those services.
       </p>
@@ -56,7 +61,7 @@ const PrivacyPolicyPage = () => (
     <section className="mb-8">
       <h2 className="text-2xl font-semibold mb-2">7. Changes to This Policy</h2>
       <p>
-        We may update this Privacy Policy from time to time. The updated version will be posted on this page with a new “Last updated” date.
+        We may update this Privacy Policy from time to time. The updated version will be posted on this page with a new &quot;Last updated&quot; date.
       </p>
     </section>
 
@@ -71,3 +76,4 @@ const PrivacyPolicyPage = () => (
 );
 
 export default PrivacyPolicyPage;
+
