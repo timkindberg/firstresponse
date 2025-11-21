@@ -21,7 +21,7 @@ export default function ResidentialNavyPage() {
             alt="Professional crew working on residential property"
             fill
             className="object-cover"
-            style={{ objectPosition: '65% center' }}
+            style={{ objectPosition: '-195% center' }}
             priority
             quality={90}
           />
