@@ -20,7 +20,8 @@ export default function ResidentialNavyPage() {
             src={getImageUrl('/images/gallery/two-crane-tree-removal.jpg')}
             alt="Professional crew working on residential property"
             fill
-            className="object-cover object-center"
+            className="object-cover"
+            style={{ objectPosition: '65% center' }}
             priority
             quality={90}
           />
