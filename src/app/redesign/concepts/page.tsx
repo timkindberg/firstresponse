@@ -189,14 +189,9 @@ export default function ConceptsPage() {
                       </div>
                     </Link>
 
-                    {/* Authority V2 - RECOMMENDED */}
+                    {/* Authority V2 */}
                     <Link href="/redesign/concepts/authority2" className="group">
-                      <div className="bg-gradient-to-br from-red-50 to-yellow-50 rounded-xl overflow-hidden border-2 border-red-500 hover:border-red-600 transition-all hover:shadow-2xl relative">
-                        <div className="absolute top-3 right-3 z-10">
-                          <div className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                            RECOMMENDED
-                          </div>
-                        </div>
+                      <div className="bg-gray-50 rounded-xl overflow-hidden border-2 border-gray-200 hover:border-red-500 transition-all hover:shadow-xl">
                         <div className="aspect-video bg-gradient-to-br from-white to-gray-100 flex items-center justify-center">
                           <div className="text-center">
                             <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
@@ -206,7 +201,7 @@ export default function ConceptsPage() {
                           </div>
                         </div>
                         <div className="p-4">
-                          <h4 className="font-bold text-gray-900 mb-2">Authority V2 ⭐</h4>
+                          <h4 className="font-bold text-gray-900 mb-2">Authority V2</h4>
                           <p className="text-sm text-gray-600 mb-3">Refined with industrial typography and grounded design</p>
                           <div className="flex items-center text-red-600 text-sm font-semibold group-hover:translate-x-2 transition-transform">
                             View Concept <ArrowRight className="w-4 h-4 ml-1" />
@@ -267,14 +262,9 @@ export default function ConceptsPage() {
                       </div>
                     </Link>
 
-                    {/* Residential Navy - NEW */}
+                    {/* Residential Navy */}
                     <Link href="/redesign/concepts/residential-navy" className="group">
-                      <div className="bg-gradient-to-br from-blue-50 to-yellow-50 rounded-xl overflow-hidden border-2 border-blue-500 hover:border-blue-600 transition-all hover:shadow-2xl relative">
-                        <div className="absolute top-3 right-3 z-10">
-                          <div className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                            NEW
-                          </div>
-                        </div>
+                      <div className="bg-gray-50 rounded-xl overflow-hidden border-2 border-gray-200 hover:border-blue-500 transition-all hover:shadow-xl">
                         <div className="aspect-video bg-gradient-to-br from-blue-900 to-blue-950 flex items-center justify-center">
                           <div className="text-center">
                             <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
@@ -284,7 +274,7 @@ export default function ConceptsPage() {
                           </div>
                         </div>
                         <div className="p-4">
-                          <h4 className="font-bold text-gray-900 mb-2">Estate V2 (Navy) ✨</h4>
+                          <h4 className="font-bold text-gray-900 mb-2">Estate V2 (Navy)</h4>
                           <p className="text-sm text-gray-600 mb-3">Navy &amp; gold &quot;dress uniform&quot; sophistication</p>
                           <div className="flex items-center text-blue-600 text-sm font-semibold group-hover:translate-x-2 transition-transform">
                             View Concept <ArrowRight className="w-4 h-4 ml-1" />
@@ -324,14 +314,9 @@ export default function ConceptsPage() {
                       </div>
                     </Link>
 
-                    {/* Specialist Grid - NEW */}
+                    {/* Specialist Grid */}
                     <Link href="/redesign/concepts/specialist-grid" className="group">
-                      <div className="bg-gradient-to-br from-slate-50 to-red-50 rounded-xl overflow-hidden border-2 border-slate-500 hover:border-slate-600 transition-all hover:shadow-2xl relative">
-                        <div className="absolute top-3 right-3 z-10">
-                          <div className="bg-slate-900 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg font-mono">
-                            NEW
-                          </div>
-                        </div>
+                      <div className="bg-gray-50 rounded-xl overflow-hidden border-2 border-gray-200 hover:border-slate-500 transition-all hover:shadow-xl">
                         <div className="aspect-video bg-gradient-to-br from-slate-900 to-black flex items-center justify-center relative overflow-hidden">
                           <div 
                             className="absolute inset-0 opacity-20"
@@ -351,7 +336,7 @@ export default function ConceptsPage() {
                           </div>
                         </div>
                         <div className="p-4">
-                          <h4 className="font-bold text-gray-900 mb-2">Specialist V2 (Grid) 🎯</h4>
+                          <h4 className="font-bold text-gray-900 mb-2">Specialist V2 (Grid)</h4>
                           <p className="text-sm text-gray-600 mb-3">Technical grid overlay with monospace typography</p>
                           <div className="flex items-center text-slate-600 text-sm font-semibold group-hover:translate-x-2 transition-transform">
                             View Concept <ArrowRight className="w-4 h-4 ml-1" />
@@ -366,25 +351,70 @@ export default function ConceptsPage() {
             </div>
           </section>
 
-          {/* Next Steps */}
-          <section className="bg-gradient-to-br from-red-50 to-yellow-50 p-8 rounded-2xl border-2 border-red-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Next Steps</h2>
-            <p className="text-gray-700 mb-6">
-              Review each concept and consider which strategic direction best aligns with your growth goals. We recommend <strong>Authority V2</strong> for its balance of professionalism, trust signals, and dual-audience appeal.
+          {/* Our Recommendations */}
+          <section className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Recommendations</h2>
+            
+            <p className="text-gray-600 mb-8">
+              After analyzing the market and your unique positioning, here are our thoughts on each direction:
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link 
-                href="/redesign/concepts/authority2"
-                className="inline-flex items-center justify-center px-6 py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-all shadow-lg"
-              >
-                View Recommended Design
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
+
+            <div className="space-y-6">
+              {/* Authority Direction */}
+              <div className="p-6 bg-gray-50 rounded-xl border border-gray-200">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">Direction A: &quot;The Authority&quot; — Best for Municipal/Commercial Growth</h3>
+                <p className="text-gray-600 mb-4">
+                  This direction positions you as the professional choice for city contracts and commercial properties. The clean, corporate aesthetic signals reliability and capacity.
+                </p>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <p><strong>Strengths:</strong> Broad appeal, trust signals front and center, firefighter story integrated naturally</p>
+                  <p><strong>Best for:</strong> Winning municipal RFPs, commercial property managers, HOAs</p>
+                  <p><strong>Top pick:</strong> Authority V2 or V3 (Crew) — both emphasize professionalism while keeping the firefighter USP visible</p>
+                </div>
+              </div>
+
+              {/* Estate Direction */}
+              <div className="p-6 bg-gray-50 rounded-xl border border-gray-200">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">Direction B: &quot;The Estate&quot; — Best for High-End Residential</h3>
+                <p className="text-gray-600 mb-4">
+                  This direction speaks directly to homeowners who care deeply about their property. The premium aesthetic signals white-glove service and zero-risk execution.
+                </p>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <p><strong>Strengths:</strong> Differentiated from competitors, speaks to property protection concerns, sophisticated feel</p>
+                  <p><strong>Best for:</strong> Estate properties, luxury homes, clients who value meticulous care</p>
+                  <p><strong>Top pick:</strong> Estate V2 (Navy) — the navy/gold palette is more unique and memorable than the dark version</p>
+                </div>
+              </div>
+
+              {/* Specialist Direction */}
+              <div className="p-6 bg-gray-50 rounded-xl border border-gray-200">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">Direction C: &quot;The Specialist&quot; — Best for Technical Differentiation</h3>
+                <p className="text-gray-600 mb-4">
+                  This direction emphasizes your technical capabilities and complex project experience. It&apos;s bold and memorable, but may feel too niche for general residential.
+                </p>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <p><strong>Strengths:</strong> Highly differentiated, appeals to technical buyers, shows serious capacity</p>
+                  <p><strong>Best for:</strong> Storm cleanup contracts, difficult removals, engineering-minded clients</p>
+                  <p><strong>Top pick:</strong> Specialist V2 (Grid) — the grid overlay reinforces the precision messaging</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 p-6 bg-blue-50 border border-blue-100 rounded-xl">
+              <p className="text-blue-900 font-semibold mb-2">💡 Our Overall Take</p>
+              <p className="text-blue-800">
+                If you had to pick one, <strong>Authority V2 or V3</strong> offers the best balance for dual-audience appeal (municipal + residential). 
+                However, if you want to own the high-end residential market specifically, <strong>Estate V2 (Navy)</strong> is the most differentiated and memorable option.
+              </p>
+            </div>
+
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Link 
                 href="/"
-                className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-50 transition-all border-2 border-gray-200"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white font-bold rounded-lg hover:bg-gray-800 transition-all shadow-lg"
               >
                 Compare to Current Site
+                <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </div>
           </section>
