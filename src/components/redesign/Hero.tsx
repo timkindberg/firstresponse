@@ -94,8 +94,8 @@ export default function HeroRedesign() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-gray-200">
               <Image 
-                src={getImageUrl('/images/gallery/old-tree-removal-1.jpg')} 
-                alt="Professional Tree Removal Team" 
+                src={getImageUrl('/images/gallery/two-crane-tree-removal.jpg')} 
+                alt="Professional Tree Removal Team with Cranes" 
                 width={600} 
                 height={700} 
                 className="object-cover w-full h-full"
