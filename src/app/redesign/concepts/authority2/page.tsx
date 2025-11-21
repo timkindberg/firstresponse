@@ -14,8 +14,17 @@ export default function AuthorityPageV2() {
       <Navigation variant="authority" />
       
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
-        {/* Subtle Grid Background - Adds Structure */}
+        {/* Subtle Tree Background + Grid - Adds Depth & Structure */}
         <div className="absolute inset-0 z-0">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url('${getImageUrl('/images/gallery/two-crane-tree-removal.jpg')}')`,
+              backgroundPosition: 'center 60%',
+              filter: 'grayscale(100%)',
+              opacity: 0.08
+            }}
+          />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white"></div>
         </div>

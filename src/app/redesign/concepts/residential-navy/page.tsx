@@ -17,7 +17,7 @@ export default function ResidentialNavyPage() {
         {/* Full Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src={getImageUrl('/images/gallery/old-tree-removal-1.jpg')}
+            src={getImageUrl('/images/gallery/two-crane-tree-removal.jpg')}
             alt="Professional crew working on residential property"
             fill
             className="object-cover object-center"
