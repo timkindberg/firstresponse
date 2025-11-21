@@ -12,6 +12,7 @@ interface NavigationProps {
 const Navigation = ({ variant = 'default' }: NavigationProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isRedesign, setIsRedesign] = useState(false);
   const company = getCompanyInfo();
 
   useEffect(() => {
@@ -21,6 +22,8 @@ const Navigation = ({ variant = 'default' }: NavigationProps) => {
       const isSmallOrMedium = width < 1024; // Tailwind md: 768, lg: 1024
       setIsScrolled(window.scrollY > (isSmallOrMedium ? 350 : 50));
     };
+    
+    setIsRedesign(window.location.pathname.includes('/redesign'));
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -74,7 +77,7 @@ const Navigation = ({ variant = 'default' }: NavigationProps) => {
   // Theme Configurations
   const themes = {
     default: {
-      navBg: isScrolled || window.location.pathname.includes('/redesign') ? 'glass-dark shadow-2xl border-b border-red-500/20' : 'bg-transparent',
+      navBg: isScrolled || isRedesign ? 'glass-dark shadow-2xl border-b border-red-500/20' : 'bg-transparent',
       textColor: isScrolled ? 'text-gray-200' : 'text-white',
       hoverColor: 'hover:text-red-400',
       buttonClass: 'btn-emergency text-gray-900',
