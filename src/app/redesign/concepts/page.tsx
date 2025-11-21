@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowRight, Building2, BoxSelect, Home, TrendingUp, ShieldCheck, MousePointerClick, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Building2, Home, TrendingUp, ShieldCheck, MousePointerClick, AlertTriangle, CheckCircle2, Sparkles, Target } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ConceptsPage() {
@@ -24,7 +24,7 @@ export default function ConceptsPage() {
       </div>
 
       <div className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto space-y-20">
+        <div className="max-w-6xl mx-auto space-y-20">
           
           {/* Section 1: Market Analysis */}
           <section>
@@ -50,40 +50,62 @@ export default function ConceptsPage() {
                   <p className="text-sm text-gray-600">Simple sites, photos of trucks. Feels authentic but risky (insurance?).</p>
                 </div>
               </div>
+              <div className="mt-6 p-4 bg-red-50 border border-red-100 rounded-xl">
+                <p className="text-sm text-red-800">
+                  <strong>Key Insight:</strong> No one is leveraging the &quot;Firefighter Owned&quot; angle as a trust signal. This is a massive opportunity to differentiate.
+                </p>
+              </div>
             </div>
           </section>
 
-          {/* Section 2: Best Practices */}
+          {/* Section 2: Critical Success Factors */}
           <section>
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-green-100 rounded-lg text-green-700"><ShieldCheck className="w-6 h-6" /></div>
-              <h2 className="text-2xl font-bold text-gray-900">2. Critical Success Factors</h2>
+              <div className="p-2 bg-green-100 rounded-lg text-green-700"><CheckCircle2 className="w-6 h-6" /></div>
+              <h2 className="text-2xl font-bold text-gray-900">2. What Converts Visitors (Best Practices)</h2>
             </div>
-            <div className="space-y-4">
-              <p className="text-gray-600">To convert high-value clients, a modern tree service site must answer three questions in under 5 seconds:</p>
-              <ul className="bg-white rounded-2xl shadow-sm border border-gray-200 divide-y divide-gray-100 overflow-hidden">
-                <li className="p-6 flex gap-4">
-                  <CheckCircle2 className="w-6 h-6 text-green-500 flex-shrink-0" />
-                  <div>
-                    <span className="font-bold text-gray-900 block">Can I trust them?</span>
-                    <span className="text-gray-500 text-sm">Must show visible Insurance badges, 5-Star ratings, and uniformed crews immediately.</span>
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+              <p className="text-gray-600 mb-6">
+                High-performing service company websites share four critical elements:
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <ShieldCheck className="w-5 h-5 text-green-700" />
                   </div>
-                </li>
-                <li className="p-6 flex gap-4">
-                  <CheckCircle2 className="w-6 h-6 text-green-500 flex-shrink-0" />
                   <div>
-                    <span className="font-bold text-gray-900 block">Will they wreck my yard?</span>
-                    <span className="text-gray-500 text-sm">&quot;White space&quot; in design subconsciously conveys cleanliness. Dark/cluttered sites imply a messy job site.</span>
+                    <h3 className="font-bold text-gray-900 mb-1">Instant Trust Signals</h3>
+                    <p className="text-sm text-gray-600">Insurance badges, certifications, and safety credentials visible within 3 seconds of landing.</p>
                   </div>
-                </li>
-                <li className="p-6 flex gap-4">
-                  <CheckCircle2 className="w-6 h-6 text-green-500 flex-shrink-0" />
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MousePointerClick className="w-5 h-5 text-green-700" />
+                  </div>
                   <div>
-                    <span className="font-bold text-gray-900 block">How do I start?</span>
-                    <span className="text-gray-500 text-sm">Two clear paths: &quot;Emergency/Now&quot; (Phone) vs &quot;Estimate/Later&quot; (Form).</span>
+                    <h3 className="font-bold text-gray-900 mb-1">Clear Action Path</h3>
+                    <p className="text-sm text-gray-600">Dual CTAs: &quot;Get Estimate&quot; (low commitment) + Phone Number (high intent). No confusion.</p>
                   </div>
-                </li>
-              </ul>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Building2 className="w-5 h-5 text-green-700" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1">Capacity Proof</h3>
+                    <p className="text-sm text-gray-600">Photos of big equipment, large crews, and completed projects. Shows you can handle serious work.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Home className="w-5 h-5 text-green-700" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1">Audience Segmentation</h3>
+                    <p className="text-sm text-gray-600">Separate messaging for homeowners vs. commercial/municipal buyers. Different pain points.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -91,131 +113,279 @@ export default function ConceptsPage() {
           <section>
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2 bg-yellow-100 rounded-lg text-yellow-700"><AlertTriangle className="w-6 h-6" /></div>
-              <h2 className="text-2xl font-bold text-gray-900">3. Current Site Audit</h2>
+              <h2 className="text-2xl font-bold text-gray-900">3. Where We Are Today (Current Site Weaknesses)</h2>
             </div>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-green-500">
-                <h3 className="font-bold text-gray-900 mb-4">Strengths to Keep</h3>
-                <ul className="space-y-3 text-gray-600 text-sm">
-                  <li className="flex gap-2"><span className="text-green-500">✓</span> <strong>Identity:</strong> &quot;Firefighter Owned&quot; is a massive trust asset.</li>
-                  <li className="flex gap-2"><span className="text-green-500">✓</span> <strong>Tech Foundation:</strong> Current website is built on modern, fast, and SEO-ready technology.</li>
-                  <li className="flex gap-2"><span className="text-green-500">✓</span> <strong>Brand Colors:</strong> Red/Gold is distinctive and visible.</li>
-                </ul>
-              </div>
-              <div className="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-red-500">
-                <h3 className="font-bold text-gray-900 mb-4">Weaknesses to Fix</h3>
-                <ul className="space-y-3 text-gray-600 text-sm">
-                  <li className="flex gap-2"><span className="text-red-500">!</span> <strong>Tone:</strong> Dark/Red theme feels &quot;aggressive&quot; or &quot;gaming&quot; oriented. Scares off residential pruning clients.</li>
-                  <li className="flex gap-2"><span className="text-red-500">!</span> <strong>Trust Gap:</strong> Missing visual &quot;Licensed & Insured&quot; badges and Review widgets.</li>
-                  <li className="flex gap-2"><span className="text-red-500">!</span> <strong>Clarity:</strong> Services are buried; needs to look like an established infrastructure company.</li>
-                </ul>
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+              <p className="text-gray-600 mb-6">
+                The current site has strong fundamentals (great photos, firefighter story) but lacks strategic positioning:
+              </p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="font-bold text-green-700 mb-3 flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5" /> What&apos;s Working
+                  </h3>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li>✓ Authentic crew photos (not stock)</li>
+                    <li>✓ Firefighter story is compelling</li>
+                    <li>✓ Real equipment visible</li>
+                    <li>✓ Clear contact info</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-bold text-red-700 mb-3 flex items-center gap-2">
+                    <AlertTriangle className="w-5 h-5" /> Gaps to Address
+                  </h3>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li>✗ Dark theme feels &quot;aggressive&quot; not &quot;professional&quot;</li>
+                    <li>✗ No clear residential vs. commercial split</li>
+                    <li>✗ Insurance/licensing not prominent enough</li>
+                    <li>✗ Capacity (municipal-grade) not obvious</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </section>
 
-          {/* Section 4: The Strategy */}
+          {/* Section 4: Strategic Direction */}
           <section>
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-red-100 rounded-lg text-red-700"><MousePointerClick className="w-6 h-6" /></div>
-              <h2 className="text-2xl font-bold text-gray-900">4. Proposed Directions</h2>
+              <div className="p-2 bg-purple-100 rounded-lg text-purple-700"><Target className="w-6 h-6" /></div>
+              <h2 className="text-2xl font-bold text-gray-900">4. The Path Forward (Proposed Directions)</h2>
             </div>
-            <p className="text-gray-600 mb-8">
-              We have developed three distinct strategic concepts. Each targets a specific market segment while retaining the core &quot;Firefighter/First Response&quot; identity.
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+              <p className="text-gray-600 mb-8">
+                We&apos;ve developed three distinct strategic directions. Each targets your dual audience (municipal/commercial + high-end residential) but emphasizes different aspects of your brand:
+              </p>
+
+              {/* Concept Groups */}
+              <div className="space-y-12">
+                
+                {/* GROUP 1: AUTHORITY */}
+                <div>
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Direction A: &quot;The Authority&quot;</h3>
+                    <p className="text-gray-600">Corporate professionalism meets firefighter discipline. Clean, structured, trust-heavy.</p>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {/* Authority V1 */}
+                    <Link href="/redesign/concepts/authority" className="group">
+                      <div className="bg-gray-50 rounded-xl overflow-hidden border-2 border-gray-200 hover:border-red-500 transition-all hover:shadow-xl">
+                        <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                          <div className="text-center">
+                            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                              <Building2 className="w-8 h-8 text-gray-900" />
+                            </div>
+                            <p className="text-sm font-bold text-gray-700">Option A1</p>
+                          </div>
+                        </div>
+                        <div className="p-4">
+                          <h4 className="font-bold text-gray-900 mb-2">Authority V1</h4>
+                          <p className="text-sm text-gray-600 mb-3">Original clean design with structured layout</p>
+                          <div className="flex items-center text-red-600 text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                            View Concept <ArrowRight className="w-4 h-4 ml-1" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+
+                    {/* Authority V2 - RECOMMENDED */}
+                    <Link href="/redesign/concepts/authority2" className="group">
+                      <div className="bg-gradient-to-br from-red-50 to-yellow-50 rounded-xl overflow-hidden border-2 border-red-500 hover:border-red-600 transition-all hover:shadow-2xl relative">
+                        <div className="absolute top-3 right-3 z-10">
+                          <div className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                            RECOMMENDED
+                          </div>
+                        </div>
+                        <div className="aspect-video bg-gradient-to-br from-white to-gray-100 flex items-center justify-center">
+                          <div className="text-center">
+                            <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                              <ShieldCheck className="w-8 h-8 text-white" />
+                            </div>
+                            <p className="text-sm font-bold text-gray-700">Option A2</p>
+                          </div>
+                        </div>
+                        <div className="p-4">
+                          <h4 className="font-bold text-gray-900 mb-2">Authority V2 ⭐</h4>
+                          <p className="text-sm text-gray-600 mb-3">Refined with industrial typography and grounded design</p>
+                          <div className="flex items-center text-red-600 text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                            View Concept <ArrowRight className="w-4 h-4 ml-1" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+
+                    {/* Authority V3 - Crew Photo */}
+                    <Link href="/redesign/concepts/authority-crew" className="group">
+                      <div className="bg-gray-50 rounded-xl overflow-hidden border-2 border-gray-200 hover:border-red-500 transition-all hover:shadow-xl">
+                        <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                          <div className="text-center">
+                            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                              <ShieldCheck className="w-8 h-8 text-red-600" />
+                            </div>
+                            <p className="text-sm font-bold text-gray-700">Option A3</p>
+                          </div>
+                        </div>
+                        <div className="p-4">
+                          <h4 className="font-bold text-gray-900 mb-2">Authority V3 (Crew)</h4>
+                          <p className="text-sm text-gray-600 mb-3">Crew-focused with large firefighter badge</p>
+                          <div className="flex items-center text-red-600 text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                            View Concept <ArrowRight className="w-4 h-4 ml-1" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* GROUP 2: RESIDENTIAL */}
+                <div>
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Direction B: &quot;The Estate&quot;</h3>
+                    <p className="text-gray-600">Premium residential focus. Sophisticated, protective, white-glove service.</p>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {/* Residential V1 */}
+                    <Link href="/redesign/concepts/residential" className="group">
+                      <div className="bg-gray-50 rounded-xl overflow-hidden border-2 border-gray-200 hover:border-blue-500 transition-all hover:shadow-xl">
+                        <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                          <div className="text-center">
+                            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                              <Home className="w-8 h-8 text-gray-900" />
+                            </div>
+                            <p className="text-sm font-bold text-white">Option B1</p>
+                          </div>
+                        </div>
+                        <div className="p-4">
+                          <h4 className="font-bold text-gray-900 mb-2">Estate V1 (Dark)</h4>
+                          <p className="text-sm text-gray-600 mb-3">Dark premium aesthetic with red accents</p>
+                          <div className="flex items-center text-blue-600 text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                            View Concept <ArrowRight className="w-4 h-4 ml-1" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+
+                    {/* Residential Navy - NEW */}
+                    <Link href="/redesign/concepts/residential-navy" className="group">
+                      <div className="bg-gradient-to-br from-blue-50 to-yellow-50 rounded-xl overflow-hidden border-2 border-blue-500 hover:border-blue-600 transition-all hover:shadow-2xl relative">
+                        <div className="absolute top-3 right-3 z-10">
+                          <div className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                            NEW
+                          </div>
+                        </div>
+                        <div className="aspect-video bg-gradient-to-br from-blue-900 to-blue-950 flex items-center justify-center">
+                          <div className="text-center">
+                            <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                              <Sparkles className="w-8 h-8 text-blue-900" />
+                            </div>
+                            <p className="text-sm font-bold text-white">Option B2</p>
+                          </div>
+                        </div>
+                        <div className="p-4">
+                          <h4 className="font-bold text-gray-900 mb-2">Estate V2 (Navy) ✨</h4>
+                          <p className="text-sm text-gray-600 mb-3">Navy &amp; gold &quot;dress uniform&quot; sophistication</p>
+                          <div className="flex items-center text-blue-600 text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                            View Concept <ArrowRight className="w-4 h-4 ml-1" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* GROUP 3: SPECIALIST */}
+                <div>
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Direction C: &quot;The Specialist&quot;</h3>
+                    <p className="text-gray-600">Technical precision. Engineered solutions for complex projects.</p>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {/* Specialist V1 */}
+                    <Link href="/redesign/concepts/specialist" className="group">
+                      <div className="bg-gray-50 rounded-xl overflow-hidden border-2 border-gray-200 hover:border-slate-500 transition-all hover:shadow-xl">
+                        <div className="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
+                          <div className="text-center">
+                            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                              <Target className="w-8 h-8 text-slate-900" />
+                            </div>
+                            <p className="text-sm font-bold text-white">Option C1</p>
+                          </div>
+                        </div>
+                        <div className="p-4">
+                          <h4 className="font-bold text-gray-900 mb-2">Specialist V1</h4>
+                          <p className="text-sm text-gray-600 mb-3">Clean technical aesthetic with slate tones</p>
+                          <div className="flex items-center text-slate-600 text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                            View Concept <ArrowRight className="w-4 h-4 ml-1" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+
+                    {/* Specialist Grid - NEW */}
+                    <Link href="/redesign/concepts/specialist-grid" className="group">
+                      <div className="bg-gradient-to-br from-slate-50 to-red-50 rounded-xl overflow-hidden border-2 border-slate-500 hover:border-slate-600 transition-all hover:shadow-2xl relative">
+                        <div className="absolute top-3 right-3 z-10">
+                          <div className="bg-slate-900 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg font-mono">
+                            NEW
+                          </div>
+                        </div>
+                        <div className="aspect-video bg-gradient-to-br from-slate-900 to-black flex items-center justify-center relative overflow-hidden">
+                          <div 
+                            className="absolute inset-0 opacity-20"
+                            style={{
+                              backgroundImage: `
+                                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+                              `,
+                              backgroundSize: '20px 20px'
+                            }}
+                          />
+                          <div className="text-center relative z-10">
+                            <div className="w-16 h-16 bg-red-600 rounded flex items-center justify-center mx-auto mb-3 shadow-lg">
+                              <Target className="w-8 h-8 text-white" />
+                            </div>
+                            <p className="text-sm font-bold text-white font-mono">Option C2</p>
+                          </div>
+                        </div>
+                        <div className="p-4">
+                          <h4 className="font-bold text-gray-900 mb-2">Specialist V2 (Grid) 🎯</h4>
+                          <p className="text-sm text-gray-600 mb-3">Technical grid overlay with monospace typography</p>
+                          <div className="flex items-center text-slate-600 text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                            View Concept <ArrowRight className="w-4 h-4 ml-1" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+          {/* Next Steps */}
+          <section className="bg-gradient-to-br from-red-50 to-yellow-50 p-8 rounded-2xl border-2 border-red-200">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Next Steps</h2>
+            <p className="text-gray-700 mb-6">
+              Review each concept and consider which strategic direction best aligns with your growth goals. We recommend <strong>Authority V2</strong> for its balance of professionalism, trust signals, and dual-audience appeal.
             </p>
-
-            {/* Concept Grid */}
-            <div className="grid lg:grid-cols-4 gap-8">
-              
-              {/* Concept 1 */}
-              <Link href="/redesign/concepts/authority" className="group block h-full">
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl hover:border-red-200 transition-all duration-300 h-full flex flex-col">
-                  <div className="h-48 bg-gray-50 flex items-center justify-center group-hover:bg-red-50 transition-colors border-b border-gray-100">
-                    <Building2 className="w-16 h-16 text-gray-400 group-hover:text-red-600 transition-colors" />
-                  </div>
-                  <div className="p-8 flex flex-col flex-grow">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">The Authority (V1)</h3>
-                    <span className="inline-block px-3 py-1 bg-gray-100 text-gray-600 text-xs font-bold uppercase tracking-wider rounded-full mb-4 w-fit">
-                      Original Concept
-                    </span>
-                    <p className="text-gray-600 mb-6 flex-grow text-sm leading-relaxed">
-                      Clean, corporate, and structured. Emphasizes capacity, insurance, and reliability.
-                    </p>
-                    <div className="flex items-center text-red-600 font-bold text-sm mt-auto group-hover:translate-x-2 transition-transform">
-                      View Concept <ArrowRight className="w-4 h-4 ml-2" />
-                    </div>
-                  </div>
-                </div>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link 
+                href="/redesign/concepts/authority2"
+                className="inline-flex items-center justify-center px-6 py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-all shadow-lg"
+              >
+                View Recommended Design
+                <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
-
-              {/* Concept 1 V2 */}
-              <Link href="/redesign/concepts/authority2" className="group block h-full">
-                <div className="bg-white rounded-2xl shadow-sm border-2 border-red-100 overflow-hidden hover:shadow-xl hover:border-red-300 transition-all duration-300 h-full flex flex-col relative">
-                  <div className="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider z-10">
-                    Recommended
-                  </div>
-                  <div className="h-48 bg-gray-50 flex items-center justify-center group-hover:bg-red-50 transition-colors border-b border-gray-100">
-                    <Building2 className="w-16 h-16 text-gray-600 group-hover:text-red-600 transition-colors" />
-                  </div>
-                  <div className="p-8 flex flex-col flex-grow">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">The Authority (V2)</h3>
-                    <span className="inline-block px-3 py-1 bg-red-50 text-red-800 text-xs font-bold uppercase tracking-wider rounded-full mb-4 w-fit">
-                      Refined & Tightened
-                    </span>
-                    <p className="text-gray-600 mb-6 flex-grow text-sm leading-relaxed">
-                      <strong>Strategy:</strong> &quot;Industrial Strength.&quot;<br/>
-                      Bold Sans-Serif fonts, structured layout, and industrial design. The strongest option for commercial trust.
-                    </p>
-                    <div className="flex items-center text-red-600 font-bold text-sm mt-auto group-hover:translate-x-2 transition-transform">
-                      View Concept <ArrowRight className="w-4 h-4 ml-2" />
-                    </div>
-                  </div>
-                </div>
+              <Link 
+                href="/"
+                className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-50 transition-all border-2 border-gray-200"
+              >
+                Compare to Current Site
               </Link>
-
-              {/* Concept 2 */}
-              <Link href="/redesign/concepts/residential" className="group block h-full">
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl hover:border-blue-200 transition-all duration-300 h-full flex flex-col">
-                  <div className="h-48 bg-[#0B1120] flex items-center justify-center group-hover:bg-[#151e32] transition-colors border-b border-gray-100">
-                    <Home className="w-16 h-16 text-gray-400 group-hover:text-white transition-colors" />
-                  </div>
-                  <div className="p-8 flex flex-col flex-grow">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">The Estate</h3>
-                    <span className="inline-block px-3 py-1 bg-blue-50 text-blue-800 text-xs font-bold uppercase tracking-wider rounded-full mb-4 w-fit">
-                      For High-End Residential
-                    </span>
-                    <p className="text-gray-600 mb-6 flex-grow text-sm leading-relaxed">
-                      <strong>Strategy:</strong> &quot;Protecting Investment.&quot;<br/>
-                      Premium, safe, and immaculate. Uses deep Navy and White (&quot;Dress Uniform&quot; colors). Focuses on curb appeal, property protection, and white-glove cleanup.
-                    </p>
-                    <div className="flex items-center text-blue-900 font-bold text-sm mt-auto group-hover:translate-x-2 transition-transform">
-                      View Concept <ArrowRight className="w-4 h-4 ml-2" />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              {/* Concept 3 */}
-              <Link href="/redesign/concepts/specialist" className="group block h-full">
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-xl hover:border-slate-300 transition-all duration-300 h-full flex flex-col">
-                  <div className="h-48 bg-slate-50 flex items-center justify-center group-hover:bg-slate-100 transition-colors border-b border-gray-100">
-                    <BoxSelect className="w-16 h-16 text-slate-400 group-hover:text-slate-700 transition-colors" />
-                  </div>
-                  <div className="p-8 flex flex-col flex-grow">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">The Specialist</h3>
-                    <span className="inline-block px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold uppercase tracking-wider rounded-full mb-4 w-fit">
-                      For Complex Technical
-                    </span>
-                    <p className="text-gray-600 mb-6 flex-grow text-sm leading-relaxed">
-                      <strong>Strategy:</strong> &quot;Zero Impact.&quot;<br/>
-                      Technical, disciplined, and precise. Uses grid layouts and monospace fonts. Best for difficult removals (cranes, tight access) where skill &gt; speed.
-                    </p>
-                    <div className="flex items-center text-slate-900 font-bold text-sm mt-auto group-hover:translate-x-2 transition-transform">
-                      View Concept <ArrowRight className="w-4 h-4 ml-2" />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
             </div>
           </section>
 

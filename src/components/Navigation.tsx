@@ -6,7 +6,7 @@ import { Flame, Menu, Phone, Shield, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 interface NavigationProps {
-  variant?: 'default' | 'authority' | 'eco' | 'specialist' | 'residential';
+  variant?: 'default' | 'authority' | 'eco' | 'specialist' | 'residential' | 'residential-navy' | 'specialist-grid';
 }
 
 const Navigation = ({ variant = 'default' }: NavigationProps) => {
@@ -130,6 +130,28 @@ const Navigation = ({ variant = 'default' }: NavigationProps) => {
       mobileText: 'text-gray-300 hover:text-white',
       mobileButton: 'bg-red-600 text-white',
       iconColor: 'text-white',
+    },
+    'residential-navy': {
+      navBg: 'bg-[#0A1628]/95 backdrop-blur-md shadow-sm border-b border-yellow-400/20',
+      textColor: 'text-gray-200',
+      hoverColor: 'hover:text-yellow-400',
+      buttonClass: 'bg-yellow-400 text-[#0A1628] hover:bg-yellow-300 shadow-lg shadow-yellow-400/20 font-bold',
+      logoText: 'text-white',
+      mobileMenuBg: 'bg-[#0A1628] border-yellow-400/20 shadow-xl',
+      mobileText: 'text-gray-300 hover:text-yellow-400',
+      mobileButton: 'bg-yellow-400 text-[#0A1628] font-bold',
+      iconColor: 'text-yellow-400',
+    },
+    'specialist-grid': {
+      navBg: 'bg-[#0F1419]/95 backdrop-blur-md shadow-sm border-b border-white/10',
+      textColor: 'text-gray-300',
+      hoverColor: 'hover:text-red-500',
+      buttonClass: 'bg-red-600 text-white hover:bg-red-700 shadow-lg shadow-red-600/30 font-mono uppercase tracking-wider',
+      logoText: 'text-white',
+      mobileMenuBg: 'bg-[#0F1419] border-white/10 shadow-xl',
+      mobileText: 'text-gray-400 hover:text-red-500',
+      mobileButton: 'bg-red-600 text-white font-mono',
+      iconColor: 'text-gray-400',
     }
   };
 
