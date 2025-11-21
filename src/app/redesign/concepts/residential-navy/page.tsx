@@ -41,7 +41,7 @@ export default function ResidentialNavyPage() {
                 <span>WHITE-GLOVE TREE CARE SERVICES</span>
               </div>
 
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-none mb-8">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-8">
                 PROTECTING<br />
                 YOUR<br />
                 PROPERTY<br />

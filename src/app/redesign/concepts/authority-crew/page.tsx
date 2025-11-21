@@ -54,7 +54,7 @@ export default function AuthorityCrewPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-gray-900 leading-none mb-6">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-none mb-6">
                 MUNICIPAL<br />
                 GRADE TREE<br />
                 SERVICES

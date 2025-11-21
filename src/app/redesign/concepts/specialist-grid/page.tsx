@@ -55,7 +55,7 @@ export default function SpecialistGridPage() {
                 <span>SPECIALIZED CRANE OPERATIONS</span>
               </div>
 
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-mono font-bold text-white leading-none mb-10">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-mono font-bold text-white leading-none mb-10">
                 ENGINEERED<br />
                 TREE REMOVAL<br />
                 <span className="text-red-500">SOLUTIONS</span>
