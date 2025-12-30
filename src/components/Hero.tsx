@@ -88,7 +88,7 @@ const Hero = () => {
               <p className="text-2xl text-white font-bold mb-3 leading-tight font-mono">
               {company.tagline}
               </p>
-              <p className="text-lg text-gray-400 leading-relaxed font-mono">
+              <p className="text-lg text-white leading-relaxed font-mono">
                 Our trained crews execute technically challenging projects with minimal property impact. Municipal-grade capacity meets residential precision.
               </p>
             </div>
