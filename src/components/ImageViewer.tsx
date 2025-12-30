@@ -127,7 +127,7 @@ const ImageViewer = ({ images, isOpen, onClose, initialIndex = 0 }: ImageViewerP
               {/* Control Buttons */}
               <button
                 onClick={onClose}
-                className="p-2 text-white hover:bg-white/20 rounded-lg transition-colors"
+                className="p-2 text-white hover:bg-white/20 rounded transition-colors"
                 title="Close (Esc)"
               >
                 <X className="w-6 h-6" />
@@ -185,7 +185,7 @@ const ImageViewer = ({ images, isOpen, onClose, initialIndex = 0 }: ImageViewerP
             <img
               src={getImageUrl(currentImage.url)}
               alt={currentImage.title}
-              className="max-w-full max-h-full w-auto h-auto object-contain rounded-lg shadow-2xl"
+              className="max-w-full max-h-full w-auto h-auto object-contain rounded shadow-2xl"
               style={{ 
                 maxWidth: '100%', 
                 maxHeight: '100%',

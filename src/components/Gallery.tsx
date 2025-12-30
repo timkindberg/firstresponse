@@ -135,7 +135,7 @@ const Gallery = () => {
                     onClick={() => handleImageClick(index)}
                   >
                     <div 
-                      className="relative w-80 h-96 rounded-lg overflow-hidden shadow-2xl bg-white/5 backdrop-blur-sm border-2 border-white/10 group-hover:border-red-500/40 transition-all duration-500"
+                      className="relative w-80 h-96 rounded overflow-hidden shadow-2xl bg-white/5 backdrop-blur-sm border-2 border-white/10 group-hover:border-red-500/40 transition-all duration-500"
                     >
                       <img
                         src={image.url}
@@ -161,7 +161,7 @@ const Gallery = () => {
               {galleryImages.slice(0, 4).map((image, index) => (
                 <div
                   key={image.url}
-                  className="relative aspect-square rounded-lg overflow-hidden shadow-lg bg-white/5 backdrop-blur-sm border-2 border-white/10 hover:border-red-500/40 transition-all duration-300 cursor-pointer group"
+                  className="relative aspect-square rounded overflow-hidden shadow-lg bg-white/5 backdrop-blur-sm border-2 border-white/10 hover:border-red-500/40 transition-all duration-300 cursor-pointer group"
                   onClick={() => handleImageClick(index)}
                 >
                   <img

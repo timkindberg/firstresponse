@@ -77,7 +77,7 @@ const Contact = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="rounded-lg p-8 border-2 border-white/10 bg-white/5 backdrop-blur-md">
+            <div className="rounded p-8 border-2 border-white/10 bg-white/5 backdrop-blur-md">
               {state.succeeded ? (
                 <div className="text-center py-12">
                   <p className="text-2xl font-mono font-bold text-green-400">We will get back to you soon!</p>
@@ -211,7 +211,7 @@ const Contact = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="group cursor-pointer p-6 block rounded-lg border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-red-500/40 transition-all"
+                className="group cursor-pointer p-6 block rounded border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-red-500/40 transition-all"
               >
                 <div className="flex items-start space-x-5">
                   <div className="w-14 h-14 bg-red-600 rounded flex items-center justify-center flex-shrink-0 shadow-lg">
@@ -234,7 +234,7 @@ const Contact = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="group cursor-pointer p-6 block rounded-lg border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-red-500/40 transition-all"
+                className="group cursor-pointer p-6 block rounded border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-red-500/40 transition-all"
               >
                 <div className="flex items-start space-x-5">
                   <div className="w-14 h-14 bg-red-600 rounded flex items-center justify-center flex-shrink-0 shadow-lg">
@@ -256,7 +256,7 @@ const Contact = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="group cursor-default p-6 rounded-lg border-2 border-white/10 bg-white/5 backdrop-blur-md"
+                className="group cursor-default p-6 rounded border-2 border-white/10 bg-white/5 backdrop-blur-md"
               >
                 <div className="flex items-start space-x-5">
                   <div className="w-14 h-14 bg-red-600 rounded flex items-center justify-center flex-shrink-0 shadow-lg">

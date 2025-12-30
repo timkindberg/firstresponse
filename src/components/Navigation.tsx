@@ -235,7 +235,7 @@ const Navigation = ({ variant = 'default' }: NavigationProps) => {
               transition={{ duration: 0.6, delay: 0.5 }}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className={`${currentTheme.buttonClass} flex items-center space-x-2 text-sm xl:text-base font-bold px-6 py-3 rounded-lg transition-all`}
+              className={`${currentTheme.buttonClass} flex items-center space-x-2 text-sm xl:text-base font-bold px-6 py-3 rounded transition-all`}
             >
               <Keyboard size={18} />
               <span>Text Us Now</span>
@@ -249,7 +249,7 @@ const Navigation = ({ variant = 'default' }: NavigationProps) => {
               transition={{ duration: 0.6, delay: 0.6 }}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/20 hover:border-white/40 font-mono uppercase tracking-wider flex items-center space-x-2 text-sm xl:text-base font-bold px-6 py-3 rounded-lg transition-all backdrop-blur-sm"
+              className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/20 hover:border-white/40 font-mono uppercase tracking-wider flex items-center space-x-2 text-sm xl:text-base font-bold px-6 py-3 rounded transition-all backdrop-blur-sm"
             >
               <Phone size={18} />
               <span>Call Us Now</span>
@@ -275,7 +275,7 @@ const Navigation = ({ variant = 'default' }: NavigationProps) => {
               onClick={() => setIsOpen(!isOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className={`p-3 rounded-xl transition-all duration-300 ${currentTheme.iconColor}`}
+              className={`p-3 rounded transition-all duration-300 ${currentTheme.iconColor}`}
             >
               <motion.div
                 animate={{ rotate: isOpen ? 180 : 0 }}
@@ -298,7 +298,7 @@ const Navigation = ({ variant = 'default' }: NavigationProps) => {
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="lg:hidden overflow-hidden"
         >
-          <div className={`${currentTheme.mobileMenuBg} rounded-2xl mt-4 p-6 border shadow-2xl`}>
+          <div className={`${currentTheme.mobileMenuBg} rounded mt-4 p-6 border shadow-2xl`}>
             <div className="space-y-6">
               {/* Mobile Navigation Links */}
               <div className="space-y-4">
@@ -308,7 +308,7 @@ const Navigation = ({ variant = 'default' }: NavigationProps) => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : -20 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className={`block font-medium text-lg transition-all duration-300 py-2 px-4 rounded-xl group w-full text-left ${currentTheme.mobileText}`}
+                    className={`block font-medium text-lg transition-all duration-300 py-2 px-4 rounded group w-full text-left ${currentTheme.mobileText}`}
                     onClick={() => handleSectionScroll(item.href)}
                     whileHover={{ x: 10 }}
                   >
@@ -327,7 +327,7 @@ const Navigation = ({ variant = 'default' }: NavigationProps) => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: isOpen ? 1 : 0, scale: isOpen ? 1 : 0.9 }}
                   transition={{ duration: 0.4, delay: 0.3 }}
-                  className={`${currentTheme.mobileButton} flex items-center justify-center space-x-3 w-full text-lg font-bold px-6 py-3 rounded-xl`}
+                  className={`${currentTheme.mobileButton} flex items-center justify-center space-x-3 w-full text-lg font-bold px-6 py-3 rounded`}
                   onClick={() => setIsOpen(false)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -341,7 +341,7 @@ const Navigation = ({ variant = 'default' }: NavigationProps) => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: isOpen ? 1 : 0, scale: isOpen ? 1 : 0.9 }}
                   transition={{ duration: 0.4, delay: 0.4 }}
-                  className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/20 hover:border-white/40 font-mono uppercase tracking-wider flex items-center justify-center space-x-3 w-full text-lg font-bold px-6 py-3 rounded-xl transition-all backdrop-blur-sm"
+                  className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/20 hover:border-white/40 font-mono uppercase tracking-wider flex items-center justify-center space-x-3 w-full text-lg font-bold px-6 py-3 rounded transition-all backdrop-blur-sm"
                   onClick={() => setIsOpen(false)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

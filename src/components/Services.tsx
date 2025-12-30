@@ -34,7 +34,7 @@ const ServiceCard = ({ service, index, onImageClick }: { service: Service; index
       whileInView="visible"
       viewport={{ once: true }}
       whileHover={{ scale: 1.03 }}
-      className="group cursor-pointer relative overflow-hidden rounded-lg border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-red-500/40 transition-all"
+      className="group cursor-pointer relative overflow-hidden rounded border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-red-500/40 transition-all"
     >
       {/* Service Image with Parallax Effect */}
       <div className="h-[24rem] overflow-hidden">
@@ -75,7 +75,7 @@ const ServiceCard = ({ service, index, onImageClick }: { service: Service; index
               whileHover={{ scale: 1.1 }}
             />
           )}
-          <div className="absolute inset-0 bg-[#0F1419]/40 group-hover:bg-[#0F1419]/20 transition-colors duration-300"></div>
+          <div className="absolute inset-0 bg-[#0F1419]/10 group-hover:bg-transparent transition-colors duration-300"></div>
         </div>
       </div>
 
@@ -155,15 +155,15 @@ const Services = () => {
   return (
     <section id="services" className="relative bg-[#0F1419] section-padding overflow-hidden">
       {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 z-[2]">
         <div 
-          className="absolute inset-0"
+          className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
             `,
-            backgroundSize: '50px 50px'
+            backgroundSize: '20px 20px'
           }}
         />
       </div>
@@ -225,7 +225,7 @@ const Services = () => {
         {/* Emergency CTA */}
         <motion.div
           variants={itemVariants}
-          className="relative overflow-hidden rounded-lg border-2 border-red-500/40 bg-red-600/10 backdrop-blur-md"
+          className="relative overflow-hidden rounded border-2 border-red-500/40 bg-red-600/10 backdrop-blur-md"
         >
           <div className="relative z-10 p-12 md:p-16 text-center">
             <motion.div

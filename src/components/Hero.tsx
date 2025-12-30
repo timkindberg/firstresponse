@@ -84,7 +84,7 @@ const Hero = () => {
             </div>
 
             {/* Description Card */}
-            <div className="bg-white/5 backdrop-blur-md p-8 rounded-lg border-2 border-white/10 mb-12 shadow-2xl">
+            <div className="bg-white/5 backdrop-blur-md p-8 rounded border-2 border-white/10 mb-12 shadow-2xl">
               <p className="text-2xl text-white font-bold mb-3 leading-tight font-mono">
               {company.tagline}
               </p>
@@ -163,8 +163,8 @@ const Hero = () => {
       <div className="hidden lg:block absolute top-32 left-12 w-16 h-16 border-t-4 border-l-4 border-red-500 z-[1]" />
       <div className="hidden lg:block absolute bottom-24 right-12 w-16 h-16 border-b-4 border-r-4 border-red-500 z-[1]" />
 
-      {/* Bottom Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0F1419] to-transparent z-[5]" />
+      {/* Bottom Fade - Extended for smooth transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#0F1419] via-[#0F1419]/80 to-transparent z-[5]" />
     </section>
   );
 };
