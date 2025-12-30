@@ -2,8 +2,10 @@
 
 import { getCompanyInfo } from '@/lib/content';
 import { motion } from 'framer-motion';
-import { Flame, Menu, Phone, Shield, X } from 'lucide-react';
+import { Flame, Keyboard, Menu, Phone, Shield, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { getImageUrl } from '@/lib/utils';
 
 interface NavigationProps {
   variant?: 'default' | 'authority' | 'eco' | 'specialist' | 'residential' | 'residential-navy' | 'specialist-grid';
@@ -167,8 +169,46 @@ const Navigation = ({ variant = 'default' }: NavigationProps) => {
       <div className="max-container container-padding">
         <div className="flex justify-between items-center h-20 lg:h-24">
 
+          {/* Mobile Logo - Left aligned */}
+          <motion.a
+            href="#home"
+            onClick={() => handleSectionScroll('#home')}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="lg:hidden flex-shrink-0"
+          >
+            <Image
+              src={getImageUrl('/first-response-tree-service-logo-cross-tree-white.png')}
+              alt="First Response Tree Service"
+              width={150}
+              height={50}
+              className="h-9 w-auto"
+              priority
+            />
+          </motion.a>
+
           {/* Desktop Navigation */}
           <div className="hidden lg:flex w-full items-center space-x-8">
+            {/* Logo */}
+            <motion.a
+              href="#home"
+              onClick={() => handleSectionScroll('#home')}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mr-4 flex-shrink-0"
+            >
+              <Image
+                src={getImageUrl('/first-response-tree-service-logo-cross-tree-white.png')}
+                alt="First Response Tree Service"
+                width={180}
+                height={60}
+                className="h-10 w-auto"
+                priority
+              />
+            </motion.a>
+
             {navigation.map((item, index) => (
               <motion.button
                 key={item.name}
@@ -187,7 +227,21 @@ const Navigation = ({ variant = 'default' }: NavigationProps) => {
 
             <div className="flex flex-grow h-full relative"></div>
 
-            {/* Call Button */}
+            {/* Text Button - Primary */}
+            <motion.a
+              href={`sms:${company.phone}?body=Hello, I need a quote for tree services.`}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className={`${currentTheme.buttonClass} flex items-center space-x-2 text-sm xl:text-base font-bold px-6 py-3 rounded-lg transition-all`}
+            >
+              <Keyboard size={18} />
+              <span>Text Us Now</span>
+            </motion.a>
+
+            {/* Call Button - Secondary */}
             <motion.a
               href={`tel:${company.phone}`}
               initial={{ opacity: 0, scale: 0.8 }}
@@ -195,7 +249,7 @@ const Navigation = ({ variant = 'default' }: NavigationProps) => {
               transition={{ duration: 0.6, delay: 0.6 }}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className={`${currentTheme.buttonClass} flex items-center space-x-2 text-sm xl:text-base font-bold px-6 py-3 rounded-lg transition-all`}
+              className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/20 hover:border-white/40 font-mono uppercase tracking-wider flex items-center space-x-2 text-sm xl:text-base font-bold px-6 py-3 rounded-lg transition-all backdrop-blur-sm"
             >
               <Phone size={18} />
               <span>Call Us Now</span>
@@ -269,7 +323,7 @@ const Navigation = ({ variant = 'default' }: NavigationProps) => {
               {/* Mobile Action Buttons */}
               <div className={`pt-4 border-t space-y-4 ${variant === 'eco' ? 'border-green-100' : 'border-gray-100'}`}>
                 <motion.a
-                  href={`tel:${company.phone}`}
+                  href={`sms:${company.phone}?body=Hello, I need a quote for tree services.`}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: isOpen ? 1 : 0, scale: isOpen ? 1 : 0.9 }}
                   transition={{ duration: 0.4, delay: 0.3 }}
@@ -278,14 +332,28 @@ const Navigation = ({ variant = 'default' }: NavigationProps) => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
+                  <Keyboard size={20} />
+                  <span>Text Us Now</span>
+                </motion.a>
+
+                <motion.a
+                  href={`tel:${company.phone}`}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: isOpen ? 1 : 0, scale: isOpen ? 1 : 0.9 }}
+                  transition={{ duration: 0.4, delay: 0.4 }}
+                  className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/20 hover:border-white/40 font-mono uppercase tracking-wider flex items-center justify-center space-x-3 w-full text-lg font-bold px-6 py-3 rounded-xl transition-all backdrop-blur-sm"
+                  onClick={() => setIsOpen(false)}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
                   <Phone size={20} />
-                  <span>Call Us Now: {company.phone}</span>
+                  <span>Call Us Now</span>
                 </motion.a>
 
                 <motion.button
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: isOpen ? 1 : 0, scale: isOpen ? 1 : 0.9 }}
-                  transition={{ duration: 0.4, delay: 0.4 }}
+                  transition={{ duration: 0.4, delay: 0.5 }}
                   className={`flex items-center justify-center space-x-3 w-full text-lg font-semibold ${currentTheme.textColor}`}
                   onClick={() => handleSectionScroll('#contact')}
                   whileHover={{ scale: 1.02 }}

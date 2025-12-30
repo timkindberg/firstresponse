@@ -351,6 +351,114 @@ export default function ConceptsPage() {
             </div>
           </section>
 
+          {/* REVISION EXPERIMENTS */}
+          <section>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 bg-orange-100 rounded-lg text-orange-700"><Sparkles className="w-6 h-6" /></div>
+              <h2 className="text-2xl font-bold text-gray-900">5. Revision Experiments (Based on Client Feedback)</h2>
+            </div>
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+              <p className="text-gray-600 mb-8">
+                Based on your preference for <strong>Specialist V2 (Grid)</strong>, we&apos;ve created three variations to explore different aesthetics while maintaining the technical grid overlay concept:
+              </p>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Softer Gradient */}
+                <Link href="/redesign/concepts/specialist-grid-soft" className="group">
+                  <div className="bg-gray-50 rounded-xl overflow-hidden border-2 border-gray-200 hover:border-orange-500 transition-all hover:shadow-xl">
+                    <div className="aspect-video bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center relative overflow-hidden">
+                      <div 
+                        className="absolute inset-0 opacity-20"
+                        style={{
+                          backgroundImage: `
+                            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+                          `,
+                          backgroundSize: '20px 20px'
+                        }}
+                      />
+                      <div className="text-center relative z-10">
+                        <div className="w-16 h-16 bg-red-600 rounded flex items-center justify-center mx-auto mb-3 shadow-lg">
+                          <Target className="w-8 h-8 text-white" />
+                        </div>
+                        <p className="text-sm font-bold text-white font-mono">Revision R1</p>
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <h4 className="font-bold text-gray-900 mb-2">Specialist Grid - Softer</h4>
+                      <p className="text-sm text-gray-600 mb-3">Less stark gradient to show more of the background image</p>
+                      <div className="flex items-center text-orange-600 text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                        View Concept <ArrowRight className="w-4 h-4 ml-1" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+
+                {/* Navy/Yellow */}
+                <Link href="/redesign/concepts/specialist-grid-navy" className="group">
+                  <div className="bg-gray-50 rounded-xl overflow-hidden border-2 border-gray-200 hover:border-orange-500 transition-all hover:shadow-xl">
+                    <div className="aspect-video bg-gradient-to-br from-blue-900 to-blue-950 flex items-center justify-center relative overflow-hidden">
+                      <div 
+                        className="absolute inset-0 opacity-20"
+                        style={{
+                          backgroundImage: `
+                            linear-gradient(rgba(234,179,8,0.2) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(234,179,8,0.2) 1px, transparent 1px)
+                          `,
+                          backgroundSize: '20px 20px'
+                        }}
+                      />
+                      <div className="text-center relative z-10">
+                        <div className="w-16 h-16 bg-yellow-400 rounded flex items-center justify-center mx-auto mb-3 shadow-lg">
+                          <Target className="w-8 h-8 text-blue-900" />
+                        </div>
+                        <p className="text-sm font-bold text-white font-mono">Revision R2</p>
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <h4 className="font-bold text-gray-900 mb-2">Specialist Grid - Navy</h4>
+                      <p className="text-sm text-gray-600 mb-3">Navy/yellow colors from Estate V2 with grid overlay</p>
+                      <div className="flex items-center text-orange-600 text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                        View Concept <ArrowRight className="w-4 h-4 ml-1" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+
+                {/* Light Theme */}
+                <Link href="/redesign/concepts/specialist-grid-light" className="group">
+                  <div className="bg-gray-50 rounded-xl overflow-hidden border-2 border-gray-200 hover:border-orange-500 transition-all hover:shadow-xl">
+                    <div className="aspect-video bg-gradient-to-br from-gray-100 to-white flex items-center justify-center relative overflow-hidden">
+                      <div 
+                        className="absolute inset-0 opacity-20"
+                        style={{
+                          backgroundImage: `
+                            linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
+                          `,
+                          backgroundSize: '20px 20px'
+                        }}
+                      />
+                      <div className="text-center relative z-10">
+                        <div className="w-16 h-16 bg-red-600 rounded flex items-center justify-center mx-auto mb-3 shadow-lg">
+                          <Target className="w-8 h-8 text-white" />
+                        </div>
+                        <p className="text-sm font-bold text-gray-900 font-mono">Revision R3</p>
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <h4 className="font-bold text-gray-900 mb-2">Specialist Grid - Light</h4>
+                      <p className="text-sm text-gray-600 mb-3">Light theme inspired by Authority V1 with technical grid</p>
+                      <div className="flex items-center text-orange-600 text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                        View Concept <ArrowRight className="w-4 h-4 ml-1" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </section>
+
           {/* Our Recommendations */}
           <section className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Recommendations</h2>

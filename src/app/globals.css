@@ -5,11 +5,11 @@
 @tailwind utilities;
 
 :root {
-  /* Enhanced Firefighter Color Palette */
-  --firefighter-red: #dc2626;
-  --firefighter-red-dark: #991b1b;
-  --firefighter-red-darker: #7f1d1d;
-  --firefighter-red-light: #ef4444;
+  /* Enhanced Firefighter Color Palette - Matching logo hue */
+  --firefighter-red: #ff2028;
+  --firefighter-red-dark: #c21820;
+  --firefighter-red-darker: #7f1419;
+  --firefighter-red-light: #ff6b70;
   --firefighter-red-lighter: #fecaca;
   
   --firefighter-black: #0f0f0f;
@@ -25,20 +25,20 @@
   --emergency-amber: #d97706;
   
   /* Sophisticated Gradients */
-  --gradient-fire: linear-gradient(135deg, #dc2626 0%, #991b1b 50%, #7f1d1d 100%);
+  --gradient-fire: linear-gradient(135deg, #ff2028 0%, #c21820 50%, #7f1419 100%);
   --gradient-smoke: linear-gradient(135deg, #0f0f0f 0%, #1f1f1f 50%, #374151 100%);
-  --gradient-hero: linear-gradient(135deg, rgba(15,15,15,0.95) 0%, rgba(220,38,38,0.1) 50%, rgba(15,15,15,0.95) 100%);
+  --gradient-hero: linear-gradient(135deg, rgba(15,15,15,0.95) 0%, rgba(255,32,40,0.1) 50%, rgba(15,15,15,0.95) 100%);
   --gradient-card: linear-gradient(145deg, rgba(31,31,31,0.8) 0%, rgba(47,47,47,0.4) 100%);
   
   /* Glass Effects */
-  --glass-red: rgba(220, 38, 38, 0.1);
+  --glass-red: rgba(255, 32, 40, 0.1);
   --glass-black: rgba(15, 15, 15, 0.8);
   --glass-white: rgba(255, 255, 255, 0.1);
   
   /* Shadows */
-  --shadow-fire: 0 25px 50px -12px rgba(220, 38, 38, 0.25);
+  --shadow-fire: 0 25px 50px -12px rgba(255, 32, 40, 0.25);
   --shadow-dark: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --shadow-glow: 0 0 30px rgba(220, 38, 38, 0.3);
+  --shadow-glow: 0 0 30px rgba(255, 32, 40, 0.3);
   --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
@@ -112,7 +112,7 @@ p {
 .glass-fire {
   backdrop-filter: blur(20px);
   background: var(--glass-red);
-  border: 1px solid rgba(220, 38, 38, 0.2);
+  border: 1px solid rgba(255, 32, 40, 0.2);
 }
 
 .glass-dark {
@@ -140,7 +140,7 @@ p {
 .card-premium:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: var(--shadow-fire);
-  border-color: rgba(220, 38, 38, 0.3);
+  border-color: rgba(255, 32, 40, 0.3);
 }
 
 .card-glass {
@@ -153,7 +153,7 @@ p {
 
 .card-glass:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(220, 38, 38, 0.4);
+  border-color: rgba(255, 32, 40, 0.4);
   transform: translateY(-4px);
 }
 
@@ -189,7 +189,7 @@ p {
 
 .btn-fire:hover {
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 20px 40px -10px rgba(220, 38, 38, 0.4);
+  box-shadow: 0 20px 40px -10px rgba(255, 32, 40, 0.4);
 }
 
 .btn-ghost {
@@ -333,24 +333,6 @@ p {
 /* Smooth scroll for anchor links */
 .scroll-smooth {
   scroll-behavior: smooth;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--firefighter-black);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--firefighter-red);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--firefighter-red-light);
 }
 
 /* Selection Colors */

@@ -11,8 +11,8 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <Navigation />
-      <main className="min-h-screen">
+      <Navigation variant="specialist-grid" />
+      <main className="min-h-screen bg-[#0F1419]">
         {children}
       </main>
       <Footer />
