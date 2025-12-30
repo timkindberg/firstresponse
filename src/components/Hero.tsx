@@ -37,7 +37,7 @@ const Hero = () => {
           quality={90}
         />
         {/* Softer Gradient - More transparent on left to show image */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1419]/80 via-[#0F1419]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1419]/60 to-transparent" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-32">
