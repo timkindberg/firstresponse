@@ -86,7 +86,7 @@ const Hero = () => {
             {/* Description Card */}
             <div className="bg-white/5 backdrop-blur-md p-8 rounded border-2 border-white/10 mb-12 shadow-2xl">
               <p className="text-2xl text-white font-bold mb-3 leading-tight font-mono">
-              {company.tagline}
+              Exemplifying honesty, integrity,&nbsp;and&nbsp;professionalism in every job that we do.
               </p>
               <p className="text-lg text-white leading-relaxed font-mono">
                 Our trained crews execute technically challenging projects with minimal property impact. Municipal-grade capacity meets residential precision.
