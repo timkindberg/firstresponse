@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 const content = getContent();
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://firstresponsetree.com"),
   title: content.seo.title,
   description: content.seo.description,
   keywords: content.seo.keywords,
