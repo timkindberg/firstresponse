@@ -17,13 +17,14 @@ export const metadata: Metadata = {
     description: content.seo.description,
     type: "website",
     locale: "en_US",
+    url: "https://firstresponsetree.com",
     siteName: content.company.name,
     images: [
       {
-        url: "/first-response-tree-service-logo-cross-and-tree-color.png",
+        url: "/images/gallery/FirstResponseOpenGraphWide.jpg",
         width: 1200,
         height: 630,
-        alt: "First Response Tree Service - Professional Tree Care in Cincinnati",
+        alt: "First Response Tree Service - Engineered Tree Care Solutions in Cincinnati",
       },
     ],
   },
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: content.seo.title,
     description: content.seo.description,
-    images: ["/first-response-tree-service-logo-cross-and-tree-color.png"],
+    images: ["/images/gallery/FirstResponseOpenGraphWide.jpg"],
   },
   robots: {
     index: true,
